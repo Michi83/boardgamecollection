@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from multiprocessing import Process
 from tkinter import *
 import webbrowser
 
@@ -37,8 +36,7 @@ class MainWindow(Tk):
         for scale in self.black_algorithm_frame.settings_frames[i].scales:
             settings.append(scale.get())
         black_algorithm = config["algorithms"][i]["class"](*settings)
-        args = (state, white_algorithm, black_algorithm)
-        Process(target=play, args=args).start()
+        play(state, white_algorithm, black_algorithm)
 
 
 class GamesFrame(LabelFrame):
