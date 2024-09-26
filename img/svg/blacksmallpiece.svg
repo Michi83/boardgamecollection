@@ -1,0 +1,12 @@
+<svg height="32" width="32">
+    <radialGradient cy="75%" id="gradient1">
+        <stop offset="0%" stop-color="#404040" />
+        <stop offset="100%" stop-color="#202020" />
+    </radialGradient>
+    <linearGradient id="gradient2" x1="50%" x2="50%" y1="0%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF" />
+        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+    <circle cx="16" cy="16" fill="url(#gradient1)" r="16" />
+    <circle cx="16" cy="8" fill="url(#gradient2)" r="8" />
+</svg>
