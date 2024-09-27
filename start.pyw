@@ -10,18 +10,18 @@ class MainWindow(Tk):
     def __init__(self):
         super().__init__()
         self.games_frame = GamesFrame(self)
-        self.games_frame.grid(column=0, row=0, rowspan=2)
+        self.games_frame.grid(column=0, row=0, sticky="n")
         self.games_frame.listbox.select_set(0)
         self.white_algorithm_frame = AlgorithmFrame(self, "White")
-        self.white_algorithm_frame.grid(column=1, row=0)
+        self.white_algorithm_frame.grid(column=1, row=0, sticky="n")
         self.white_algorithm_frame.listbox.select_set(0)
         self.white_algorithm_frame.show_settings(None)
         self.black_algorithm_frame = AlgorithmFrame(self, "Black")
-        self.black_algorithm_frame.grid(column=1, row=1)
+        self.black_algorithm_frame.grid(column=2, row=0, sticky="n")
         self.black_algorithm_frame.listbox.select_set(1)
         self.black_algorithm_frame.show_settings(None)
         button = Button(self, command= self.start_game, text="Play")
-        button.grid(column=0, columnspan=2, row=2)
+        button.grid(column=0, columnspan=3, row=1)
 
     def start_game(self):
         i = self.games_frame.listbox.curselection()[0]
@@ -72,7 +72,7 @@ class AlgorithmFrame(LabelFrame):
         for settings_frame in self.settings_frames:
             settings_frame.grid_forget()
         i = self.listbox.curselection()[0]
-        self.settings_frames[i].grid(column=1, row=0)
+        self.settings_frames[i].grid(column=0, row=1)
 
 
 class SettingsFrame(Frame):
