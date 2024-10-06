@@ -1,0 +1,15 @@
+<svg height="64" width="64" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <radialGradient cy="75%" id="gradient1">
+            <stop offset="0%" stop-color="#FF0000" />
+            <stop offset="100%" stop-color="#800000" />
+        </radialGradient>
+        <linearGradient id="gradient2" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF" />
+            <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+        </linearGradient>
+    </defs>
+    <circle cx="32" cy="32" fill="url(#gradient1)" r="32" />
+    <circle cx="32" cy="16" fill="url(#gradient2)" r="16" />
+    <text fill="#FFFFFF" font-family="FreeSerif" font-size="72" text-anchor="middle" x="32" y="56">&#x265B;</text>
+</svg>
