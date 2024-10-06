@@ -1,13 +1,15 @@
-<svg height="32" width="32">
-    <radialGradient cy="75%" id="gradient1">
-        <stop offset="0%" stop-color="#404040" />
-        <stop offset="100%" stop-color="#202020" />
-    </radialGradient>
-    <linearGradient id="gradient2" x1="50%" x2="50%" y1="0%" y2="100%">
-        <stop offset="0%" stop-color="#FFFFFF" />
-        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
-    </linearGradient>
+<svg height="32" width="32" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <radialGradient cy="75%" id="gradient1">
+            <stop offset="0%" stop-color="#404040" />
+            <stop offset="100%" stop-color="#202020" />
+        </radialGradient>
+        <linearGradient id="gradient2" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF" />
+            <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+        </linearGradient>
+    </defs>
     <circle cx="16" cy="16" fill="url(#gradient1)" r="16" />
     <circle cx="16" cy="8" fill="url(#gradient2)" r="8" />
-    <text fill="#FFFFFF" font-family="FreeSerif" font-size="36" text-anchor="middle" x="16" y="28">&#x2654;</text>
+    <text fill="#FFFFFF" font-family="FreeSerif" font-size="36" text-anchor="middle" x="16" y="28">&#x265A;</text>
 </svg>

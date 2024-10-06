@@ -21,7 +21,6 @@ class ChessState:
     def __init__(self, other=None):
         if other is None:
             self.black_king = 25
-            self.castling = [True, True, True, True]
             self.board = [
                 LV, LV, LV, LV, LV, LV, LV, LV, LV, LV,
                 LV, LV, LV, LV, LV, LV, LV, LV, LV, LV,
@@ -36,16 +35,18 @@ class ChessState:
                 LV, LV, LV, LV, LV, LV, LV, LV, LV, LV,
                 LV, LV, LV, LV, LV, LV, LV, LV, LV, LV
             ]
+            self.castling = [True, True, True, True]
+            self.halfmove_clock = 0
             self.player = 1
             self.white_king = 95
         else:
             self.black_king = other.black_king
-            self.castling = list(other.castling)
             self.board = list(other.board)
+            self.castling = list(other.castling)
+            self.halfmove_clock = other.halfmove_clock
             self.player = other.player
             self.white_king = other.white_king
-        self.en_passant_pawn = None
-        self.en_passant_target = None
+        self.en_passant = None
         self.user_clicks = []
 
     def attacked(self, target, attacker):
@@ -123,10 +124,12 @@ class ChessState:
             and not self.attacked(25, 1) and not self.attacked(24, 1))
 
     def capturable(self, square):
-        return BK <= self.player * self.board[square] <= BP
+        return (self.board[square] != LV
+            and self.player * self.board[square] < EM)
 
     def capturable_or_empty(self, square):
-        return BK <= self.player * self.board[square] <= EM
+        return (self.board[square] != LV
+            and self.player * self.board[square] <= EM)
 
     def check(self, defender):
         if defender == 1:
@@ -225,10 +228,10 @@ class ChessState:
                 surface.blit(blackrook, (624, 912))
 
     def evaluate(self):
+        if self.halfmove_clock >= 100:
+            return 0
         if len(self.generate_moves()) == 0:
-            if self.insufficient_material():
-                return 0
-            elif self.check(self.player):
+            if self.check(self.player):
                 return -self.player  # checkmate
             else:
                 return 0  # stalemate
@@ -312,7 +315,7 @@ class ChessState:
 
     def generate_moves(self):
         moves = []
-        if self.insufficient_material():
+        if self.halfmove_clock >= 100:
             return moves
         for origin in range(21, 99):
             piece = self.player * self.board[origin]
@@ -350,9 +353,9 @@ class ChessState:
                     move = self.make_move(origin, target)
                     moves.append(move)
             # en passant captures
-            elif target == self.en_passant_target:
+            elif target == self.en_passant:
                 move = self.make_move(origin, target)
-                move.board[self.en_passant_pawn] = EM
+                move.board[self.en_passant + 10 * self.player] = EM
                 moves.append(move)
         # non-captures
         target = origin + self.player * -10
@@ -368,11 +371,11 @@ class ChessState:
                 moves.append(move)
                 # double step
                 if self.double_step(origin):
-                    en_passant_pawn = target + self.player * -10
-                    if self.board[en_passant_pawn] == EM:
-                        move = self.make_move(origin, en_passant_pawn)
-                        move.en_passant_target = target
-                        move.en_passant_pawn = en_passant_pawn
+                    en_passant = target
+                    target = en_passant - 10 * self.player
+                    if self.board[target] == EM:
+                        move = self.make_move(origin, target)
+                        move.en_passant = en_passant
                         moves.append(move)
         return moves
 
@@ -402,35 +405,6 @@ class ChessState:
                 moves.append(move)
         return moves
 
-    def insufficient_material(self):
-        # The following are considered insufficient material:
-        # - king vs king
-        # - king + knight vs king
-        # - king + bishops vs king + bishops, if all bishops are on the same
-        #   square color
-        knight = False
-        bishops_on_white = False
-        bishops_on_black = False
-        for square in range(21, 99):
-            if self.board[square] in (WQ, BQ, WR, BR, WP, BP):
-                return False
-            elif self.board[square] in (WB, BB):
-                if square // 10 % 2 != square % 2:
-                    # white square
-                    if knight or bishops_on_black:
-                        return False
-                    bishops_on_white = True
-                else:
-                    # black square
-                    if knight or bishops_on_white:
-                        return False
-                    bishops_on_black = True
-            elif self.board[square] in (WN, BN):
-                if knight or bishops_on_white or bishops_on_black:
-                    return False
-                knight = True
-        return True
-
     def legal(self):
         return not self.check(-self.player)
 
@@ -454,6 +428,11 @@ class ChessState:
             move.castling[2] = False
         if origin == 25 or origin == 21 or target == 21:
             move.castling[3] = False
+        # update halfmove clock
+        if abs(self.board[origin]) == WP or self.board[target] != EM:
+            move.halfmove_clock = 0
+        else:
+            move.halfmove_clock += 1
         # update king positions
         if origin == move.white_king:
             move.white_king = target

@@ -3,8 +3,11 @@ from algorithms.mcts import MCTSAlgorithm
 from algorithms.minimax import MinimaxAlgorithm
 from algorithms.nmc import NMCAlgorithm
 from algorithms.random import RandomAlgorithm
+from games.caissa import CaissaBritanniaState
+from games.capablanca import CapablancaChessState
 from games.checkers import CheckersState
 from games.chess import ChessState
+from games.grandchess import GrandChessState
 from games.morris import MorrisState
 from games.reversi import ReversiState
 from games.tictactoe import TicTacToeState
@@ -78,6 +81,16 @@ config = {
     ),
     "games": (
         {
+            "name": "Caissa Britannia",
+            "class": CaissaBritanniaState,
+            "rules": "https://www.chessvariants.com/large.dir/british.html"
+        },
+        {
+            "name": "Capablanca Chess",
+            "class": CapablancaChessState,
+            "rules": "https://www.chessvariants.org/large.dir/capablanca.html"
+        },
+        {
             "name": "Checkers/Draughts",
             "class": CheckersState,
             "rules": "https://wcdf.net/rules.htm"
@@ -86,6 +99,11 @@ config = {
             "name": "Chess",
             "class": ChessState,
             "rules": "https://handbook.fide.com/chapter/E012023"
+        },
+        {
+            "name": "Grand Chess",
+            "class": GrandChessState,
+            "rules": "https://www.chessvariants.com/large.dir/freeling.html"
         },
         {
             "name": "Nine Men's Morris",
