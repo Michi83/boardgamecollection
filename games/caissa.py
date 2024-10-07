@@ -208,19 +208,19 @@ class CaissaBritanniaState:
         whitequeen = pygame.image.load("img/png/whitequeen.png")
         whiteking = pygame.image.load("img/png/whiteking.png")
         whitebishop = pygame.image.load("img/png/whitebishop.png")
-        whiteunicorn = pygame.image.load("img/png/whiteunicorn.png")
+        whitearchbishop = pygame.image.load("img/png/whitearchbishop.png")
         whiterook = pygame.image.load("img/png/whiterook.png")
-        whitedragon = pygame.image.load("img/png/whitedragon.png")
-        whitelion = pygame.image.load("img/png/whitelion.png")
+        whitechancellor = pygame.image.load("img/png/whitechancellor.png")
+        whiteamazon = pygame.image.load("img/png/whiteamazon.png")
         whiteknight = pygame.image.load("img/png/whiteknight.png")
         whitepawn = pygame.image.load("img/png/whitepawn.png")
         blackqueen = pygame.image.load("img/png/blackqueen.png")
         blackking = pygame.image.load("img/png/blackking.png")
         blackbishop = pygame.image.load("img/png/blackbishop.png")
-        blackunicorn = pygame.image.load("img/png/blackunicorn.png")
+        blackarchbishop = pygame.image.load("img/png/blackarchbishop.png")
         blackrook = pygame.image.load("img/png/blackrook.png")
-        blackdragon = pygame.image.load("img/png/blackdragon.png")
-        blacklion = pygame.image.load("img/png/blacklion.png")
+        blackchancellor = pygame.image.load("img/png/blackchancellor.png")
+        blackamazon = pygame.image.load("img/png/blackamazon.png")
         blackknight = pygame.image.load("img/png/blackknight.png")
         blackpawn = pygame.image.load("img/png/blackpawn.png")
         smallselection = pygame.image.load("img/png/smallselection.png")
@@ -235,13 +235,13 @@ class CaissaBritanniaState:
             elif self.board[square] == WB:
                 surface.blit(whitebishop, (x, y))
             elif self.board[square] == WU:
-                surface.blit(whiteunicorn, (x, y))
+                surface.blit(whitearchbishop, (x, y))
             elif self.board[square] == WR:
                 surface.blit(whiterook, (x, y))
             elif self.board[square] == WD:
-                surface.blit(whitedragon, (x, y))
+                surface.blit(whitechancellor, (x, y))
             elif self.board[square] == WL:
-                surface.blit(whitelion, (x, y))
+                surface.blit(whiteamazon, (x, y))
             elif self.board[square] == WN:
                 surface.blit(whiteknight, (x, y))
             elif self.board[square] == WP:
@@ -253,13 +253,13 @@ class CaissaBritanniaState:
             elif self.board[square] == BB:
                 surface.blit(blackbishop, (x, y))
             elif self.board[square] == BU:
-                surface.blit(blackunicorn, (x, y))
+                surface.blit(blackarchbishop, (x, y))
             elif self.board[square] == BR:
                 surface.blit(blackrook, (x, y))
             elif self.board[square] == BD:
-                surface.blit(blackdragon, (x, y))
+                surface.blit(blackchancellor, (x, y))
             elif self.board[square] == BL:
-                surface.blit(blacklion, (x, y))
+                surface.blit(blackamazon, (x, y))
             elif self.board[square] == BN:
                 surface.blit(blackknight, (x, y))
             elif self.board[square] == BP:
@@ -273,13 +273,13 @@ class CaissaBritanniaState:
                 if self.white_pieces[WB] > 0:
                     surface.blit(whitebishop, (320, 128))
                 if self.white_pieces[WU] > 0:
-                    surface.blit(whiteunicorn, (384, 128))
+                    surface.blit(whitearchbishop, (384, 128))
                 if self.white_pieces[WR] > 0:
                     surface.blit(whiterook, (448, 128))
                 if self.white_pieces[WD] > 0:
-                    surface.blit(whitedragon, (512, 128))
+                    surface.blit(whitechancellor, (512, 128))
                 if self.white_pieces[WL] > 0:
-                    surface.blit(whitelion, (576, 128))
+                    surface.blit(whiteamazon, (576, 128))
                 if self.white_pieces[WN] > 0:
                     surface.blit(whiteknight, (640, 128))
             else:
@@ -288,13 +288,13 @@ class CaissaBritanniaState:
                 if self.black_pieces[WB] > 0:
                     surface.blit(blackbishop, (320, 832))
                 if self.black_pieces[WU] > 0:
-                    surface.blit(blackunicorn, (384, 832))
+                    surface.blit(blackarchbishop, (384, 832))
                 if self.black_pieces[WR] > 0:
                     surface.blit(blackrook, (448, 832))
                 if self.black_pieces[WD] > 0:
-                    surface.blit(blackdragon, (512, 832))
+                    surface.blit(blackchancellor, (512, 832))
                 if self.black_pieces[WL] > 0:
-                    surface.blit(blacklion, (576, 832))
+                    surface.blit(blackamazon, (576, 832))
                 if self.black_pieces[WN] > 0:
                     surface.blit(blackknight, (640, 832))
 

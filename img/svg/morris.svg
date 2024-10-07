@@ -1,10 +1,10 @@
 <svg height="1024" width="1024" xmlns="http://www.w3.org/2000/svg">
     <rect fill="#008000" height="1024" width="1024" x="0" y="0" />
-    <rect fill="none" height="768" stroke="#FFFFFF" stroke-width="4" width="768" x="128" y="128" />
-    <rect fill="none" height="512" stroke="#FFFFFF" stroke-width="4" width="512" x="256" y="256" />
-    <rect fill="none" height="256" stroke="#FFFFFF" stroke-width="4" width="256" x="384" y="384" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="128" y2="384" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="384" y1="512" y2="512" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="640" x2="896" y1="512" y2="512" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="640" y2="896" />
+    <rect fill="none" height="576" stroke="#FFFFFF" stroke-width="4" width="576" x="224" y="224" />
+    <rect fill="none" height="384" stroke="#FFFFFF" stroke-width="4" width="384" x="320" y="320" />
+    <rect fill="none" height="192" stroke="#FFFFFF" stroke-width="4" width="192" x="416" y="416" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="224" y2="416" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="416" y1="512" y2="512" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="608" x2="800" y1="512" y2="512" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="608" y2="800" />
 </svg>

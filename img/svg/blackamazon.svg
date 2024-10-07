@@ -8,7 +8,15 @@
             <stop offset="0%" stop-color="#FFFFFF" />
             <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
         </linearGradient>
+        <clipPath id="clip1">
+            <rect height="64" width="32" x="0" y="0" />
+        </clipPath>
+        <clipPath id="clip2">
+            <rect height="64" width="32" x="32" y="0" />
+        </clipPath>
     </defs>
     <circle cx="32" cy="32" fill="url(#gradient1)" r="32" />
     <circle cx="32" cy="16" fill="url(#gradient2)" r="16" />
+    <text clip-path="url(#clip1)" fill="#FFFFFF" font-family="FreeSerif" font-size="72" text-anchor="middle" x="32" y="56">&#x265E;</text>
+    <text clip-path="url(#clip2)" fill="#FFFFFF" font-family="FreeSerif" font-size="72" text-anchor="middle" x="32" y="56">&#x265B;</text>
 </svg>

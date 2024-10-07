@@ -16,30 +16,30 @@ import pygame
 # 21----------22----------23
 
 coords = (
-    (96, 96),
-    (480, 96),
-    (864, 96),
-    (224, 224),
-    (480, 224),
-    (736, 224),
-    (352, 352),
-    (480, 352),
-    (608, 352),
-    (96, 480),
-    (224, 480),
-    (352, 480),
-    (608, 480),
-    (736, 480),
-    (864, 480),
-    (352, 608),
-    (480, 608),
-    (608, 608),
-    (224, 736),
-    (480, 736),
-    (736, 736),
-    (96, 864),
-    (480, 864),
-    (864, 864)
+    (176, 176),
+    (464, 176),
+    (752, 176),
+    (272, 272),
+    (464, 272),
+    (656, 272),
+    (368, 368),
+    (464, 368),
+    (560, 368),
+    (176, 464),
+    (272, 464),
+    (368, 464),
+    (560, 464),
+    (656, 464),
+    (752, 464),
+    (368, 560),
+    (464, 560),
+    (560, 560),
+    (272, 656),
+    (464, 656),
+    (656, 656),
+    (176, 752),
+    (464, 752),
+    (752, 752)
 )
 
 mills = (
@@ -112,7 +112,7 @@ class MorrisState:
         click = None
         for i in range(24):
             x2, y2 = coords[i]
-            if x2 <= x < x2 + 64 and y2 <= y < y2 + 64:
+            if x2 <= x < x2 + 96 and y2 <= y < y2 + 96:
                 click = i
                 break
         if click is not None:
@@ -142,19 +142,19 @@ class MorrisState:
         for i in range(24):
             x, y = coords[i]
             if self.board[i] == 1:
-                surface.blit(whitepiece, (x, y))
+                surface.blit(whitepiece, (x + 16, y + 16))
             elif self.board[i] == -1:
-                surface.blit(blackpiece, (x, y))
+                surface.blit(blackpiece, (x + 16, y + 16))
         for click in self.user_clicks:
             x, y = coords[click]
-            surface.blit(selection, (x - 16, y - 16))
+            surface.blit(selection, (x, y))
         for i in range(self.pieces):
             if i % 2 == 0:
-                x, y = i // 2 * 96 + 96, 0
-                surface.blit(blackpiece, (x, y))
+                x, y = i // 2 * 96 + 80, 80
+                surface.blit(blackpiece, (x + 16, y + 16))
             else:
-                x, y = i // 2 * 96 + 96, 960
-                surface.blit(whitepiece, (x, y))
+                x, y = i // 2 * 96 + 80, 848
+                surface.blit(whitepiece, (x + 16, y + 16))
 
     def evaluate(self):
         if len(self.generate_moves()) == 0:
