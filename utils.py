@@ -70,7 +70,7 @@ def play(state, white_algorithm, black_algorithm):
         return algorithm
 
     pygame.init()
-    screen = pygame.display.set_mode((1024, 1024), pygame.RESIZABLE)
+    screen = pygame.display.set_mode((512, 512), pygame.RESIZABLE)
     draw()
     algorithm = start_algorithm()
     while True:

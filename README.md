@@ -1,5 +1,7 @@
 A collection of classic board games that can be played against the computer. Requires [Python](https://www.python.org/downloads/) and [Pygame](https://www.pygame.org/wiki/GettingStarted).
 
+Mostly intended for casual players, who want to try out different games. Don't expect the computer to be particularly good at any one game.
+
 ## Games included so far
 ### Caïssa Britannia
 [Rules](https://www.chessvariants.com/large.dir/british.html)
