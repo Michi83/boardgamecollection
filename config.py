@@ -1,3 +1,4 @@
+from algorithms.chess import ChessAlgorithm
 from algorithms.human import HumanAlgorithm
 from algorithms.mcts import MCTSAlgorithm
 from algorithms.minimax import MinimaxAlgorithm
@@ -20,7 +21,7 @@ def launch_caissa_britannia(white, black):
         if player == "human":
             algorithm = HumanAlgorithm()
         elif player == "computer":
-            algorithm = MinimaxAlgorithm(6)
+            algorithm = ChessAlgorithm(4)
         elif player == "random":
             algorithm = RandomAlgorithm()
         algorithms.append(algorithm)
@@ -34,7 +35,7 @@ def launch_capablanca_chess(white, black):
         if player == "human":
             algorithm = HumanAlgorithm()
         elif player == "computer":
-            algorithm = MinimaxAlgorithm(6)
+            algorithm = ChessAlgorithm(4)
         elif player == "random":
             algorithm = RandomAlgorithm()
         algorithms.append(algorithm)
@@ -48,7 +49,7 @@ def launch_checkers(white, black):
         if player == "human":
             algorithm = HumanAlgorithm()
         elif player == "computer":
-            algorithm = MinimaxAlgorithm(6)
+            algorithm = MinimaxAlgorithm(12)
         elif player == "random":
             algorithm = RandomAlgorithm()
         algorithms.append(algorithm)
@@ -62,7 +63,7 @@ def launch_chess(white, black):
         if player == "human":
             algorithm = HumanAlgorithm()
         elif player == "computer":
-            algorithm = MinimaxAlgorithm(6)
+            algorithm = ChessAlgorithm(4)
         elif player == "random":
             algorithm = RandomAlgorithm()
         algorithms.append(algorithm)
@@ -76,7 +77,7 @@ def launch_grand_chess(white, black):
         if player == "human":
             algorithm = HumanAlgorithm()
         elif player == "computer":
-            algorithm = MinimaxAlgorithm(6)
+            algorithm = ChessAlgorithm(4)
         elif player == "random":
             algorithm = RandomAlgorithm()
         algorithms.append(algorithm)
@@ -104,7 +105,7 @@ def launch_reversi(white, black):
         if player == "human":
             algorithm = HumanAlgorithm()
         elif player == "computer":
-            algorithm = MinimaxAlgorithm(6)
+            algorithm = MCTSAlgorithm(1000, 100)
         elif player == "random":
             algorithm = RandomAlgorithm()
         algorithms.append(algorithm)
@@ -118,7 +119,7 @@ def launch_tic_tac_toe(white, black):
         if player == "human":
             algorithm = HumanAlgorithm()
         elif player == "computer":
-            algorithm = MinimaxAlgorithm(6)
+            algorithm = MinimaxAlgorithm(10)
         elif player == "random":
             algorithm = RandomAlgorithm()
         algorithms.append(algorithm)
