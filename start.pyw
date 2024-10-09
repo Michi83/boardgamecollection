@@ -3,93 +3,70 @@ from tkinter import *
 import webbrowser
 
 from config import config
-from utils import play
 
 
 class MainWindow(Tk):
     def __init__(self):
         super().__init__()
-        self.games_frame = GamesFrame(self)
+        main_frame = Frame(self, bg="#008000")
+        main_frame.grid(column=0, row=0)
+        self.games_frame = GamesFrame(main_frame)
         self.games_frame.grid(column=0, row=0, sticky="n")
         self.games_frame.listbox.select_set(0)
-        self.white_algorithm_frame = AlgorithmFrame(self, "White")
+        self.white_algorithm_frame = AlgorithmFrame(main_frame, "White")
         self.white_algorithm_frame.grid(column=1, row=0, sticky="n")
-        self.white_algorithm_frame.listbox.select_set(0)
-        self.white_algorithm_frame.show_settings(None)
-        self.black_algorithm_frame = AlgorithmFrame(self, "Black")
+        self.white_algorithm_frame.player.set("human")
+        self.black_algorithm_frame = AlgorithmFrame(main_frame, "Black")
         self.black_algorithm_frame.grid(column=2, row=0, sticky="n")
-        self.black_algorithm_frame.listbox.select_set(1)
-        self.black_algorithm_frame.show_settings(None)
-        button = Button(self, command= self.start_game, text="Play")
+        self.black_algorithm_frame.player.set("computer")
+        button = Button(main_frame, bg="#FFFFFF", command= self.start_game,
+            text="Play")
         button.grid(column=0, columnspan=3, row=1)
 
     def start_game(self):
         i = self.games_frame.listbox.curselection()[0]
-        state = config["games"][i]["class"]()
-        i = self.white_algorithm_frame.listbox.curselection()[0]
-        settings = []
-        for scale in self.white_algorithm_frame.settings_frames[i].scales:
-            settings.append(scale.get())
-        white_algorithm = config["algorithms"][i]["class"](*settings)
-        i = self.black_algorithm_frame.listbox.curselection()[0]
-        settings = []
-        for scale in self.black_algorithm_frame.settings_frames[i].scales:
-            settings.append(scale.get())
-        black_algorithm = config["algorithms"][i]["class"](*settings)
-        play(state, white_algorithm, black_algorithm)
+        launcher = config[i]["launcher"]
+        white = self.white_algorithm_frame.player.get()
+        black = self.black_algorithm_frame.player.get()
+        launcher(white, black)
 
 
 class GamesFrame(LabelFrame):
     def __init__(self, parent):
-        super().__init__(parent, text="Games")
+        super().__init__(parent, bg="#008000", fg="#FFFFFF", text="Games")
         self.listbox = Listbox(self, exportselection=False)
         self.listbox.grid(column=0, row=0)
-        for game in config["games"]:
+        for game in config:
             self.listbox.insert(END, game["name"])
-        label = Label(self, text="Rules")
+        label = Label(self, bg="#008000", fg="#0000EE", text="Rules")
         label.grid(column=0, row=1)
         label.bind("<Button-1>", self.show_rules)
 
     def show_rules(self, event):
         i = self.listbox.curselection()[0]
-        url = config["games"][i]["rules"]
+        url = config[i]["rules"]
         webbrowser.open(url)
 
 
 class AlgorithmFrame(LabelFrame):
     def __init__(self, parent, text):
-        super().__init__(parent, text=text)
-        self.listbox = Listbox(self, exportselection=False)
-        self.listbox.grid(column=0, row=0)
-        self.listbox.bind("<<ListboxSelect>>", self.show_settings)
-        self.settings_frames = []
-        for algorithm in config["algorithms"]:
-            self.listbox.insert(END, algorithm["name"])
-            settings_frame = SettingsFrame(self, algorithm["settings"])
-            self.settings_frames.append(settings_frame)
-
-    def show_settings(self, event):
-        for settings_frame in self.settings_frames:
-            settings_frame.grid_forget()
-        i = self.listbox.curselection()[0]
-        self.settings_frames[i].grid(column=0, row=1)
-
-
-class SettingsFrame(Frame):
-    def __init__(self, parent, settings):
-        super().__init__(parent)
-        self.scales = []
-        row = 0
-        for setting in settings:
-            label = Label(self, text=setting["name"])
-            label.grid(column=0, row=row)
-            row += 1
-            scale = Scale(self, from_=setting["min"], orient=HORIZONTAL,
-                resolution=setting["step"], to=setting["max"])
-            scale.grid(column=0, row=row)
-            scale.set(setting["default"])
-            self.scales.append(scale)
-            row += 1
+        super().__init__(parent, bg="#008000", fg="#FFFFFF", text=text)
+        self.player = StringVar()
+        radiobutton = Radiobutton(self, activebackground="#008000",
+            activeforeground="#FFFFFF", bg="#008000", fg="#FFFFFF",
+            highlightthickness=0, selectcolor="#008000", text="Human",
+            variable=self.player, value="human")
+        radiobutton.grid(column=0, row=0, sticky="w")
+        radiobutton = Radiobutton(self, activebackground="#008000",
+            activeforeground="#FFFFFF", bg="#008000", fg="#FFFFFF",
+            highlightthickness=0, selectcolor="#008000", text="Computer",
+            variable=self.player, value="computer")
+        radiobutton.grid(column=0, row=1, sticky="w")
+        radiobutton = Radiobutton(self, activebackground="#008000",
+            activeforeground="#FFFFFF", bg="#008000", fg="#FFFFFF",
+            highlightthickness=0, selectcolor="#008000", text="Random moves",
+            variable=self.player, value="random")
+        radiobutton.grid(column=0, row=2, sticky="w")
 
 
 window = MainWindow()

@@ -1,7 +1,6 @@
 from algorithms.human import HumanAlgorithm
 from algorithms.mcts import MCTSAlgorithm
 from algorithms.minimax import MinimaxAlgorithm
-from algorithms.nmc import NMCAlgorithm
 from algorithms.random import RandomAlgorithm
 from games.caissa import CaissaBritanniaState
 from games.capablanca import CapablancaChessState
@@ -11,114 +10,160 @@ from games.grandchess import GrandChessState
 from games.morris import MorrisState
 from games.reversi import ReversiState
 from games.tictactoe import TicTacToeState
+from utils import play
 
 
-config = {
-    "algorithms": (
-        {
-            "name": "Human",
-            "class": HumanAlgorithm,
-            "settings": ()
-        },
-        {
-            "name": "Minimax",
-            "class": MinimaxAlgorithm,
-            "settings": (
-                {
-                    "name": "Maximum Depth",
-                    "min": 1,
-                    "default": 4,
-                    "max": 10,
-                    "step": 1
-                },
-            )
-        },
-        {
-            "name": "Monte Carlo Tree Search",
-            "class": MCTSAlgorithm,
-            "settings": (
-                {
-                    "name": "Iterations",
-                    "min": 100,
-                    "default": 1000,
-                    "max": 2500,
-                    "step": 100
-                },
-                {
-                    "name": "Maximum Depth",
-                    "min": 10,
-                    "default": 100,
-                    "max": 250,
-                    "step": 10
-                }
-            )
-        },
-        {
-            "name": "Naive Monte Carlo",
-            "class": NMCAlgorithm,
-            "settings": (
-                {
-                    "name": "Iterations",
-                    "min": 10,
-                    "default": 100,
-                    "max": 250,
-                    "step": 10
-                },
-                {
-                    "name": "Maximum Depth",
-                    "min": 10,
-                    "default": 100,
-                    "max": 250,
-                    "step": 10
-                }
-            )
-        },
-        {
-            "name": "Random",
-            "class": RandomAlgorithm,
-            "settings": ()
-        }
-    ),
-    "games": (
-        {
-            "name": "Caissa Britannia",
-            "class": CaissaBritanniaState,
-            "rules": "https://www.chessvariants.com/large.dir/british.html"
-        },
-        {
-            "name": "Capablanca Chess",
-            "class": CapablancaChessState,
-            "rules": "https://www.chessvariants.org/large.dir/capablanca.html"
-        },
-        {
-            "name": "Checkers/Draughts",
-            "class": CheckersState,
-            "rules": "https://wcdf.net/rules.htm"
-        },
-        {
-            "name": "Chess",
-            "class": ChessState,
-            "rules": "https://handbook.fide.com/chapter/E012023"
-        },
-        {
-            "name": "Grand Chess",
-            "class": GrandChessState,
-            "rules": "https://www.chessvariants.com/large.dir/freeling.html"
-        },
-        {
-            "name": "Nine Men's Morris",
-            "class": MorrisState,
-            "rules": "https://library.slmath.org/books/Book29/files/gasser.pdf"
-        },
-        {
-            "name": "Reversi",
-            "class": ReversiState,
-            "rules": "https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english"
-        },
-        {
-            "name": "Tic-Tac-Toe",
-            "class": TicTacToeState,
-            "rules": "https://en.wikipedia.org/wiki/Tic-tac-toe"
-        }
-    )
-}
+def launch_caissa_britannia(white, black):
+    state = CaissaBritanniaState()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MinimaxAlgorithm(6)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
+def launch_capablanca_chess(white, black):
+    state = CapablancaChessState()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MinimaxAlgorithm(6)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
+def launch_checkers(white, black):
+    state = CheckersState()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MinimaxAlgorithm(6)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
+def launch_chess(white, black):
+    state = ChessState()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MinimaxAlgorithm(6)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
+def launch_grand_chess(white, black):
+    state = GrandChessState()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MinimaxAlgorithm(6)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
+def launch_nine_mens_morris(white, black):
+    state = MorrisState()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MinimaxAlgorithm(6)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
+def launch_reversi(white, black):
+    state = ReversiState()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MinimaxAlgorithm(6)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
+def launch_tic_tac_toe(white, black):
+    state = TicTacToeState()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MinimaxAlgorithm(6)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
+config = (
+    {
+        "name": "Caïssa Britannia",
+        "launcher": launch_caissa_britannia,
+        "rules": "https://www.chessvariants.com/large.dir/british.html"
+    },
+    {
+        "name": "Capablanca Chess",
+        "launcher": launch_capablanca_chess,
+        "rules": "https://www.chessvariants.org/large.dir/capablanca.html"
+    },
+    {
+        "name": "Checkers/Draughts",
+        "launcher": launch_checkers,
+        "rules": "https://wcdf.net/rules.htm"
+    },
+    {
+        "name": "Chess",
+        "launcher": launch_chess,
+        "rules": "https://handbook.fide.com/chapter/E012023"
+    },
+    {
+        "name": "Grand Chess",
+        "launcher": launch_grand_chess,
+        "rules": "https://www.chessvariants.com/large.dir/freeling.html"
+    },
+    {
+        "name": "Nine Men's Morris",
+        "launcher": launch_nine_mens_morris,
+        "rules": "https://library.slmath.org/books/Book29/files/gasser.pdf"
+    },
+    {
+        "name": "Reversi",
+        "launcher": launch_reversi,
+        "rules": "https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english"
+    },
+    {
+        "name": "Tic-Tac-Toe",
+        "launcher": launch_tic_tac_toe,
+        "rules": "https://en.wikipedia.org/wiki/Tic-tac-toe"
+    }
+)
