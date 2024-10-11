@@ -26,7 +26,7 @@ Mostly intended for casual players, who want to try out different games. Don't e
 ### Go (9x9)
 [Rules](https://en.wikipedia.org/wiki/Rules_of_Go)
 
-![Grand Chess intial position](img/screenshots/go9.png)
+![Go intial position](img/screenshots/go9.png)
 
 ### Grand Chess
 [Rules](https://www.chessvariants.com/large.dir/freeling.html)
@@ -36,7 +36,7 @@ Mostly intended for casual players, who want to try out different games. Don't e
 ### International Checkers/Draughts
 [Rules](https://www.fmjd.org/docs/Annex_1.pdf)
 
-![Grand Chess intial position](img/screenshots/internationalcheckers.png)
+![International Checkers intial position](img/screenshots/internationalcheckers.png)
 
 ### Nine Men's Morris
 [Rules](https://library.slmath.org/books/Book29/files/gasser.pdf)
