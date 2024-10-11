@@ -23,10 +23,20 @@ Mostly intended for casual players, who want to try out different games. Don't e
 
 ![Chess intial position](img/screenshots/chess.png)
 
+### Go (9x9)
+[Rules](https://en.wikipedia.org/wiki/Rules_of_Go)
+
+![Grand Chess intial position](img/screenshots/go9.png)
+
 ### Grand Chess
 [Rules](https://www.chessvariants.com/large.dir/freeling.html)
 
 ![Grand Chess intial position](img/screenshots/grandchess.png)
+
+### International Checkers/Draughts
+[Rules](https://www.fmjd.org/docs/Annex_1.pdf)
+
+![Grand Chess intial position](img/screenshots/internationalcheckers.png)
 
 ### Nine Men's Morris
 [Rules](https://library.slmath.org/books/Book29/files/gasser.pdf)

@@ -9,6 +9,7 @@ from games.checkers import CheckersState
 from games.chess import ChessState
 from games.go9 import Go9State
 from games.grandchess import GrandChessState
+from games.internationalcheckers import InternationalCheckersState
 from games.morris import MorrisState
 from games.reversi import ReversiState
 from games.tictactoe import TicTacToeState
@@ -99,6 +100,20 @@ def launch_grand_chess(white, black):
     play(state, *algorithms)
 
 
+def launch_international_checkers(white, black):
+    state = InternationalCheckersState()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MCTSAlgorithm(10)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
 def launch_nine_mens_morris(white, black):
     state = MorrisState()
     algorithms = []
@@ -171,6 +186,11 @@ config = (
         "name": "Grand Chess",
         "launcher": launch_grand_chess,
         "rules": "https://www.chessvariants.com/large.dir/freeling.html"
+    },
+    {
+        "name": "International Checkers/Draughts",
+        "launcher": launch_international_checkers,
+        "rules": "https://www.fmjd.org/docs/Annex_1.pdf"
     },
     {
         "name": "Nine Men's Morris",
