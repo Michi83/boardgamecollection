@@ -1,5 +1,6 @@
 from math import log, sqrt
-from random import choice
+from random import choice, shuffle
+from time import time
 
 
 # For an explantion see:
@@ -24,6 +25,7 @@ class MCTSNode:
         # moves, so we don't need to try again.
         if self.n == 0:
             moves = self.state.generate_moves()
+            shuffle(moves)
             for move in moves:
                 child = MCTSNode(move, self)
                 self.children.append(child)
@@ -34,9 +36,9 @@ class MCTSNode:
         else:
             return self
 
-    def playout(self, max_depth):
+    def playout(self):
         state = self.state
-        for i in range(max_depth):
+        for i in range(100):
             moves = state.generate_moves()
             if len(moves) == 0:
                 break
@@ -63,16 +65,19 @@ class MCTSNode:
 
 
 class MCTSAlgorithm:
-    def __init__(self, iterations, max_depth):
-        self.iterations = iterations
-        self.max_depth = max_depth
+    def __init__(self, max_time):
+        self.max_time = max_time
 
     def select_move(self, state):
         root = MCTSNode(state)
-        for i in range(self.iterations):
+        time1 = time()
+        while True:
+            time2 = time()
+            if time2 - time1 > self.max_time:
+                break
             node = root.select()
             node = node.expand()
-            result = node.playout(self.max_depth)
+            result = node.playout()
             node.backpropagate(result)
         top_score = -1
         for child in root.children:

@@ -7,6 +7,7 @@ from games.caissa import CaissaBritanniaState
 from games.capablanca import CapablancaChessState
 from games.checkers import CheckersState
 from games.chess import ChessState
+from games.go9 import Go9State
 from games.grandchess import GrandChessState
 from games.morris import MorrisState
 from games.reversi import ReversiState
@@ -70,6 +71,20 @@ def launch_chess(white, black):
     play(state, *algorithms)
 
 
+def launch_go9(white, black):
+    state = Go9State()
+    algorithms = []
+    for player in (white, black):
+        if player == "human":
+            algorithm = HumanAlgorithm()
+        elif player == "computer":
+            algorithm = MCTSAlgorithm(10)
+        elif player == "random":
+            algorithm = RandomAlgorithm()
+        algorithms.append(algorithm)
+    play(state, *algorithms)
+
+
 def launch_grand_chess(white, black):
     state = GrandChessState()
     algorithms = []
@@ -105,7 +120,7 @@ def launch_reversi(white, black):
         if player == "human":
             algorithm = HumanAlgorithm()
         elif player == "computer":
-            algorithm = MCTSAlgorithm(1000, 100)
+            algorithm = MCTSAlgorithm(10)
         elif player == "random":
             algorithm = RandomAlgorithm()
         algorithms.append(algorithm)
@@ -146,6 +161,11 @@ config = (
         "name": "Chess",
         "launcher": launch_chess,
         "rules": "https://handbook.fide.com/chapter/E012023"
+    },
+    {
+        "name": "Go (9x9)",
+        "launcher": launch_go9,
+        "rules": "https://en.wikipedia.org/wiki/Rules_of_Go"
     },
     {
         "name": "Grand Chess",

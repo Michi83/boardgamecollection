@@ -15,6 +15,7 @@ inkscape svg/blacksmallking.svg --export-type=png --export-filename=png/blacksma
 inkscape svg/blacksmallpiece.svg --export-type=png --export-filename=png/blacksmallpiece.png
 inkscape svg/capablanca.svg --export-type=png --export-filename=png/capablanca.png
 inkscape svg/chess.svg --export-type=png --export-filename=png/chess.png
+inkscape svg/go9.svg --export-type=png --export-filename=png/go9.png
 inkscape svg/grandchess.svg --export-type=png --export-filename=png/grandchess.png
 inkscape svg/morris.svg --export-type=png --export-filename=png/morris.png
 inkscape svg/reversi.svg --export-type=png --export-filename=png/reversi.png
