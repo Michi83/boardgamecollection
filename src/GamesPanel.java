@@ -11,14 +11,17 @@ import javax.swing.border.TitledBorder;
 
 public class GamesPanel extends JPanel implements ActionListener {
     private static final String[] GAMES = new String[] {
+        "Checkers/Draughts",
         "Go 9x9",
     };
 
     private static final String[] RULES = new String[] {
+        "https://wcdf.net/rules.htm",
         "https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html",
     };
 
     private static final GameState[] STATES = new GameState[] {
+        new CheckersState(),
         new Go9State(),
     };
 
