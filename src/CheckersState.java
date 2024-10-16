@@ -1,17 +1,17 @@
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 
 public class CheckersState implements GameState {
-    private static final int WHITE_KING = 2;
-    private static final int WHITE_MAN = 1;
-    private static final int EMPTY = 0;
-    private static final int BLACK_MAN = -1;
-    private static final int BLACK_KING = -2;
-    private static final int LAVA = -3;
+    private static final int WK = 2; // white king
+    private static final int WM = 1; // white man
+    private static final int EM = 0; // empty
+    private static final int BM = -1; // black man
+    private static final int BK = -2; // black king
+    private static final int LV = -3; // lava
     private static final int[] KING_OFFSETS = new int[] { -11, -9, 9, 11 };
     private static final int[] MAN_OFFSETS = new int[] { -11, -9 };
 
@@ -21,19 +21,18 @@ public class CheckersState implements GameState {
     private List<Integer> userClicks;
 
     public CheckersState() {
-        board = new int[100];
-        for (int square = 0; square < 100; square++) {
-            if (square / 10 == 0 || square / 10 == 9 || square % 10 == 0
-                    || square % 10 == 9) {
-                board[square] = LAVA;
-            } else if (square / 10 % 2 != square % 2) {
-                if (square <= 38) {
-                    board[square] = BLACK_MAN;
-                } else if (square >= 61) {
-                    board[square] = WHITE_MAN;
-                }
-            }
-        }
+        board = new int[] {
+            LV, LV, LV, LV, LV, LV, LV, LV, LV, LV,
+            LV, EM, BM, EM, BM, EM, BM, EM, BM, LV,
+            LV, BM, EM, BM, EM, BM, EM, BM, EM, LV,
+            LV, EM, BM, EM, BM, EM, BM, EM, BM, LV,
+            LV, EM, EM, EM, EM, EM, EM, EM, EM, LV,
+            LV, EM, EM, EM, EM, EM, EM, EM, EM, LV,
+            LV, WM, EM, WM, EM, WM, EM, WM, EM, LV,
+            LV, EM, WM, EM, WM, EM, WM, EM, WM, LV,
+            LV, WM, EM, WM, EM, WM, EM, WM, EM, LV,
+            LV, LV, LV, LV, LV, LV, LV, LV, LV, LV
+        };
         player = -1;
         userClicks = new ArrayList<Integer>();
     }
@@ -45,7 +44,7 @@ public class CheckersState implements GameState {
     }
 
     private boolean capturable(int square) {
-        return board[square] != LAVA && player * board[square] < 0;
+        return board[square] != LV && player * board[square] < 0;
     }
 
     public GameState click(int x, int y) {
@@ -79,17 +78,16 @@ public class CheckersState implements GameState {
 
     public void draw(Graphics2D graphics) {
         try {
-            BufferedImage chess = ImageIO.read(new File(
-                "../img/png/chess.png"));
-            BufferedImage whiteking = ImageIO.read(new File(
+            Image chess = ImageIO.read(new File("../img/png/chess.png"));
+            Image whiteking = ImageIO.read(new File(
                 "../img/png/whiteking.png"));
-            BufferedImage whitepiece = ImageIO.read(new File(
+            Image whitepiece = ImageIO.read(new File(
                 "../img/png/whitepiece.png"));
-            BufferedImage blackking = ImageIO.read(new File(
+            Image blackking = ImageIO.read(new File(
                 "../img/png/blackking.png"));
-            BufferedImage blackpiece = ImageIO.read(new File(
+            Image blackpiece = ImageIO.read(new File(
                 "../img/png/blackpiece.png"));
-            BufferedImage selection = ImageIO.read(new File(
+            Image selection = ImageIO.read(new File(
                 "../img/png/selection.png"));
             graphics.drawImage(chess, 0, 0, null);
             for (int square = 12; square <= 87; square++) {
@@ -98,16 +96,16 @@ public class CheckersState implements GameState {
                 int x = 96 * col + 128;
                 int y = 96 * row + 128;
                 switch (board[square]) {
-                    case WHITE_KING:
+                    case WK:
                         graphics.drawImage(whiteking, x + 16, y + 16, null);
                         break;
-                    case WHITE_MAN:
+                    case WM:
                         graphics.drawImage(whitepiece, x + 16, y + 16, null);
                         break;
-                    case BLACK_KING:
+                    case BK:
                         graphics.drawImage(blackking, x + 16, y + 16, null);
                         break;
-                    case BLACK_MAN:
+                    case BM:
                         graphics.drawImage(blackpiece, x + 16, y + 16, null);
                 }
                 if (userClicks.contains(square)) {
@@ -126,18 +124,17 @@ public class CheckersState implements GameState {
         int score = 0;
         for (int square = 12; square <= 87; square++) {
             switch (board[square]) {
-                case WHITE_KING:
+                case WK:
                     score += 2;
                     break;
-                case WHITE_MAN:
+                case WM:
                     score++;
                     break;
-                case BLACK_KING:
+                case BK:
                     score -= 2;
                     break;
-                case BLACK_MAN:
+                case BM:
                     score--;
-                    break;
             }
         }
         return score / 100;
@@ -147,10 +144,10 @@ public class CheckersState implements GameState {
         List<GameState> moves = new ArrayList<GameState>();
         for (int origin = 12; origin <= 87; origin++) {
             switch (player * board[origin]) {
-                case WHITE_KING:
+                case WK:
                     generateKingCaptures(origin, moves);
                     break;
-                case WHITE_MAN:
+                case WM:
                     generateManCaptures(origin, moves);
             }
         }
@@ -161,7 +158,7 @@ public class CheckersState implements GameState {
         for (int offset : KING_OFFSETS) {
             int capture = origin + offset;
             int target = capture + offset;
-            if (capturable(capture) && board[target] == EMPTY) {
+            if (capturable(capture) && board[target] == EM) {
                 CheckersState move = makeMove(origin, target, capture);
                 // multi-captures
                 int countBefore = moves.size();
@@ -177,7 +174,7 @@ public class CheckersState implements GameState {
     private void generateKingNonCaptures(int origin, List<GameState> moves) {
         for (int offset : KING_OFFSETS) {
             int target = origin + offset;
-            if (board[target] == EMPTY) {
+            if (board[target] == EM) {
                 CheckersState move = makeMove(origin, target);
                 moves.add(move);
             }
@@ -188,10 +185,10 @@ public class CheckersState implements GameState {
         for (int offset : MAN_OFFSETS) {
             int capture = origin + player * offset;
             int target = capture + player * offset;
-            if (capturable(capture) && board[target] == EMPTY) {
+            if (capturable(capture) && board[target] == EM) {
                 CheckersState move = makeMove(origin, target, capture);
                 if (promotes(target)) {
-                    move.board[target] = player * WHITE_KING;
+                    move.board[target] = player * WK;
                     moves.add(move);
                     continue; // no multi-captures after promotion
                 }
@@ -209,10 +206,10 @@ public class CheckersState implements GameState {
     private void generateManNonCaptures(int origin, List<GameState> moves) {
         for (int offset : MAN_OFFSETS) {
             int target = origin + player * offset;
-            if (board[target] == EMPTY) {
+            if (board[target] == EM) {
                 CheckersState move = makeMove(origin, target);
                 if (promotes(target)) {
-                    move.board[target] = player * WHITE_KING;
+                    move.board[target] = player * WK;
                 }
                 moves.add(move);
             }
@@ -234,10 +231,10 @@ public class CheckersState implements GameState {
         List<GameState> moves = new ArrayList<GameState>();
         for (int origin = 12; origin <= 87; origin++) {
             switch (player * board[origin]) {
-                case WHITE_KING:
+                case WK:
                     generateKingNonCaptures(origin, moves);
                     break;
-                case WHITE_MAN:
+                case WM:
                     generateManNonCaptures(origin, moves);
             }
         }
@@ -250,7 +247,7 @@ public class CheckersState implements GameState {
 
     private CheckersState makeMove(int origin, int target) {
         CheckersState move = new CheckersState(this);
-        move.board[origin] = EMPTY;
+        move.board[origin] = EM;
         move.board[target] = board[origin];
         move.clicks = new ArrayList<Integer>();
         move.clicks.add(origin);
@@ -260,9 +257,9 @@ public class CheckersState implements GameState {
 
     private CheckersState makeMove(int origin, int target, int capture) {
         CheckersState move = new CheckersState(this);
-        move.board[origin] = EMPTY;
+        move.board[origin] = EM;
         move.board[target] = board[origin];
-        move.board[capture] = EMPTY;
+        move.board[capture] = EM;
         move.clicks = new ArrayList<Integer>();
         // For single captures the clicks list contains the origin and the
         // target, for multi-captures also all the targets in between. Here is

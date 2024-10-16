@@ -30,7 +30,7 @@ public class PlayerPanel extends JPanel implements ChangeListener {
         computerButton = new JRadioButton("Computer");
         add(computerButton);
 
-        timeSlider = new JSlider(1, 60, 15);
+        timeSlider = new JSlider(1, 60, 5);
         timeSlider.addChangeListener(this);
         add(timeSlider);
 

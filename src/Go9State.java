@@ -1,5 +1,5 @@
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.ArrayDeque;
@@ -55,10 +55,10 @@ public class Go9State implements GameState {
 
     public void draw(Graphics2D graphics) {
         try {
-            BufferedImage go9 = ImageIO.read(new File("../img/png/go9.png"));
-            BufferedImage whitepiece = ImageIO.read(new File(
+            Image go9 = ImageIO.read(new File("../img/png/go9.png"));
+            Image whitepiece = ImageIO.read(new File(
                 "../img/png/whitepiece.png"));
-            BufferedImage blackpiece = ImageIO.read(new File(
+            Image blackpiece = ImageIO.read(new File(
                 "../img/png/blackpiece.png"));
             graphics.drawImage(go9, 0, 0, null);
             for (int point = 12; point <= 108; point++) {

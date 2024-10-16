@@ -12,17 +12,20 @@ import javax.swing.border.TitledBorder;
 public class GamesPanel extends JPanel implements ActionListener {
     private static final String[] GAMES = new String[] {
         "Checkers/Draughts",
+        "Chess",
         "Go 9x9",
     };
 
     private static final String[] RULES = new String[] {
         "https://wcdf.net/rules.htm",
+        "https://handbook.fide.com/chapter/E012023",
         "https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html",
     };
 
-    private static final GameState[] STATES = new GameState[] {
-        new CheckersState(),
-        new Go9State(),
+    private static final String[] CLASSES = new String[] {
+        "CheckersState",
+        "ChessState",
+        "Go9State",
     };
 
     private JList<String> gamesList;
@@ -52,7 +55,14 @@ public class GamesPanel extends JPanel implements ActionListener {
     }
 
     public GameState getState() {
-        int index = gamesList.getSelectedIndex();
-        return STATES[index];
+        GameState state = null;
+        try {
+            int index = gamesList.getSelectedIndex();
+            Class<?> cls = Class.forName(CLASSES[index]);
+            state = (GameState)cls.getConstructor().newInstance();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return state;
     }
 }
