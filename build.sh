@@ -9,6 +9,7 @@ inkscape img/svg/blacksmallking.svg --export-type=png --export-filename=img/png/
 inkscape img/svg/blacksmallpiece.svg --export-type=png --export-filename=img/png/blacksmallpiece.png
 inkscape img/svg/chess.svg --export-type=png --export-filename=img/png/chess.png
 inkscape img/svg/go9.svg --export-type=png --export-filename=img/png/go9.png
+inkscape img/svg/gomoku.svg --export-type=png --export-filename=img/png/gomoku.png
 inkscape img/svg/selection.svg --export-type=png --export-filename=img/png/selection.png
 inkscape img/svg/whitebishop.svg --export-type=png --export-filename=img/png/whitebishop.png
 inkscape img/svg/whiteking.svg --export-type=png --export-filename=img/png/whiteking.png
@@ -23,4 +24,5 @@ cd src
 javac -d ../bin CheckersState.java
 javac -d ../bin ChessState.java
 javac -d ../bin Go9State.java
+javac -d ../bin GomokuState.java
 javac -d ../bin MainWindow.java

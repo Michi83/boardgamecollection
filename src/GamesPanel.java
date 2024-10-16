@@ -14,18 +14,21 @@ public class GamesPanel extends JPanel implements ActionListener {
         "Checkers/Draughts",
         "Chess",
         "Go 9x9",
+        "Gomoku",
     };
 
     private static final String[] RULES = new String[] {
         "https://wcdf.net/rules.htm",
         "https://handbook.fide.com/chapter/E012023",
         "https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html",
+        "https://en.wikipedia.org/wiki/Gomoku",
     };
 
     private static final String[] CLASSES = new String[] {
         "CheckersState",
         "ChessState",
         "Go9State",
+        "GomokuState",
     };
 
     private JList<String> gamesList;
