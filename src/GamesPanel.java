@@ -15,6 +15,7 @@ public class GamesPanel extends JPanel implements ActionListener {
         "Chess",
         "Go 9x9",
         "Gomoku",
+        "Nine Men's Morris"
     };
 
     private static final String[] RULES = new String[] {
@@ -22,6 +23,7 @@ public class GamesPanel extends JPanel implements ActionListener {
         "https://handbook.fide.com/chapter/E012023",
         "https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html",
         "https://en.wikipedia.org/wiki/Gomoku",
+        "https://library.slmath.org/books/Book29/files/gasser.pdf"
     };
 
     private static final String[] CLASSES = new String[] {
@@ -29,6 +31,7 @@ public class GamesPanel extends JPanel implements ActionListener {
         "ChessState",
         "Go9State",
         "GomokuState",
+        "MorrisState"
     };
 
     private JList<String> gamesList;

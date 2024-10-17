@@ -112,7 +112,7 @@ public class GomokuState implements GameState {
         }
         // /-diagonals
         for (int row = 0; row <= 10; row++) {
-            for (int col = 4; col <= 15; col++) {
+            for (int col = 4; col < 15; col++) {
                 int point = 15 * row + col;
                 int sum = 0;
                 for (int i = 0; i < 5; i++) {
