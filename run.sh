@@ -1,2 +1,1 @@
-cd bin
-java MainWindow
+java -cp bin MainWindow

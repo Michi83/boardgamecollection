@@ -166,13 +166,13 @@ public class MorrisState implements GameState {
 
     public void draw(Graphics2D graphics) {
         try {
-            Image morris = ImageIO.read(new File("../img/png/morris.png"));
+            Image morris = ImageIO.read(new File("img/png/morris.png"));
             Image whitepiece = ImageIO.read(new File(
-                "../img/png/whitepiece.png"));
+                "img/png/whitepiece.png"));
             Image blackpiece = ImageIO.read(new File(
-                "../img/png/blackpiece.png"));
+                "img/png/blackpiece.png"));
             Image selection = ImageIO.read(new File(
-                "../img/png/selection.png"));
+                "img/png/selection.png"));
             graphics.drawImage(morris, 0, 0, null);
             for (int point = 0; point < 24; point++) {
                 int x = COORDS[point][0];

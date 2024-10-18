@@ -40,11 +40,11 @@ public class GomokuState implements GameState {
 
     public void draw(Graphics2D graphics) {
         try {
-            Image gomoku = ImageIO.read(new File("../img/png/gomoku.png"));
+            Image gomoku = ImageIO.read(new File("img/png/gomoku.png"));
             Image whitepiece = ImageIO.read(new File(
-                "../img/png/whitepiece.png"));
+                "img/png/whitepiece.png"));
             Image blackpiece = ImageIO.read(new File(
-                "../img/png/blackpiece.png"));
+                "img/png/blackpiece.png"));
             graphics.drawImage(gomoku, 0, 0, null);
             for (int point = 0; point < 225; point++) {
                 int row = point / 15;

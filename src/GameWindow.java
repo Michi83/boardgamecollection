@@ -38,13 +38,13 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
     private void draw() {
         try {
             BufferedImage whitesmallking = ImageIO.read(new File(
-                "../img/png/whitesmallking.png"));
+                "img/png/whitesmallking.png"));
             BufferedImage blacksmallking = ImageIO.read(new File(
-                "../img/png/blacksmallking.png"));
+                "img/png/blacksmallking.png"));
             BufferedImage whitesmallpiece = ImageIO.read(new File(
-                "../img/png/whitesmallpiece.png"));
+                "img/png/whitesmallpiece.png"));
             BufferedImage blacksmallpiece = ImageIO.read(new File(
-                "../img/png/blacksmallpiece.png"));
+                "img/png/blacksmallpiece.png"));
             BufferedImage image = new BufferedImage(1024, 1024,
                 BufferedImage.TYPE_INT_RGB);
             Graphics2D graphics = image.createGraphics();

@@ -55,11 +55,11 @@ public class Go9State implements GameState {
 
     public void draw(Graphics2D graphics) {
         try {
-            Image go9 = ImageIO.read(new File("../img/png/go9.png"));
+            Image go9 = ImageIO.read(new File("img/png/go9.png"));
             Image whitepiece = ImageIO.read(new File(
-                "../img/png/whitepiece.png"));
+                "img/png/whitepiece.png"));
             Image blackpiece = ImageIO.read(new File(
-                "../img/png/blackpiece.png"));
+                "img/png/blackpiece.png"));
             graphics.drawImage(go9, 0, 0, null);
             for (int point = 12; point <= 108; point++) {
                 int row = point / 11 - 1;

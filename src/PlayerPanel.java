@@ -9,12 +9,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class PlayerPanel extends JPanel implements ChangeListener {
-    public static final int HUMAN = 1;
-    public static final int COMPUTER = 2;
-    public static final int RANDOM = 3;
-
-    private JRadioButton computerButton;
     private JRadioButton humanButton;
+    private JRadioButton mctsButton;
+    private JRadioButton minimaxButton;
+    private ButtonGroup playerGroup;
     private JRadioButton randomButton;
     private JLabel timeLabel;
     private JSlider timeSlider;
@@ -27,8 +25,17 @@ public class PlayerPanel extends JPanel implements ChangeListener {
         humanButton = new JRadioButton("Human");
         add(humanButton);
 
-        computerButton = new JRadioButton("Computer");
-        add(computerButton);
+        minimaxButton = new JRadioButton("Computer (Minimax)");
+        add(minimaxButton);
+
+        mctsButton = new JRadioButton("Computer (MCTS)");
+        add(mctsButton);
+
+        randomButton = new JRadioButton("Random moves");
+        add(randomButton);
+
+        JLabel label = new JLabel("Computer time");
+        add(label);
 
         timeSlider = new JSlider(1, 60, 5);
         timeSlider.addChangeListener(this);
@@ -38,19 +45,20 @@ public class PlayerPanel extends JPanel implements ChangeListener {
         stateChanged(null);
         add(timeLabel);
 
-        randomButton = new JRadioButton("Random moves");
-        add(randomButton);
-
-        ButtonGroup playerGroup = new ButtonGroup();
+        playerGroup = new ButtonGroup();
         playerGroup.add(humanButton);
-        playerGroup.add(computerButton);
+        playerGroup.add(minimaxButton);
+        playerGroup.add(mctsButton);
         playerGroup.add(randomButton);
     }
 
     public Player getPlayer() {
         if (humanButton.isSelected()) {
             return new HumanPlayer();
-        } else if (computerButton.isSelected()) {
+        } else if (minimaxButton.isSelected()) {
+            int maxTime = timeSlider.getValue();
+            return new MinimaxPlayer(maxTime);
+        } else if (mctsButton.isSelected()) {
             int maxTime = timeSlider.getValue();
             return new MCTSPlayer(maxTime);
         } else if (randomButton.isSelected()) {
@@ -66,15 +74,17 @@ public class PlayerPanel extends JPanel implements ChangeListener {
 
     public void setPlayer(int player) {
         switch (player) {
-            case HUMAN:
+            case 0:
                 humanButton.setSelected(true);
                 break;
-            case COMPUTER:
-                computerButton.setSelected(true);
+            case 1:
+                minimaxButton.setSelected(true);
                 break;
-            case RANDOM:
+            case 2:
+                mctsButton.setSelected(true);
+                break;
+            case 3:
                 randomButton.setSelected(true);
-                break;
         }
     }
 }

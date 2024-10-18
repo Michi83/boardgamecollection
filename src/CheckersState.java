@@ -78,17 +78,17 @@ public class CheckersState implements GameState {
 
     public void draw(Graphics2D graphics) {
         try {
-            Image chess = ImageIO.read(new File("../img/png/chess.png"));
+            Image chess = ImageIO.read(new File("img/png/chess.png"));
             Image whiteking = ImageIO.read(new File(
-                "../img/png/whiteking.png"));
+                "img/png/whiteking.png"));
             Image whitepiece = ImageIO.read(new File(
-                "../img/png/whitepiece.png"));
+                "img/png/whitepiece.png"));
             Image blackking = ImageIO.read(new File(
-                "../img/png/blackking.png"));
+                "img/png/blackking.png"));
             Image blackpiece = ImageIO.read(new File(
-                "../img/png/blackpiece.png"));
+                "img/png/blackpiece.png"));
             Image selection = ImageIO.read(new File(
-                "../img/png/selection.png"));
+                "img/png/selection.png"));
             graphics.drawImage(chess, 0, 0, null);
             for (int square = 12; square <= 87; square++) {
                 int row = square / 10 - 1;

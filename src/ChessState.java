@@ -225,33 +225,33 @@ public class ChessState implements GameState {
 
     public void draw(Graphics2D graphics) {
         try {
-            Image chess = ImageIO.read(new File("../img/png/chess.png"));
+            Image chess = ImageIO.read(new File("img/png/chess.png"));
             Image whiteking = ImageIO.read(new File(
-                "../img/png/whiteking.png"));
+                "img/png/whiteking.png"));
             Image whitequeen = ImageIO.read(new File(
-                "../img/png/whitequeen.png"));
+                "img/png/whitequeen.png"));
             Image whitebishop = ImageIO.read(new File(
-                "../img/png/whitebishop.png"));
+                "img/png/whitebishop.png"));
             Image whiteknight = ImageIO.read(new File(
-                "../img/png/whiteknight.png"));
+                "img/png/whiteknight.png"));
             Image whiterook = ImageIO.read(new File(
-                "../img/png/whiterook.png"));
+                "img/png/whiterook.png"));
             Image whitepawn = ImageIO.read(new File(
-                "../img/png/whitepawn.png"));
+                "img/png/whitepawn.png"));
             Image blackking = ImageIO.read(new File(
-                "../img/png/blackking.png"));
+                "img/png/blackking.png"));
             Image blackqueen = ImageIO.read(new File(
-                "../img/png/blackqueen.png"));
+                "img/png/blackqueen.png"));
             Image blackbishop = ImageIO.read(new File(
-                "../img/png/blackbishop.png"));
+                "img/png/blackbishop.png"));
             Image blackknight = ImageIO.read(new File(
-                "../img/png/blackknight.png"));
+                "img/png/blackknight.png"));
             Image blackrook = ImageIO.read(new File(
-                "../img/png/blackrook.png"));
+                "img/png/blackrook.png"));
             Image blackpawn = ImageIO.read(new File(
-                "../img/png/blackpawn.png"));
+                "img/png/blackpawn.png"));
             Image selection = ImageIO.read(new File(
-                "../img/png/selection.png"));
+                "img/png/selection.png"));
             graphics.drawImage(chess, 0, 0, null);
             for (int square = 21; square <= 98; square++) {
                 int row = square / 10 - 2;

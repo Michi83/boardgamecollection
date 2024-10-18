@@ -15,7 +15,7 @@ public class MainWindow extends JFrame implements ActionListener {
         super();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-        setSize(512, 256);
+        setSize(768, 384);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(1, 3));
@@ -25,11 +25,11 @@ public class MainWindow extends JFrame implements ActionListener {
         mainPanel.add(gamesPanel);
 
         whitePanel = new PlayerPanel("White");
-        whitePanel.setPlayer(PlayerPanel.HUMAN);
+        whitePanel.setPlayer(0);
         mainPanel.add(whitePanel);
 
         blackPanel = new PlayerPanel("Black");
-        blackPanel.setPlayer(PlayerPanel.COMPUTER);
+        blackPanel.setPlayer(1);
         mainPanel.add(blackPanel);
 
         JButton playButton = new JButton("Play");
