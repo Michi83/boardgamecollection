@@ -197,7 +197,7 @@ public class MorrisState implements GameState {
         if (generateMoves().size() == 0) {
             return -player;
         } else {
-            return (whitePieces - blackPieces) / 16;
+            return (whitePieces - blackPieces) / 16.0;
         }
     }
 

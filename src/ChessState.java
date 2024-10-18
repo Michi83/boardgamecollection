@@ -361,7 +361,7 @@ public class ChessState implements GameState {
                     break;
             }
         }
-        return score / 200.0;
+        return score / 256.0;
     }
 
     private void generateBishopMoves(int origin, List<GameState> moves) {

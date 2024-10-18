@@ -51,12 +51,12 @@ public class MCTSNode {
         for (int i = 0; i < 100; i++) {
             List<GameState> moves = state.generateMoves();
             if (moves.size() == 0) {
-                break;
+                return state.evaluate();
             }
             int index = (int)(Math.random() * moves.size());
             state = moves.get(index);
         }
-        return state.evaluate();
+        return this.state.evaluate();
     }
 
     public MCTSNode select() {
@@ -80,7 +80,8 @@ public class MCTSNode {
         if (n == 0) {
             return Double.POSITIVE_INFINITY;
         } else {
-            return w / n + Math.sqrt(2 * Math.log(parent.n) / n);
+            double h = -state.getPlayer() * state.evaluate();
+            return w / n + Math.sqrt(2 * Math.log(parent.n) / n) + h / n;
         }
     }
 }

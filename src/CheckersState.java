@@ -137,7 +137,7 @@ public class CheckersState implements GameState {
                     score--;
             }
         }
-        return score / 100;
+        return score / 32.0;
     }
 
     private List<GameState> generateCaptures() {

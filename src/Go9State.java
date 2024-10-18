@@ -107,7 +107,7 @@ public class Go9State implements GameState {
                     score--;
                 }
             }
-            return score / 81.0;
+            return score / 128.0;
         }
     }
 

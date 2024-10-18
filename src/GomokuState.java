@@ -65,6 +65,14 @@ public class GomokuState implements GameState {
     }
 
     public double evaluate() {
+        double score = fiveInARow();
+        if (score == 0) {
+            score = twoInARow() / 512.0;
+        }
+        return score;
+    }
+
+    public int fiveInARow() {
         // horizontal rows
         for (int row = 0; row < 15; row++) {
             for (int col = 0; col <= 10; col++) {
@@ -130,15 +138,14 @@ public class GomokuState implements GameState {
 
     public List<GameState> generateMoves() {
         List<GameState> moves = new ArrayList<GameState>();
-        if (evaluate() != 0) {
-            return moves;
-        }
-        for (int point = 0; point < 225; point++) {
-            if (board[point] == EMPTY) {
-                GomokuState move = new GomokuState(this);
-                move.board[point] = player;
-                move.clicks = point;
-                moves.add(move);
+        if (fiveInARow() == 0) {
+            for (int point = 0; point < 225; point++) {
+                if (board[point] == EMPTY) {
+                    GomokuState move = new GomokuState(this);
+                    move.board[point] = player;
+                    move.clicks = point;
+                    moves.add(move);
+                }
             }
         }
         return moves;
@@ -146,5 +153,70 @@ public class GomokuState implements GameState {
 
     public int getPlayer() {
         return player;
+    }
+
+    public int twoInARow() {
+        int score = 0;
+        // horizontal rows
+        for (int row = 0; row < 15; row++) {
+            for (int col = 0; col <= 13; col++) {
+                int point = 15 * row + col;
+                int sum = 0;
+                for (int i = 0; i < 2; i++) {
+                    sum += board[point + i];
+                }
+                if (sum == 2) {
+                    score++;
+                } else if (sum == -2) {
+                    score--;
+                }
+            }
+        }
+        // vertical rows
+        for (int row = 0; row <= 13; row++) {
+            for (int col = 0; col < 15; col++) {
+                int point = 15 * row + col;
+                int sum = 0;
+                for (int i = 0; i < 2; i++) {
+                    sum += board[point + i];
+                }
+                if (sum == 2) {
+                    score++;
+                } else if (sum == -2) {
+                    score--;
+                }
+            }
+        }
+        // \-diagonals
+        for (int row = 0; row <= 13; row++) {
+            for (int col = 0; col <= 13; col++) {
+                int point = 15 * row + col;
+                int sum = 0;
+                for (int i = 0; i < 2; i++) {
+                    sum += board[point + i];
+                }
+                if (sum == 2) {
+                    score++;
+                } else if (sum == -2) {
+                    score--;
+                }
+            }
+        }
+        // /-diagonals
+        for (int row = 0; row <= 13; row++) {
+            for (int col = 1; col < 15; col++) {
+                int point = 15 * row + col;
+                int sum = 0;
+                for (int i = 0; i < 2; i++) {
+                    sum += board[point + i];
+                }
+                if (sum == 2) {
+                    score++;
+                } else if (sum == -2) {
+                    score--;
+                }
+            }
+        }
+        return score;
     }
 }
