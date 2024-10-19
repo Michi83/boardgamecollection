@@ -62,7 +62,7 @@ public class MinimaxAlgorithm implements Algorithm {
     public void run() {
         timeStarted = System.currentTimeMillis();
         GameState move = null;
-        System.out.println("ply  score  time   nodes");
+        System.out.println("ply  score  time   nodes pv");
         for (int depth = 1; true; depth++) {
             try {
                 nodes = 0;
@@ -71,9 +71,8 @@ public class MinimaxAlgorithm implements Algorithm {
                 long time2 = System.currentTimeMillis();
                 double score = result.score;
                 move = result.move;
-                long dtime = time2 - time1;
-                System.out.printf("%3d %6.3f %5d %7d\n", depth, score, dtime,
-                    nodes);
+                System.out.printf("%3d %6.3f %5d %7d %s\n", depth, score,
+                    time2 - time1, nodes, move.getNotation());
             } catch (MinimaxTimeoutException exception) {
                 System.out.println();
                 this.move = move;

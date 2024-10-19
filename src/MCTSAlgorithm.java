@@ -29,30 +29,24 @@ public class MCTSAlgorithm implements Algorithm {
 
     public void run() {
         MCTSNode root = new MCTSNode(state);
-        int count = 0;
+        System.out.println(" time     wins/visits pv");
         long time1 = System.currentTimeMillis();
         while (true) {
             MCTSNode node = root.select();
             node = node.expand();
             double result = node.playout();
             node.backpropagate(result);
-            count++;
             long time2 = System.currentTimeMillis();
+            if (root.n % 1000 == 0) {
+                System.out.printf("%5d %8.1f/%-6d %s\n", time2 - time1, root.w,
+                    root.n, root.getPrincipalVariation());
+            }
             if (time2 - time1 > 1000L * maxTime) {
                 break;
             }
         }
-        System.out.println(count + " MCTS iterations");
-        double topScore = Double.NEGATIVE_INFINITY;
-        GameState topMove = null;
-        for (MCTSNode child : root.children) {
-            double score = child.w / child.n;
-            if (score > topScore) {
-                topScore = score;
-                topMove = child.state;
-            }
-        }
-        move = topMove;
+        System.out.println();
+        move = root.getTopChild().state;
     }
 
     public void setState(GameState state) {

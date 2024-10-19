@@ -46,6 +46,31 @@ public class MCTSNode {
         return this;
     }
 
+    public String getPrincipalVariation() {
+        String pv = "";
+        MCTSNode node = getTopChild();
+        while (node != null) {
+            if (!pv.equals("")) {
+                pv += " ";
+            }
+            pv += node.state.getNotation();
+            node = node.getTopChild();
+        }
+        return pv;
+    }
+
+    public MCTSNode getTopChild() {
+        int topScore = Integer.MIN_VALUE;
+        MCTSNode topChild = null;
+        for (MCTSNode child : children) {
+            if (child.n > topScore) {
+                topScore = child.n;
+                topChild = child;
+            }
+        }
+        return topChild;
+    }
+
     public double playout() {
         GameState state = this.state;
         for (int i = 0; i < 100; i++) {
