@@ -1,11 +1,12 @@
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.io.File;
+// Go is really not my game, but it's popular, so I'll include at least a
+// simplified version.
+// - 9x9 points.
+// - Simple area scoring. No attempt is made to identify dead groups. Just play
+//   it out until they are captured.
 import java.util.ArrayList;
 import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
-import javax.imageio.ImageIO;
 
 public class Go9State implements GameState {
     private static final int WHITE = 1;
@@ -66,6 +67,24 @@ public class Go9State implements GameState {
                     image.fillTile(x, y, "blackpiece.png");
             }
             image.addRegion(point, x, y, 4, 4);
+        }
+        // show territory when game is over
+        if (generateMoves().size() == 0) {
+            boolean[] whiteArea = getArea(WHITE);
+            boolean[] blackArea = getArea(BLACK);
+            for (int point = 12; point <= 108; point++) {
+                int row = point / 11 - 1;
+                int col = point % 11 - 1;
+                int x = 4 * col + 14;
+                int y = 4 * row + 14;
+                if (board[point] == EMPTY) {
+                    if (whiteArea[point] && !blackArea[point]) {
+                        image.fillTile(x + 1, y + 1, "whitesmallpiece.png");
+                    } else if (blackArea[point] && !whiteArea[point]) {
+                        image.fillTile(x + 1, y + 1, "blacksmallpiece.png");
+                    }
+                }
+            }
         }
         return image;
     }

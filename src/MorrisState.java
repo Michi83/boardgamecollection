@@ -1,9 +1,5 @@
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 
 public class MorrisState implements GameState {
     private static final int WHITE = 1;
