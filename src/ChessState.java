@@ -507,6 +507,35 @@ public class ChessState implements GameState {
         }
     }
 
+    public String getNotation() {
+        String notation = "";
+        notation += (char)(clicks[0] % 10 + 96); // origin file
+        notation += 10 - clicks[0] / 10; // origin rank
+        notation += (char)(clicks[1] % 10 + 96); // target file
+        notation += 10 - clicks[1] / 10; // target rank
+        // promotion
+        if (clicks.length == 3) {
+            switch (clicks[2]) {
+                case WQ:
+                case BQ:
+                    notation += "q";
+                    break;
+                case WB:
+                case BB:
+                    notation += "b";
+                    break;
+                case WN:
+                case BN:
+                    notation += "n";
+                    break;
+                case WR:
+                case BR:
+                    notation += "r";
+            }
+        }
+        return notation;
+    }
+
     public int getPlayer() {
         return player;
     }

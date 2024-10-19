@@ -3,12 +3,11 @@ import java.util.List;
 
 public interface GameState {
     // Handle a user click and return the resulting new GameState. May return
-    // "this", if the move represents an invalid or partial move. Coordinates
-    // are in range 0 to 1023.
+    // "this", if the move represents an invalid or partial move.
     public GameState click(int id);
 
-    // Draw a graphic representation of the state. The Graphics2D object
-    // provided is 1024x1024 pixels.
+    // Draw a graphic representation of the state. The GameImage class provides
+    // several useful methods for this.
     public GameImage draw();
 
     // Return the winner of a finished game, +1.0 for white, -1.0 for black,
@@ -17,8 +16,12 @@ public interface GameState {
     public double evaluate();
 
     // Generate a list of all possible moves. The moves are themselves
-    // GameState objects. Most of the rules are implented here.
+    // GameState objects. Most of the rules are implemented here.
     public List<GameState> generateMoves();
+
+    // Return the notation of the move that created this state. One may devise
+    // one's own system of notation here.
+    public String getNotation();
 
     // Return the player to make the next move, +1 for white, -1 for black.
     public int getPlayer();

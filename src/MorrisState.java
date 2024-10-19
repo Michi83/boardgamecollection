@@ -74,6 +74,33 @@ public class MorrisState implements GameState {
         new int[][] { new int[] { 2, 14 }, new int[] { 21, 22 } }
     };
 
+    private static final String[] NOTATIONS = new String[] {
+        "a7",
+        "d7",
+        "g7",
+        "b6",
+        "d6",
+        "f6",
+        "c5",
+        "d5",
+        "e5",
+        "a4",
+        "b4",
+        "c4",
+        "e4",
+        "f4",
+        "g4",
+        "c3",
+        "d3",
+        "e3",
+        "b2",
+        "d2",
+        "f2",
+        "a1",
+        "d1",
+        "g1"
+    };
+
     private static final int[][] TARGETS = new int[][] {
         new int[] { 1, 9 },
         new int[] { 0, 2, 4 },
@@ -270,6 +297,14 @@ public class MorrisState implements GameState {
                 }
             }
         }
+    }
+
+    public String getNotation() {
+        String notation = "";
+        for (int click : clicks) {
+            notation += NOTATIONS[click];
+        }
+        return notation;
     }
 
     public int getPlayer() {

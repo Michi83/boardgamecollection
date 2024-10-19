@@ -222,6 +222,15 @@ public class CheckersState implements GameState {
         return moves;
     }
 
+    public String getNotation() {
+        String notation = "";
+        for (int click : clicks) {
+            notation += (char)(click % 10 + 96); // file
+            notation += 9 - click / 10; // rank
+        }
+        return notation;
+    }
+
     public int getPlayer() {
         return player;
     }

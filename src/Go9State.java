@@ -48,6 +48,8 @@ public class Go9State implements GameState {
                 return move;
             }
         }
+        // Any illegal move, e.g. clicking on a stone or outside the board
+        // results in a pass.
         return moves.get(moves.size() - 1);
     }
 
@@ -144,6 +146,7 @@ public class Go9State implements GameState {
         }
         // passing move
         Go9State move = new Go9State(this);
+        move.clicks = -1;
         move.passes = passes + 1;
         moves.add(move);
         return moves;
@@ -169,6 +172,16 @@ public class Go9State implements GameState {
             }
         }
         return area;
+    }
+
+    public String getNotation() {
+        if (clicks == -1) {
+            return "pass";
+        }
+        String notation = "";
+        notation += (char)(clicks % 11 + 96); // file
+        notation += 10 - clicks / 11; // rank
+        return notation;
     }
 
     public int getPlayer() {

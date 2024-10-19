@@ -138,10 +138,19 @@ public class GomokuState implements GameState {
         return moves;
     }
 
+    public String getNotation() {
+        String notation = "";
+        notation += (char)(clicks % 15 + 97); // file
+        notation += 15 - clicks / 15; // rank
+        return notation;
+    }
+
     public int getPlayer() {
         return player;
     }
 
+    // This is for the benefit of computer players encouraging them to form and
+    // defend against long rows.
     public int twoInARow() {
         int score = 0;
         // horizontal rows
