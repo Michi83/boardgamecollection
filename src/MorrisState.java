@@ -25,30 +25,30 @@ public class MorrisState implements GameState {
     // 21----------22----------23
 
     private static final int[][] COORDS = new int[][] {
-        new int[] { 176, 176 },
-        new int[] { 464, 176 },
-        new int[] { 752, 176 },
-        new int[] { 272, 272 },
-        new int[] { 464, 272 },
-        new int[] { 656, 272 },
-        new int[] { 368, 368 },
-        new int[] { 464, 368 },
-        new int[] { 560, 368 },
-        new int[] { 176, 464 },
-        new int[] { 272, 464 },
-        new int[] { 368, 464 },
-        new int[] { 560, 464 },
-        new int[] { 656, 464 },
-        new int[] { 752, 464 },
-        new int[] { 368, 560 },
-        new int[] { 464, 560 },
-        new int[] { 560, 560 },
-        new int[] { 272, 656 },
-        new int[] { 464, 656 },
-        new int[] { 656, 656 },
-        new int[] { 176, 752 },
-        new int[] { 464, 752 },
-        new int[] { 752, 752 }
+        new int[] { 11, 11 },
+        new int[] { 29, 11 },
+        new int[] { 47, 11 },
+        new int[] { 17, 17 },
+        new int[] { 29, 17 },
+        new int[] { 41, 17 },
+        new int[] { 23, 23 },
+        new int[] { 29, 23 },
+        new int[] { 35, 23 },
+        new int[] { 11, 29 },
+        new int[] { 17, 29 },
+        new int[] { 23, 29 },
+        new int[] { 35, 29 },
+        new int[] { 41, 29 },
+        new int[] { 47, 29 },
+        new int[] { 23, 35 },
+        new int[] { 29, 35 },
+        new int[] { 35, 35 },
+        new int[] { 17, 41 },
+        new int[] { 29, 41 },
+        new int[] { 41, 41 },
+        new int[] { 11, 47 },
+        new int[] { 29, 47 },
+        new int[] { 47, 47 }
     };
 
     private static final int[][][] MILLS = new int[][][] {
@@ -131,15 +131,8 @@ public class MorrisState implements GameState {
         whitePieces = that.whitePieces;
     }
 
-    public GameState click(int x, int y) {
-        for (int point = 0; point < 24; point++) {
-            int x2 = COORDS[point][0];
-            int y2 = COORDS[point][1];
-            if (x2 <= x && x < x2 + 96 && y2 <= y && y < y2 + 96) {
-                userClicks.add(point);
-                break;
-            }
-        }
+    public GameState click(int id) {
+        userClicks.add(id);
         List<GameState> moves = generateMoves();
         for (GameState move : moves) {
             MorrisState morrisMove = (MorrisState)move;
@@ -164,33 +157,25 @@ public class MorrisState implements GameState {
         return this;
     }
 
-    public void draw(Graphics2D graphics) {
-        try {
-            Image morris = ImageIO.read(new File("img/png/morris.png"));
-            Image whitepiece = ImageIO.read(new File(
-                "img/png/whitepiece.png"));
-            Image blackpiece = ImageIO.read(new File(
-                "img/png/blackpiece.png"));
-            Image selection = ImageIO.read(new File(
-                "img/png/selection.png"));
-            graphics.drawImage(morris, 0, 0, null);
-            for (int point = 0; point < 24; point++) {
-                int x = COORDS[point][0];
-                int y = COORDS[point][1];
-                switch (board[point]) {
-                    case WHITE:
-                        graphics.drawImage(whitepiece, x + 16, y + 16, null);
-                        break;
-                    case BLACK:
-                        graphics.drawImage(blackpiece, x + 16, y + 16, null);
-                }
-                if (userClicks.contains(point)) {
-                    graphics.drawImage(selection, x, y, null);
-                }
+    public GameImage draw() {
+        GameImage image = new GameImage();
+        image.fillTile(0, 0, "morris.png");
+        for (int point = 0; point < 24; point++) {
+            int x = COORDS[point][0];
+            int y = COORDS[point][1];
+            switch (board[point]) {
+                case WHITE:
+                    image.fillTile(x + 1, y + 1, "whitepiece.png");
+                    break;
+                case BLACK:
+                    image.fillTile(x + 1, y + 1, "blackpiece.png");
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+            if (userClicks.contains(point)) {
+                image.fillTile(x, y, "selection.png");
+            }
+            image.addRegion(point, x, y, 6, 6);
         }
+        return image;
     }
 
     public double evaluate() {

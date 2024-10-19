@@ -40,43 +40,34 @@ public class Go9State implements GameState {
         player = -that.player;
     }
 
-    public GameState click(int x, int y) {
-        int row = (y - 224) / 64;
-        int col = (x - 224) / 64;
-        int point = 11 * row + col + 12;
+    public GameState click(int id) {
         List<GameState> moves = generateMoves();
         for (GameState move : moves) {
-            if (point == ((Go9State)move).clicks) {
+            if (((Go9State)move).clicks == id) {
                 return move;
             }
         }
         return moves.get(moves.size() - 1);
     }
 
-    public void draw(Graphics2D graphics) {
-        try {
-            Image go9 = ImageIO.read(new File("img/png/go9.png"));
-            Image whitepiece = ImageIO.read(new File(
-                "img/png/whitepiece.png"));
-            Image blackpiece = ImageIO.read(new File(
-                "img/png/blackpiece.png"));
-            graphics.drawImage(go9, 0, 0, null);
-            for (int point = 12; point <= 108; point++) {
-                int row = point / 11 - 1;
-                int col = point % 11 - 1;
-                int x = 64 * col + 224;
-                int y = 64 * row + 224;
-                switch (board[point]) {
-                    case WHITE:
-                        graphics.drawImage(whitepiece, x, y, null);
-                        break;
-                    case BLACK:
-                        graphics.drawImage(blackpiece, x, y, null);
-                }
+    public GameImage draw() {
+        GameImage image = new GameImage();
+        image.fillTile(0, 0, "go9.png");
+        for (int point = 12; point <= 108; point++) {
+            int row = point / 11 - 1;
+            int col = point % 11 - 1;
+            int x = 4 * col + 14;
+            int y = 4 * row + 14;
+            switch (board[point]) {
+                case WHITE:
+                    image.fillTile(x, y, "whitepiece.png");
+                    break;
+                case BLACK:
+                    image.fillTile(x, y, "blackpiece.png");
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+            image.addRegion(point, x, y, 4, 4);
         }
+        return image;
     }
 
     public double evaluate() {

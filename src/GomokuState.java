@@ -24,44 +24,35 @@ public class GomokuState implements GameState {
         player = -that.player;
     }
 
-    public GameState click(int x, int y) {
-        int row = (y - 32) / 64;
-        int col = (x - 32) / 64;
-        int point = 15 * row + col;
+    public GameState click(int id) {
         List<GameState> moves = generateMoves();
         for (GameState move : moves) {
             GomokuState gomokuMove = (GomokuState)move;
-            if (point == gomokuMove.clicks) {
+            if (gomokuMove.clicks == id) {
                 return gomokuMove;
             }
         }
         return this;
     }
 
-    public void draw(Graphics2D graphics) {
-        try {
-            Image gomoku = ImageIO.read(new File("img/png/gomoku.png"));
-            Image whitepiece = ImageIO.read(new File(
-                "img/png/whitepiece.png"));
-            Image blackpiece = ImageIO.read(new File(
-                "img/png/blackpiece.png"));
-            graphics.drawImage(gomoku, 0, 0, null);
-            for (int point = 0; point < 225; point++) {
-                int row = point / 15;
-                int col = point % 15;
-                int x = 64 * col + 32;
-                int y = 64 * row + 32;
-                switch (board[point]) {
-                    case WHITE:
-                        graphics.drawImage(whitepiece, x, y, null);
-                        break;
-                    case BLACK:
-                        graphics.drawImage(blackpiece, x, y, null);
-                }
+    public GameImage draw() {
+        GameImage image = new GameImage();
+        image.fillTile(0, 0, "gomoku.png");
+        for (int point = 0; point < 225; point++) {
+            int row = point / 15;
+            int col = point % 15;
+            int x = 4 * col + 2;
+            int y = 4 * row + 2;
+            switch (board[point]) {
+                case WHITE:
+                    image.fillTile(x, y, "whitepiece.png");
+                    break;
+                case BLACK:
+                    image.fillTile(x, y, "blackpiece.png");
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+            image.addRegion(point, x, y, 4, 4);
         }
+        return image;
     }
 
     public double evaluate() {

@@ -1,9 +1,5 @@
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import javax.imageio.ImageIO;
 
 public class ChessState implements GameState {
     private static final int WK = 6; // white king
@@ -176,20 +172,11 @@ public class ChessState implements GameState {
         }
     }
 
-    public GameState click(int x, int y) {
+    public GameState click(int id) {
         // The idea is that the state collects the squares clicked by the user
         // in userClicks and compares them to the clicks necessary to select a
         // particular move.
-        int row = (y - 128) / 96;
-        int col = (x - 128) / 96;
-        int square = 10 * row + col + 21;
-        // special pseudo-squares for promotion options
-        if (y <= 128) {
-            square = 7 - col;
-        } else if (y > 896) {
-            square = col - 7;
-        }
-        userClicks.add(square);
+        userClicks.add(id);
         List<GameState> moves = generateMoves();
         for (GameState move : moves) {
             ChessState chessMove = (ChessState)move;
@@ -223,99 +210,79 @@ public class ChessState implements GameState {
         }
     }
 
-    public void draw(Graphics2D graphics) {
-        try {
-            Image chess = ImageIO.read(new File("img/png/chess.png"));
-            Image whiteking = ImageIO.read(new File(
-                "img/png/whiteking.png"));
-            Image whitequeen = ImageIO.read(new File(
-                "img/png/whitequeen.png"));
-            Image whitebishop = ImageIO.read(new File(
-                "img/png/whitebishop.png"));
-            Image whiteknight = ImageIO.read(new File(
-                "img/png/whiteknight.png"));
-            Image whiterook = ImageIO.read(new File(
-                "img/png/whiterook.png"));
-            Image whitepawn = ImageIO.read(new File(
-                "img/png/whitepawn.png"));
-            Image blackking = ImageIO.read(new File(
-                "img/png/blackking.png"));
-            Image blackqueen = ImageIO.read(new File(
-                "img/png/blackqueen.png"));
-            Image blackbishop = ImageIO.read(new File(
-                "img/png/blackbishop.png"));
-            Image blackknight = ImageIO.read(new File(
-                "img/png/blackknight.png"));
-            Image blackrook = ImageIO.read(new File(
-                "img/png/blackrook.png"));
-            Image blackpawn = ImageIO.read(new File(
-                "img/png/blackpawn.png"));
-            Image selection = ImageIO.read(new File(
-                "img/png/selection.png"));
-            graphics.drawImage(chess, 0, 0, null);
-            for (int square = 21; square <= 98; square++) {
-                int row = square / 10 - 2;
-                int col = square % 10 - 1;
-                int x = 96 * col + 128;
-                int y = 96 * row + 128;
-                switch (board[square]) {
-                    case WK:
-                        graphics.drawImage(whiteking, x + 16, y + 16, null);
-                        break;
-                    case WQ:
-                        graphics.drawImage(whitequeen, x + 16, y + 16, null);
-                        break;
-                    case WB:
-                        graphics.drawImage(whitebishop, x + 16, y + 16, null);
-                        break;
-                    case WN:
-                        graphics.drawImage(whiteknight, x + 16, y + 16, null);
-                        break;
-                    case WR:
-                        graphics.drawImage(whiterook, x + 16, y + 16, null);
-                        break;
-                    case WP:
-                        graphics.drawImage(whitepawn, x + 16, y + 16, null);
-                        break;
-                    case BK:
-                        graphics.drawImage(blackking, x + 16, y + 16, null);
-                        break;
-                    case BQ:
-                        graphics.drawImage(blackqueen, x + 16, y + 16, null);
-                        break;
-                    case BB:
-                        graphics.drawImage(blackbishop, x + 16, y + 16, null);
-                        break;
-                    case BN:
-                        graphics.drawImage(blackknight, x + 16, y + 16, null);
-                        break;
-                    case BR:
-                        graphics.drawImage(blackrook, x + 16, y + 16, null);
-                        break;
-                    case BP:
-                        graphics.drawImage(blackpawn, x + 16, y + 16, null);
-                }
-                if (userClicks.contains(square)) {
-                    graphics.drawImage(selection, x, y, null);
-                }
+    public GameImage draw() {
+        GameImage image = new GameImage();
+        image.fillTile(0, 0, "chess.png");
+        for (int square = 21; square <= 98; square++) {
+            int row = square / 10 - 2;
+            int col = square % 10 - 1;
+            int x = 6 * col + 8;
+            int y = 6 * row + 8;
+            switch (board[square]) {
+                case WK:
+                    image.fillTile(x + 1, y + 1, "whiteking.png");
+                    break;
+                case WQ:
+                    image.fillTile(x + 1, y + 1, "whitequeen.png");
+                    break;
+                case WB:
+                    image.fillTile(x + 1, y + 1, "whitebishop.png");
+                    break;
+                case WN:
+                    image.fillTile(x + 1, y + 1, "whiteknight.png");
+                    break;
+                case WR:
+                    image.fillTile(x + 1, y + 1, "whiterook.png");
+                    break;
+                case WP:
+                    image.fillTile(x + 1, y + 1, "whitepawn.png");
+                    break;
+                case BK:
+                    image.fillTile(x + 1, y + 1, "blackking.png");
+                    break;
+                case BQ:
+                    image.fillTile(x + 1, y + 1, "blackqueen.png");
+                    break;
+                case BB:
+                    image.fillTile(x + 1, y + 1, "blackbishop.png");
+                    break;
+                case BN:
+                    image.fillTile(x + 1, y + 1, "blackknight.png");
+                    break;
+                case BR:
+                    image.fillTile(x + 1, y + 1, "blackrook.png");
+                    break;
+                case BP:
+                    image.fillTile(x + 1, y + 1, "blackpawn.png");
             }
-            // show promotion options
-            if (userClicks.size() == 2) {
-                if (player == 1) {
-                    graphics.drawImage(whitequeen, 336, 48, null);
-                    graphics.drawImage(whitebishop, 432, 48, null);
-                    graphics.drawImage(whiteknight, 528, 48, null);
-                    graphics.drawImage(whiterook, 624, 48, null);
-                } else {
-                    graphics.drawImage(blackqueen, 336, 912, null);
-                    graphics.drawImage(blackbishop, 432, 912, null);
-                    graphics.drawImage(blackknight, 528, 912, null);
-                    graphics.drawImage(blackrook, 624, 912, null);
-                }
+            if (userClicks.contains(square)) {
+                image.fillTile(x, y, "selection.png");
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+            image.addRegion(square, x, y, 6, 6);
         }
+        // show promotion options
+        if (userClicks.size() == 2) {
+            if (player == 1) {
+                image.fillTile(21, 3, "whitequeen.png");
+                image.fillTile(27, 3, "whitebishop.png");
+                image.fillTile(33, 3, "whiteknight.png");
+                image.fillTile(39, 3, "whiterook.png");
+                image.addRegion(WQ, 20, 2, 6, 6);
+                image.addRegion(WB, 26, 2, 6, 6);
+                image.addRegion(WN, 32, 2, 6, 6);
+                image.addRegion(WR, 38, 2, 6, 6);
+            } else {
+                image.fillTile(21, 57, "blackqueen.png");
+                image.fillTile(27, 57, "blackbishop.png");
+                image.fillTile(33, 57, "blackknight.png");
+                image.fillTile(39, 57, "blackrook.png");
+                image.addRegion(BQ, 20, 56, 6, 6);
+                image.addRegion(BB, 26, 56, 6, 6);
+                image.addRegion(BN, 32, 56, 6, 6);
+                image.addRegion(BR, 38, 56, 6, 6);
+            }
+        }
+        return image;
     }
 
     public double evaluate() {

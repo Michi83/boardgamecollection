@@ -4,7 +4,7 @@ public class RandomAlgorithm implements Algorithm {
     private GameState state;
     private GameState move;
 
-    public void click(int x, int y) {
+    public void click(int id) {
     }
 
     public GameState getMove() {

@@ -47,11 +47,8 @@ public class CheckersState implements GameState {
         return board[square] != LV && player * board[square] < 0;
     }
 
-    public GameState click(int x, int y) {
-        int row = (y - 128) / 96;
-        int col = (x - 128) / 96;
-        int square = 10 * row + col + 11;
-        userClicks.add(square);
+    public GameState click(int id) {
+        userClicks.add(id);
         List<GameState> moves = generateMoves();
         for (GameState move : moves) {
             CheckersState checkersMove = (CheckersState)move;
@@ -76,45 +73,33 @@ public class CheckersState implements GameState {
         return this;
     }
 
-    public void draw(Graphics2D graphics) {
-        try {
-            Image chess = ImageIO.read(new File("img/png/chess.png"));
-            Image whiteking = ImageIO.read(new File(
-                "img/png/whiteking.png"));
-            Image whitepiece = ImageIO.read(new File(
-                "img/png/whitepiece.png"));
-            Image blackking = ImageIO.read(new File(
-                "img/png/blackking.png"));
-            Image blackpiece = ImageIO.read(new File(
-                "img/png/blackpiece.png"));
-            Image selection = ImageIO.read(new File(
-                "img/png/selection.png"));
-            graphics.drawImage(chess, 0, 0, null);
-            for (int square = 12; square <= 87; square++) {
-                int row = square / 10 - 1;
-                int col = square % 10 - 1;
-                int x = 96 * col + 128;
-                int y = 96 * row + 128;
-                switch (board[square]) {
-                    case WK:
-                        graphics.drawImage(whiteking, x + 16, y + 16, null);
-                        break;
-                    case WM:
-                        graphics.drawImage(whitepiece, x + 16, y + 16, null);
-                        break;
-                    case BK:
-                        graphics.drawImage(blackking, x + 16, y + 16, null);
-                        break;
-                    case BM:
-                        graphics.drawImage(blackpiece, x + 16, y + 16, null);
-                }
-                if (userClicks.contains(square)) {
-                    graphics.drawImage(selection, x, y, null);
-                }
+    public GameImage draw() {
+        GameImage image = new GameImage();
+        image.fillTile(0, 0, "chess.png");
+        for (int square = 12; square <= 87; square++) {
+            int row = square / 10 - 1;
+            int col = square % 10 - 1;
+            int x = 6 * col + 8;
+            int y = 6 * row + 8;
+            switch (board[square]) {
+                case WK:
+                    image.fillTile(x + 1, y + 1, "whiteking.png");
+                    break;
+                case WM:
+                    image.fillTile(x + 1, y + 1, "whitepiece.png");
+                    break;
+                case BK:
+                    image.fillTile(x + 1, y + 1, "blackking.png");
+                    break;
+                case BM:
+                    image.fillTile(x + 1, y + 1, "blackpiece.png");
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+            if (userClicks.contains(square)) {
+                image.fillTile(x, y, "selection.png");
+            }
+            image.addRegion(square, x, y, 6, 6);
         }
+        return image;
     }
 
     public double evaluate() {

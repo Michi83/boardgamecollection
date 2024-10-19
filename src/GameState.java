@@ -5,11 +5,11 @@ public interface GameState {
     // Handle a user click and return the resulting new GameState. May return
     // "this", if the move represents an invalid or partial move. Coordinates
     // are in range 0 to 1023.
-    public GameState click(int x, int y);
+    public GameState click(int id);
 
     // Draw a graphic representation of the state. The Graphics2D object
     // provided is 1024x1024 pixels.
-    public void draw(Graphics2D graphics);
+    public GameImage draw();
 
     // Return the winner of a finished game, +1.0 for white, -1.0 for black,
     // 0.0 for a draw. For a game not yet finished, return either always 0.0 or

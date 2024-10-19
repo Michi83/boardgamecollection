@@ -12,7 +12,7 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
     private static final int BLACK = -1;
 
     private Algorithm black;
-    private BufferedImage image;
+    private GameImage image;
     private GamePanel gamePanel;
     private Algorithm algorithm;
     private GameState state;
@@ -36,40 +36,25 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
     }
 
     private void draw() {
-        try {
-            BufferedImage whitesmallking = ImageIO.read(new File(
-                "img/png/whitesmallking.png"));
-            BufferedImage blacksmallking = ImageIO.read(new File(
-                "img/png/blacksmallking.png"));
-            BufferedImage whitesmallpiece = ImageIO.read(new File(
-                "img/png/whitesmallpiece.png"));
-            BufferedImage blacksmallpiece = ImageIO.read(new File(
-                "img/png/blacksmallpiece.png"));
-            BufferedImage image = new BufferedImage(1024, 1024,
-                BufferedImage.TYPE_INT_RGB);
-            Graphics2D graphics = image.createGraphics();
-            state.draw(graphics);
-            // indicator symbols in the lower right corner
-            if (state.generateMoves().size() == 0) {
-                double score = state.evaluate();
-                if (score > 0) {
-                    graphics.drawImage(whitesmallking, 976, 976, null);
-                } else if (score < 0) {
-                    graphics.drawImage(blacksmallking, 976, 976, null);
-                }
-            } else {
-                switch (state.getPlayer()) {
-                    case WHITE:
-                        graphics.drawImage(whitesmallpiece, 976, 976, null);
-                        break;
-                    case BLACK:
-                        graphics.drawImage(blacksmallpiece, 976, 976, null);
-                }
+        image = state.draw();
+        // indicator symbols in the lower right corner
+        if (state.generateMoves().size() == 0) {
+            double score = state.evaluate();
+            if (score > 0) {
+                image.fillTile(61, 61, "whitesmallking.png");
+            } else if (score < 0) {
+                image.fillTile(61, 61, "blacksmallking.png");
             }
-            gamePanel.setImage(image);
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } else {
+            switch (state.getPlayer()) {
+                case WHITE:
+                    image.fillTile(61, 61, "whitesmallpiece.png");
+                    break;
+                case BLACK:
+                    image.fillTile(61, 61, "whitesmallpiece.png");
+            }
         }
+        gamePanel.setImage(image);
     }
 
     public void mouseClicked(MouseEvent event) {
@@ -85,9 +70,10 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
             size = height;
             marginLeft = (width - height) / 2.0;
         }
-        int x = (int)(1024 * (event.getX() - marginLeft) / size);
-        int y = (int)(1024 * (event.getY() - marginTop) / size);
-        algorithm.click(x, y);
+        int x = (int)(64 * (event.getX() - marginLeft) / size);
+        int y = (int)(64 * (event.getY() - marginTop) / size);
+        int id = image.getClickedRegion(x, y);
+        algorithm.click(id);
     }
 
     public void mouseEntered(MouseEvent event) {

@@ -1,5 +1,5 @@
 public class IdleAlgorithm implements Algorithm {
-    public void click(int x, int y) {
+    public void click(int id) {
     }
 
     public GameState getMove() {

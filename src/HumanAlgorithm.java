@@ -2,8 +2,8 @@ public class HumanAlgorithm implements Algorithm {
     private GameState move;
     private GameState state;
 
-    public void click(int x, int y) {
-        move = state.click(x, y);
+    public void click(int id) {
+        move = state.click(id);
     }
 
     public GameState getMove() {

@@ -20,7 +20,7 @@ public class MCTSAlgorithm implements Algorithm {
         this.maxTime = maxTime;
     }
 
-    public void click(int x, int y) {
+    public void click(int id) {
     }
 
     public GameState getMove() {
