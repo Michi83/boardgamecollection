@@ -1,7 +1,10 @@
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MinimaxAlgorithm implements Algorithm {
+    private Map<String, Integer> killerMoves;
     private int maxTime;
     private GameState move;
     private int nodes;
@@ -41,6 +44,7 @@ public class MinimaxAlgorithm implements Algorithm {
             return new MinimaxResult(score, null);
         }
         Collections.shuffle(moves);
+        Collections.sort(moves, new KillerMovesComparator(killerMoves));
         double topScore = Double.NEGATIVE_INFINITY;
         GameState topMove = null;
         for (GameState move : moves) {
@@ -51,6 +55,10 @@ public class MinimaxAlgorithm implements Algorithm {
                 if (score > alpha) {
                     alpha = score;
                     if (score >= beta) {
+                        String key = move.getNotation();
+                        int value = killerMoves.getOrDefault(key, 0);
+                        value += depth * depth;
+                        killerMoves.put(key, value);
                         break;
                     }
                 }
@@ -61,6 +69,7 @@ public class MinimaxAlgorithm implements Algorithm {
 
     public void run() {
         timeStarted = System.currentTimeMillis();
+        killerMoves = new HashMap<String, Integer>();
         GameState move = null;
         System.out.println("ply  score  time   nodes pv");
         for (int depth = 1; true; depth++) {
