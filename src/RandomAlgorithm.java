@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class RandomPlayer implements Player {
+public class RandomAlgorithm implements Algorithm {
     private GameState state;
     private GameState move;
 

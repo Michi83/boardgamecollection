@@ -11,12 +11,12 @@
 // 4) BACKPROPAGATE: Update the statistics of the selected node and its parent
 //    chain all the way up to the root.
 
-public class MCTSPlayer implements Player {
+public class MCTSAlgorithm implements Algorithm {
     private int maxTime; // in seconds
     private GameState move;
     private GameState state;
 
-    public MCTSPlayer(int maxTime) {
+    public MCTSAlgorithm(int maxTime) {
         this.maxTime = maxTime;
     }
 

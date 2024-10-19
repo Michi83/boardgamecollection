@@ -11,14 +11,14 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
     private static final int WHITE = 1;
     private static final int BLACK = -1;
 
-    private Player black;
+    private Algorithm black;
     private BufferedImage image;
     private GamePanel gamePanel;
-    private Player player;
+    private Algorithm algorithm;
     private GameState state;
-    private Player white;
+    private Algorithm white;
 
-    public GameWindow(GameState state, Player white, Player black) {
+    public GameWindow(GameState state, Algorithm white, Algorithm black) {
         super();
 
         this.state = state;
@@ -87,7 +87,7 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
         }
         int x = (int)(1024 * (event.getX() - marginLeft) / size);
         int y = (int)(1024 * (event.getY() - marginTop) / size);
-        player.click(x, y);
+        algorithm.click(x, y);
     }
 
     public void mouseEntered(MouseEvent event) {
@@ -105,13 +105,13 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
     public void run() {
         try {
             draw();
-            startPlayer();
+            startAlgorithm();
             while (true) {
-                GameState move = player.getMove();
+                GameState move = algorithm.getMove();
                 if (move != null) {
                     state = move;
                     draw();
-                    startPlayer();
+                    startAlgorithm();
                 }
                 Thread.sleep(100);
             }
@@ -120,15 +120,15 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
         }
     }
 
-    private void startPlayer() {
+    private void startAlgorithm() {
         if (state.generateMoves().size() == 0) {
-            player = new IdlePlayer();
+            algorithm = new IdleAlgorithm();
         } else if (state.getPlayer() == WHITE) {
-            player = white;
+            algorithm = white;
         } else if (state.getPlayer() == BLACK) {
-            player = black;
+            algorithm = black;
         }
-        player.setState(state);
-        new Thread(player).start();
+        algorithm.setState(state);
+        new Thread(algorithm).start();
     }
 }

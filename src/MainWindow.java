@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 
 public class MainWindow extends JFrame implements ActionListener {
     private GamesPanel gamesPanel;
-    private PlayerPanel whitePanel;
-    private PlayerPanel blackPanel;
+    private AlgorithmPanel whitePanel;
+    private AlgorithmPanel blackPanel;
 
     public MainWindow() {
         super();
@@ -24,12 +24,12 @@ public class MainWindow extends JFrame implements ActionListener {
         gamesPanel = new GamesPanel();
         mainPanel.add(gamesPanel);
 
-        whitePanel = new PlayerPanel("White");
-        whitePanel.setPlayer(0);
+        whitePanel = new AlgorithmPanel("White");
+        whitePanel.setAlgorithm(0);
         mainPanel.add(whitePanel);
 
-        blackPanel = new PlayerPanel("Black");
-        blackPanel.setPlayer(1);
+        blackPanel = new AlgorithmPanel("Black");
+        blackPanel.setAlgorithm(1);
         mainPanel.add(blackPanel);
 
         JButton playButton = new JButton("Play");
@@ -41,8 +41,8 @@ public class MainWindow extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         GameState state = gamesPanel.getState();
-        Player white = whitePanel.getPlayer();
-        Player black = blackPanel.getPlayer();
+        Algorithm white = whitePanel.getAlgorithm();
+        Algorithm black = blackPanel.getAlgorithm();
         GameWindow gameWindow = new GameWindow(state, white, black);
     }
 

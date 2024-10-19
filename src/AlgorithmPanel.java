@@ -8,16 +8,16 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class PlayerPanel extends JPanel implements ChangeListener {
+public class AlgorithmPanel extends JPanel implements ChangeListener {
     private JRadioButton humanButton;
     private JRadioButton mctsButton;
     private JRadioButton minimaxButton;
-    private ButtonGroup playerGroup;
+    private ButtonGroup algorithmGroup;
     private JRadioButton randomButton;
     private JLabel timeLabel;
     private JSlider timeSlider;
 
-    public PlayerPanel(String title) {
+    public AlgorithmPanel(String title) {
         super();
         setBorder(new TitledBorder(title));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -45,24 +45,24 @@ public class PlayerPanel extends JPanel implements ChangeListener {
         stateChanged(null);
         add(timeLabel);
 
-        playerGroup = new ButtonGroup();
-        playerGroup.add(humanButton);
-        playerGroup.add(minimaxButton);
-        playerGroup.add(mctsButton);
-        playerGroup.add(randomButton);
+        algorithmGroup = new ButtonGroup();
+        algorithmGroup.add(humanButton);
+        algorithmGroup.add(minimaxButton);
+        algorithmGroup.add(mctsButton);
+        algorithmGroup.add(randomButton);
     }
 
-    public Player getPlayer() {
+    public Algorithm getAlgorithm() {
         if (humanButton.isSelected()) {
-            return new HumanPlayer();
+            return new HumanAlgorithm();
         } else if (minimaxButton.isSelected()) {
             int maxTime = timeSlider.getValue();
-            return new MinimaxPlayer(maxTime);
+            return new MinimaxAlgorithm(maxTime);
         } else if (mctsButton.isSelected()) {
             int maxTime = timeSlider.getValue();
-            return new MCTSPlayer(maxTime);
+            return new MCTSAlgorithm(maxTime);
         } else if (randomButton.isSelected()) {
-            return new RandomPlayer();
+            return new RandomAlgorithm();
         }
         return null;
     }
@@ -72,8 +72,8 @@ public class PlayerPanel extends JPanel implements ChangeListener {
         timeLabel.setText(maxTime + " seconds");
     }
 
-    public void setPlayer(int player) {
-        switch (player) {
+    public void setAlgorithm(int index) {
+        switch (index) {
             case 0:
                 humanButton.setSelected(true);
                 break;

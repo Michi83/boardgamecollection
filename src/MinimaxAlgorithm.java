@@ -1,14 +1,14 @@
 import java.util.Collections;
 import java.util.List;
 
-public class MinimaxPlayer implements Player {
+public class MinimaxAlgorithm implements Algorithm {
     private int maxTime;
     private GameState move;
     private int nodes;
     private GameState state;
     private long timeStarted;
 
-    public MinimaxPlayer(int maxTime) {
+    public MinimaxAlgorithm(int maxTime) {
         this.maxTime = maxTime;
     }
 

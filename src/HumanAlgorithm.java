@@ -1,4 +1,4 @@
-public class HumanPlayer implements Player {
+public class HumanAlgorithm implements Algorithm {
     private GameState move;
     private GameState state;
 

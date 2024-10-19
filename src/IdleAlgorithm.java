@@ -1,4 +1,4 @@
-public class IdlePlayer implements Player {
+public class IdleAlgorithm implements Algorithm {
     public void click(int x, int y) {
     }
 
