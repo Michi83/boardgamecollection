@@ -175,6 +175,13 @@ public class MorrisState implements GameState {
             }
             image.addRegion(point, x, y, 6, 6);
         }
+        // show unplaced pieces
+        for (int i = 0; i < unplacedPieces / 2; i++) {
+            image.fillTile(4 * i + 14, 54, "whitepiece.png");
+        }
+        for (int i = 0; i < (unplacedPieces + 1) / 2; i++) {
+            image.fillTile(46 - 4 * i, 6, "blackpiece.png");
+        }
         return image;
     }
 
