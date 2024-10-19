@@ -10,12 +10,14 @@ import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
 public class GamesPanel extends JPanel implements ActionListener {
+    // to do: put this in a config file
     private static final String[] GAMES = new String[] {
         "Checkers/Draughts",
         "Chess",
         "Go 9x9",
         "Gomoku",
-        "Nine Men's Morris"
+        "Nine Men's Morris",
+        "Reversi"
     };
 
     private static final String[] RULES = new String[] {
@@ -23,7 +25,8 @@ public class GamesPanel extends JPanel implements ActionListener {
         "https://handbook.fide.com/chapter/E012023",
         "https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html",
         "https://en.wikipedia.org/wiki/Gomoku",
-        "https://library.slmath.org/books/Book29/files/gasser.pdf"
+        "https://library.slmath.org/books/Book29/files/gasser.pdf",
+        "https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english"
     };
 
     private static final String[] CLASSES = new String[] {
@@ -31,7 +34,8 @@ public class GamesPanel extends JPanel implements ActionListener {
         "ChessState",
         "Go9State",
         "GomokuState",
-        "MorrisState"
+        "MorrisState",
+        "ReversiState"
     };
 
     private JList<String> gamesList;

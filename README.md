@@ -27,3 +27,8 @@ Mostly intended for casual players, who want to try out different games. Don't e
 [Rules](https://library.slmath.org/books/Book29/files/gasser.pdf)
 
 ![Nine Men's Morris intial position](img/screenshots/morris.png)
+
+### Reversi
+[Rules](https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english)
+
+![Reversi intial position](img/screenshots/reversi.png)

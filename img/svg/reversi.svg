@@ -1,0 +1,22 @@
+<svg height="1024" width="1024" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="#008000" height="1024" width="1024" x="0" y="0" />
+    <rect fill="none" height="768" stroke="#FFFFFF" stroke-width="4" width="768" x="128" y="128" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="224" y1="128" y2="896" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="320" x2="320" y1="128" y2="896" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="416" x2="416" y1="128" y2="896" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="128" y2="896" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="608" x2="608" y1="128" y2="896" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="704" x2="704" y1="128" y2="896" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="800" x2="800" y1="128" y2="896" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="224" y2="224" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="320" y2="320" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="416" y2="416" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="512" y2="512" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="608" y2="608" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="704" y2="704" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="800" y2="800" />
+    <circle cx="320" cy="320" fill="#FFFFFF" r="8" />
+    <circle cx="704" cy="320" fill="#FFFFFF" r="8" />
+    <circle cx="320" cy="704" fill="#FFFFFF" r="8" />
+    <circle cx="704" cy="704" fill="#FFFFFF" r="8" />
+</svg>
