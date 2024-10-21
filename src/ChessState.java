@@ -17,12 +17,12 @@ public class ChessState implements GameState {
     private static final int BK = -6; // black king
     private static final int LV = -7; // lava
     private static final int[] KING_OFFSETS = new int[] {
-         -11, -10, -9, -1, 1, 9, 10, 11 };
+        -11, -10, -9, -1, 1, 9, 10, 11 };
     private static final int[] QUEEN_OFFSETS = new int[] {
-         -11, -10, -9, -1, 1, 9, 10, 11 };
+        -11, -10, -9, -1, 1, 9, 10, 11 };
     private static final int[] BISHOP_OFFSETS = new int[] { -11, -9, 9, 11 };
     private static final int[] KNIGHT_OFFSETS = new int[] {
-         -21, -19, -12, -8, 8, 12, 19, 21 };
+        -21, -19, -12, -8, 8, 12, 19, 21 };
     private static final int[] ROOK_OFFSETS = new int[] { -10, -1, 1, 10 };
     private static final int[] PAWN_OFFSETS = new int[] { -11, -9 };
     private static final int[] PROMOTIONS = new int[] { WQ, WB, WN, WR };

@@ -32,3 +32,8 @@ Mostly intended for casual players, who want to try out different games. Don't e
 [Rules](https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english)
 
 ![Reversi intial position](img/screenshots/reversi.png)
+
+### Shogi
+[Rules](https://fesashogi.eu/pdf/FESA%20rules.pdf)
+
+![Shogi intial position](img/screenshots/shogi.png)
