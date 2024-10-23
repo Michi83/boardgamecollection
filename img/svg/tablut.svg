@@ -1,0 +1,154 @@
+<svg height="1024" width="1024" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="#008000" height="1024" width="1024" x="0" y="0" />
+    <rect fill="none" height="864" stroke="#FFFFFF" stroke-width="4" width="864" x="80" y="80" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="176" x2="176" y1="80" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="272" x2="272" y1="80" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="368" x2="368" y1="80" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="464" x2="464" y1="80" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="560" x2="560" y1="80" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="656" x2="656" y1="80" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="752" x2="752" y1="80" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="848" x2="848" y1="80" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="80" x2="944" y1="176" y2="176" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="80" x2="944" y1="272" y2="272" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="80" x2="944" y1="368" y2="368" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="80" x2="944" y1="464" y2="464" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="80" x2="944" y1="560" y2="560" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="80" x2="944" y1="656" y2="656" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="80" x2="944" y1="752" y2="752" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="80" x2="944" y1="848" y2="848" />
+    <g transform="translate(368 80)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(464 80)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(560 80)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(464 176)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(464 272)">
+        <line stroke="#FFFFFF" stroke-width="4" x1="0" x2="96" y1="0" y2="96" />
+        <line stroke="#FFFFFF" stroke-width="4" x1="96" x2="0" y1="0" y2="96" />
+    </g>
+    <g transform="translate(80 368)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(464 368)">
+        <line stroke="#FFFFFF" stroke-width="4" x1="0" x2="96" y1="0" y2="96" />
+        <line stroke="#FFFFFF" stroke-width="4" x1="96" x2="0" y1="0" y2="96" />
+    </g>
+    <g transform="translate(848 368)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(80 464)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(176 464)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(272 464)">
+        <line stroke="#FFFFFF" stroke-width="4" x1="0" x2="96" y1="0" y2="96" />
+        <line stroke="#FFFFFF" stroke-width="4" x1="96" x2="0" y1="0" y2="96" />
+    </g>
+    <g transform="translate(368 464)">
+        <line stroke="#FFFFFF" stroke-width="4" x1="0" x2="96" y1="0" y2="96" />
+        <line stroke="#FFFFFF" stroke-width="4" x1="96" x2="0" y1="0" y2="96" />
+    </g>
+    <g transform="translate(464 464)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(560 464)">
+        <line stroke="#FFFFFF" stroke-width="4" x1="0" x2="96" y1="0" y2="96" />
+        <line stroke="#FFFFFF" stroke-width="4" x1="96" x2="0" y1="0" y2="96" />
+    </g>
+    <g transform="translate(656 464)">
+        <line stroke="#FFFFFF" stroke-width="4" x1="0" x2="96" y1="0" y2="96" />
+        <line stroke="#FFFFFF" stroke-width="4" x1="96" x2="0" y1="0" y2="96" />
+    </g>
+    <g transform="translate(752 464)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(848 464)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(80 560)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(464 560)">
+        <line stroke="#FFFFFF" stroke-width="4" x1="0" x2="96" y1="0" y2="96" />
+        <line stroke="#FFFFFF" stroke-width="4" x1="96" x2="0" y1="0" y2="96" />
+    </g>
+    <g transform="translate(848 560)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(464 656)">
+        <line stroke="#FFFFFF" stroke-width="4" x1="0" x2="96" y1="0" y2="96" />
+        <line stroke="#FFFFFF" stroke-width="4" x1="96" x2="0" y1="0" y2="96" />
+    </g>
+    <g transform="translate(464 752)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(368 848)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(464 848)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(560 848)">
+        <path d="m 0 0 a 48 48 0 0 0 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 0 a 48 48 0 0 1 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 96 0 a 48 48 0 0 0 0 96" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 0 96 a 48 48 0 0 1 96 0" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+</svg>

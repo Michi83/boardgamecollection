@@ -28,6 +28,7 @@ inkscape img/svg/morris.svg --export-type=png --export-filename=img/png/morris.p
 inkscape img/svg/reversi.svg --export-type=png --export-filename=img/png/reversi.png
 inkscape img/svg/selection.svg --export-type=png --export-filename=img/png/selection.png
 inkscape img/svg/shogi.svg --export-type=png --export-filename=img/png/shogi.png
+inkscape img/svg/tablut.svg --export-type=png --export-filename=img/png/tablut.png
 inkscape img/svg/whitebishop.svg --export-type=png --export-filename=img/png/whitebishop.png
 inkscape img/svg/whiteking.svg --export-type=png --export-filename=img/png/whiteking.png
 inkscape img/svg/whiteknight.svg --export-type=png --export-filename=img/png/whiteknight.png
@@ -59,3 +60,4 @@ javac -d bin -sourcepath src src/MainWindow.java
 javac -d bin -sourcepath src src/MorrisState.java
 javac -d bin -sourcepath src src/ReversiState.java
 javac -d bin -sourcepath src src/ShogiState.java
+javac -d bin -sourcepath src src/TablutState.java

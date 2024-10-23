@@ -2,6 +2,12 @@ A collection of classic board games that can be played against a computer oppone
 
 Mostly intended for casual players, who want to try out different games. Don't expect the computer to be particularly good at any one game.
 
+## How to play
+
+- [Download and install a JRE](https://adoptium.net/temurin/releases/)
+- [Download and unzip this project](https://github.com/Michi83/boardgamecollection/archive/refs/heads/main.zip)
+- Double-click on run.bat or run.sh
+
 ## Games included so far
 ### Checkers/Draughts
 [Rules](https://wcdf.net/rules.htm)
@@ -37,3 +43,8 @@ Mostly intended for casual players, who want to try out different games. Don't e
 [Rules](https://fesashogi.eu/pdf/FESA%20rules.pdf)
 
 ![Shogi intial position](img/screenshots/shogi.png)
+
+### Tablut
+[Rules](https://en.wikipedia.org/wiki/Tafl_games#Tablut)
+
+![Tablut intial position](img/screenshots/tablut.png)

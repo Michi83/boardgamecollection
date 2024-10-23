@@ -18,7 +18,8 @@ public class GamesPanel extends JPanel implements ActionListener {
         "Gomoku",
         "Nine Men's Morris",
         "Reversi",
-        "Shogi"
+        "Shogi",
+        "Tablut"
     };
 
     private static final String[] RULES = new String[] {
@@ -28,7 +29,8 @@ public class GamesPanel extends JPanel implements ActionListener {
         "https://en.wikipedia.org/wiki/Gomoku",
         "https://library.slmath.org/books/Book29/files/gasser.pdf",
         "https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english",
-        "https://fesashogi.eu/pdf/FESA%20rules.pdf"
+        "https://fesashogi.eu/pdf/FESA%20rules.pdf",
+        "https://en.wikipedia.org/wiki/Tafl_games#Tablut"
     };
 
     private static final String[] CLASSES = new String[] {
@@ -38,7 +40,8 @@ public class GamesPanel extends JPanel implements ActionListener {
         "GomokuState",
         "MorrisState",
         "ReversiState",
-        "ShogiState"
+        "ShogiState",
+        "TablutState"
     };
 
     private JList<String> gamesList;
