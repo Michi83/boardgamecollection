@@ -1,14 +1,15 @@
 <svg height="32" width="32" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <radialGradient cx="50%" cy="75%" id="glass-gradient">
-            <stop offset="0%" stop-color="#FFFFFF" />
-            <stop offset="100%" stop-color="#808080" />
+            <stop offset="0%" stop-color="#000000" stop-opacity="0" />
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.5" />
         </radialGradient>
         <linearGradient id="highlight-gradient" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#FFFFFF" />
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
             <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
         </linearGradient>
     </defs>
+    <circle cx="16" cy="16" fill="#FFFFFF" r="16" />
     <circle cx="16" cy="16" fill="url(#glass-gradient)" r="16" />
     <circle cx="16" cy="8" fill="url(#highlight-gradient)" r="8" />
     <text fill="#000000" font-family="FreeSerif" font-size="36" text-anchor="middle" x="16" y="28">&#x2654;</text>

@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
@@ -8,6 +10,9 @@ public class GamePanel extends JPanel {
 
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
+        Graphics2D graphics2D = (Graphics2D)graphics;
+        graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+            RenderingHints.VALUE_INTERPOLATION_BICUBIC);
         int height = getHeight();
         int width = getWidth();
         int size;
