@@ -54,7 +54,21 @@ public class GomokuState implements GameState {
     public double evaluate() {
         double score = fiveInARow();
         if (score == 0) {
-            score = twoInARow() / 512.0;
+            for (int point = 0; point < 225; point++) {
+                int row = point / 15;
+                int col = point % 15;
+                int dx = Math.abs(7 - col);
+                int dy = Math.abs(7 - row);
+                int value = 8 - Math.max(dx, dy);
+                switch (board[point]) {
+                    case WHITE:
+                        score += value;
+                        break;
+                    case BLACK:
+                        score -= value;
+                }
+            }
+            score /= 512;
         }
         return score;
     }
@@ -147,72 +161,5 @@ public class GomokuState implements GameState {
 
     public int getPlayer() {
         return player;
-    }
-
-    // This is for the benefit of computer players encouraging them to form and
-    // defend against long rows.
-    public int twoInARow() {
-        int score = 0;
-        // horizontal rows
-        for (int row = 0; row < 15; row++) {
-            for (int col = 0; col <= 13; col++) {
-                int point = 15 * row + col;
-                int sum = 0;
-                for (int i = 0; i < 2; i++) {
-                    sum += board[point + i];
-                }
-                if (sum == 2) {
-                    score++;
-                } else if (sum == -2) {
-                    score--;
-                }
-            }
-        }
-        // vertical rows
-        for (int row = 0; row <= 13; row++) {
-            for (int col = 0; col < 15; col++) {
-                int point = 15 * row + col;
-                int sum = 0;
-                for (int i = 0; i < 2; i++) {
-                    sum += board[point + i];
-                }
-                if (sum == 2) {
-                    score++;
-                } else if (sum == -2) {
-                    score--;
-                }
-            }
-        }
-        // \-diagonals
-        for (int row = 0; row <= 13; row++) {
-            for (int col = 0; col <= 13; col++) {
-                int point = 15 * row + col;
-                int sum = 0;
-                for (int i = 0; i < 2; i++) {
-                    sum += board[point + i];
-                }
-                if (sum == 2) {
-                    score++;
-                } else if (sum == -2) {
-                    score--;
-                }
-            }
-        }
-        // /-diagonals
-        for (int row = 0; row <= 13; row++) {
-            for (int col = 1; col < 15; col++) {
-                int point = 15 * row + col;
-                int sum = 0;
-                for (int i = 0; i < 2; i++) {
-                    sum += board[point + i];
-                }
-                if (sum == 2) {
-                    score++;
-                } else if (sum == -2) {
-                    score--;
-                }
-            }
-        }
-        return score;
     }
 }
