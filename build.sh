@@ -24,7 +24,9 @@ inkscape img/svg/blacksmallpiece.svg --export-type=png --export-filename=img/png
 inkscape img/svg/chess.svg --export-type=png --export-filename=img/png/chess.png
 inkscape img/svg/go9.svg --export-type=png --export-filename=img/png/go9.png
 inkscape img/svg/gomoku.svg --export-type=png --export-filename=img/png/gomoku.png
+inkscape img/svg/mancala.svg --export-type=png --export-filename=img/png/mancala.png
 inkscape img/svg/morris.svg --export-type=png --export-filename=img/png/morris.png
+inkscape img/svg/neutralsmallpiece.svg --export-type=png --export-filename=img/png/neutralsmallpiece.png
 inkscape img/svg/reversi.svg --export-type=png --export-filename=img/png/reversi.png
 inkscape img/svg/selection.svg --export-type=png --export-filename=img/png/selection.png
 inkscape img/svg/shogi.svg --export-type=png --export-filename=img/png/shogi.png
@@ -58,6 +60,7 @@ javac -d bin -sourcepath src src/Go9State.java
 javac -d bin -sourcepath src src/GomokuState.java
 javac -d bin -sourcepath src src/MainWindow.java
 javac -d bin -sourcepath src src/MorrisState.java
+javac -d bin -sourcepath src src/OwareState.java
 javac -d bin -sourcepath src src/ReversiState.java
 javac -d bin -sourcepath src src/ShogiState.java
 javac -d bin -sourcepath src src/TablutState.java

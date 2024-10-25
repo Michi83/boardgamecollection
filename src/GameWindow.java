@@ -44,6 +44,8 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
                 image.fillTile(61, 61, "whitesmallking.png");
             } else if (score < 0) {
                 image.fillTile(61, 61, "blacksmallking.png");
+            } else {
+                image.fillTile(61, 61, "neutralsmallpiece.png");
             }
         } else {
             switch (state.getPlayer()) {

@@ -34,6 +34,12 @@ Mostly intended for casual players, who want to try out different games. Don't e
 
 ![Nine Men's Morris intial position](img/screenshots/morris.png)
 
+
+### Oware
+[Rules](http://www.oware.org/abapa.asp)
+
+![Oware intial position](img/screenshots/oware.png)
+
 ### Reversi
 [Rules](https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english)
 

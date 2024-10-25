@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MCTSNode {
@@ -34,6 +35,7 @@ public class MCTSNode {
         // children.
         if (n == 1) {
             List<GameState> moves = state.generateMoves();
+            Collections.shuffle(moves);
             for (GameState move : moves) {
                 MCTSNode child = new MCTSNode(move, this);
                 children.add(child);

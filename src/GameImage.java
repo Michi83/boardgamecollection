@@ -26,11 +26,13 @@ public class GameImage extends BufferedImage {
         regions.add(region);
     }
 
-    public void fillTile(int x, int y, String filename) {
+    public void fillTile(double x, double y, String filename) {
         try {
+            x = Math.round(16 * x);
+            y = Math.round(16 * y);
             Image tile = ImageIO.read(new File("img/png/" + filename));
             Graphics2D graphics = createGraphics();
-            graphics.drawImage(tile, 16 * x, 16 * y, null);
+            graphics.drawImage(tile, (int)x, (int)y, null);
         } catch (IOException exception) {
             exception.printStackTrace();
         }

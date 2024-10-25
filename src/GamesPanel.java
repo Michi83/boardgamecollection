@@ -17,6 +17,7 @@ public class GamesPanel extends JPanel implements ActionListener {
         "Go 9x9",
         "Gomoku",
         "Nine Men's Morris",
+        "Oware",
         "Reversi",
         "Shogi",
         "Tablut"
@@ -28,6 +29,7 @@ public class GamesPanel extends JPanel implements ActionListener {
         "https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html",
         "https://en.wikipedia.org/wiki/Gomoku",
         "https://library.slmath.org/books/Book29/files/gasser.pdf",
+        "http://www.oware.org/abapa.asp",
         "https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english",
         "https://fesashogi.eu/pdf/FESA%20rules.pdf",
         "https://en.wikipedia.org/wiki/Tafl_games#Tablut"
@@ -39,6 +41,7 @@ public class GamesPanel extends JPanel implements ActionListener {
         "Go9State",
         "GomokuState",
         "MorrisState",
+        "OwareState",
         "ReversiState",
         "ShogiState",
         "TablutState"
