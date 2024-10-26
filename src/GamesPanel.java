@@ -73,6 +73,11 @@ public class GamesPanel extends JPanel implements ActionListener {
         }
     }
 
+    public String getGameName() {
+        int index = gamesList.getSelectedIndex();
+        return GAMES[index];
+    }
+
     public GameState getState() {
         GameState state = null;
         try {

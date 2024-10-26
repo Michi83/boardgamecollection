@@ -12,7 +12,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private AlgorithmPanel blackPanel;
 
     public MainWindow() {
-        super();
+        super("Board Game Collection");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         setSize(768, 384);
@@ -40,10 +40,11 @@ public class MainWindow extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent event) {
+        String name = gamesPanel.getGameName();
         GameState state = gamesPanel.getState();
         Algorithm white = whitePanel.getAlgorithm();
         Algorithm black = blackPanel.getAlgorithm();
-        GameWindow gameWindow = new GameWindow(state, white, black);
+        GameWindow gameWindow = new GameWindow(name, state, white, black);
     }
 
     public static void main(String[] args) {

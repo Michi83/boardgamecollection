@@ -18,8 +18,9 @@ public class GameWindow extends JFrame implements MouseListener, Runnable {
     private GameState state;
     private Algorithm white;
 
-    public GameWindow(GameState state, Algorithm white, Algorithm black) {
-        super();
+    public GameWindow(String name, GameState state, Algorithm white,
+            Algorithm black) {
+        super(name);
 
         this.state = state;
         this.white = white;
