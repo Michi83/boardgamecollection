@@ -765,10 +765,6 @@ public class ShogiState implements GameState {
         for (int piece = WG; piece >= WP; piece--) {
             if (pieces[piece] > 0 && canDrop(player * piece, target)) {
                 ShogiState move = makeDrop(player * piece, target);
-                if (piece == WP && move.legal()
-                        && move.generateMoves().size() == 0) {
-                    continue; // dropped pawns cannot give checkmate
-                }
                 addIfLegal(move, moves);
             }
         }
@@ -837,6 +833,10 @@ public class ShogiState implements GameState {
     }
 
     public List<GameState> generateMoves() {
+        return generateMoves(true);
+    }
+
+    private List<GameState> generateMoves(boolean filterPawnDropCheckmates) {
         List<GameState> moves = new ArrayList<GameState>();
         for (int origin = 23; origin <= 119; origin++) {
             switch (player * board[origin]) {
@@ -876,6 +876,21 @@ public class ShogiState implements GameState {
             }
         }
         generateDrops(moves);
+        // I hate the pawn-drop checkmate rule and I really hope I got this
+        // right.
+        if (filterPawnDropCheckmates) {
+            List<GameState> filteredMoves = new ArrayList<GameState>();
+            for (GameState move : moves) {
+                ShogiState shogiMove = (ShogiState)move;
+                if (shogiMove.clicks[0] == 129 || shogiMove.clicks[0] == 13) {
+                    if (shogiMove.generateMoves(false).size() == 0) {
+                        continue;
+                    }
+                }
+                filteredMoves.add(move);
+            }
+            moves = filteredMoves;
+        }
         return moves;
     }
 

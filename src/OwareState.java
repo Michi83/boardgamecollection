@@ -224,6 +224,9 @@ public class OwareState implements GameState {
     }
 
     private void removeCapturedSeeds(int house) {
+        // Why "+ 11" and not "- 1"? Because Java's % operator does not work as
+        // expected with negative numbers. 11 and -1 are equivalent modulo 12,
+        // but 11 ensures that numbers never become negative.
         if (player == 1) {
             while (house >= 6 && (board[house] == 2 || board[house] == 3)) {
                 whiteSeeds += board[house];
