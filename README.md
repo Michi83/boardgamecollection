@@ -54,3 +54,8 @@ Mostly intended for casual players, who want to try out different games. Don't e
 [Rules](https://en.wikipedia.org/wiki/Tafl_games#Tablut)
 
 ![Tablut intial position](img/screenshots/tablut.png)
+
+### Xiangqi
+[Rules](https://www.xiangqi.com/how-to-play-xiangqi)
+
+![Xiangqi intial position](img/screenshots/xiangqi.png)

@@ -10,7 +10,7 @@
         </linearGradient>
     </defs>
     <circle cx="16" cy="16" fill="#FFFFFF" r="16" />
+    <text fill="#000000" font-family="FreeSerif" font-size="36" text-anchor="middle" x="16" y="28">&#x2654;</text>
     <circle cx="16" cy="16" fill="url(#glass-gradient)" r="16" />
     <circle cx="16" cy="8" fill="url(#highlight-gradient)" r="8" />
-    <text fill="#000000" font-family="FreeSerif" font-size="36" text-anchor="middle" x="16" y="28">&#x2654;</text>
 </svg>

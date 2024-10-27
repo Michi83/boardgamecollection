@@ -1,0 +1,106 @@
+<svg height="1024" width="1024" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="#008000" height="1024" width="1024" x="0" y="0" />
+    <rect fill="none" height="864" stroke="#FFFFFF" stroke-width="4" width="768" x="128" y="80" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="176" y2="176" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="272" y2="272" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="368" y2="368" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="464" y2="464" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="560" y2="560" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="656" y2="656" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="752" y2="752" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="128" x2="896" y1="848" y2="848" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="224" y1="80" y2="464" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="320" x2="320" y1="80" y2="464" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="416" x2="416" y1="80" y2="464" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="80" y2="464" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="608" x2="608" y1="80" y2="464" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="704" x2="704" y1="80" y2="464" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="800" x2="800" y1="80" y2="464" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="224" y1="560" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="320" x2="320" y1="560" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="416" x2="416" y1="560" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="560" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="608" x2="608" y1="560" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="704" x2="704" y1="560" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="800" x2="800" y1="560" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="416" x2="608" y1="80" y2="272" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="608" x2="416" y1="80" y2="272" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="416" x2="608" y1="752" y2="944" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="608" x2="416" y1="752" y2="944" />
+    <g transform="translate(224 272)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(800 272)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(128 368)">
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(320 368)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(512 368)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(704 368)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(896 368)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(128 656)">
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(320 656)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(512 656)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(704 656)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(896 656)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(224 752)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+    <g transform="translate(800 752)">
+        <path d="m -8 -24 v 16 h -16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 8 -24 v 16 h 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m -24 8 h 16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+        <path d="m 24 8 h -16 v 16" fill="none" stroke="#FFFFFF" stroke-width="4" />
+    </g>
+</svg>

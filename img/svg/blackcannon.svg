@@ -9,8 +9,8 @@
             <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
         </linearGradient>
     </defs>
-    <circle cx="32" cy="32" fill="#FFFFFF" r="32" />
-    <text fill="#000000" font-family="FreeSerif" font-size="72" text-anchor="middle" x="32" y="56">&#x2658;</text>
+    <circle cx="32" cy="32" fill="#000000" r="32" />
+    <text fill="#FFFFFF" font-family="FreeSerif" font-size="72" text-anchor="middle" x="32" y="56">&#x2604;</text>
     <circle cx="32" cy="32" fill="url(#glass-gradient)" r="32" />
     <circle cx="32" cy="16" fill="url(#highlight-gradient)" r="16" />
 </svg>

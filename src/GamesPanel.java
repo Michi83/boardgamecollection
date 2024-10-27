@@ -20,7 +20,8 @@ public class GamesPanel extends JPanel implements ActionListener {
         "Oware",
         "Reversi",
         "Shogi",
-        "Tablut"
+        "Tablut",
+        "Xiangqi"
     };
 
     private static final String[] RULES = new String[] {
@@ -32,7 +33,8 @@ public class GamesPanel extends JPanel implements ActionListener {
         "http://www.oware.org/abapa.asp",
         "https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english",
         "https://fesashogi.eu/pdf/FESA%20rules.pdf",
-        "https://en.wikipedia.org/wiki/Tafl_games#Tablut"
+        "https://en.wikipedia.org/wiki/Tafl_games#Tablut",
+        "https://www.xiangqi.com/how-to-play-xiangqi"
     };
 
     private static final String[] CLASSES = new String[] {
@@ -44,7 +46,8 @@ public class GamesPanel extends JPanel implements ActionListener {
         "OwareState",
         "ReversiState",
         "ShogiState",
-        "TablutState"
+        "TablutState",
+        "XiangqiState"
     };
 
     private JList<String> gamesList;

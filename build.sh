@@ -1,4 +1,5 @@
 inkscape img/svg/blackbishop.svg --export-type=png --export-filename=img/png/blackbishop.png
+inkscape img/svg/blackcannon.svg --export-type=png --export-filename=img/png/blackcannon.png
 inkscape img/svg/blackking.svg --export-type=png --export-filename=img/png/blackking.png
 inkscape img/svg/blackknight.svg --export-type=png --export-filename=img/png/blackknight.png
 inkscape img/svg/blackpawn.svg --export-type=png --export-filename=img/png/blackpawn.png
@@ -32,6 +33,7 @@ inkscape img/svg/selection.svg --export-type=png --export-filename=img/png/selec
 inkscape img/svg/shogi.svg --export-type=png --export-filename=img/png/shogi.png
 inkscape img/svg/tablut.svg --export-type=png --export-filename=img/png/tablut.png
 inkscape img/svg/whitebishop.svg --export-type=png --export-filename=img/png/whitebishop.png
+inkscape img/svg/whitecannon.svg --export-type=png --export-filename=img/png/whitecannon.png
 inkscape img/svg/whiteking.svg --export-type=png --export-filename=img/png/whiteking.png
 inkscape img/svg/whiteknight.svg --export-type=png --export-filename=img/png/whiteknight.png
 inkscape img/svg/whitepawn.svg --export-type=png --export-filename=img/png/whitepawn.png
@@ -54,6 +56,7 @@ inkscape img/svg/whiteshogirook.svg --export-type=png --export-filename=img/png/
 inkscape img/svg/whiteshogisilver.svg --export-type=png --export-filename=img/png/whiteshogisilver.png
 inkscape img/svg/whitesmallking.svg --export-type=png --export-filename=img/png/whitesmallking.png
 inkscape img/svg/whitesmallpiece.svg --export-type=png --export-filename=img/png/whitesmallpiece.png
+inkscape img/svg/xiangqi.svg --export-type=png --export-filename=img/png/xiangqi.png
 javac -d bin -sourcepath src src/CheckersState.java
 javac -d bin -sourcepath src src/ChessState.java
 javac -d bin -sourcepath src src/Go9State.java
@@ -64,3 +67,4 @@ javac -d bin -sourcepath src src/OwareState.java
 javac -d bin -sourcepath src src/ReversiState.java
 javac -d bin -sourcepath src src/ShogiState.java
 javac -d bin -sourcepath src src/TablutState.java
+javac -d bin -sourcepath src src/XiangqiState.java
