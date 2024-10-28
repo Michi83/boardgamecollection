@@ -31,14 +31,12 @@ public class TablutState implements GameState {
         };
         king = 60;
         player = MU;
-        userClicks = new ArrayList<Integer>();
     }
 
     private TablutState(TablutState that) {
         board = that.board.clone();
         king = that.king;
         player = -that.player;
-        userClicks = new ArrayList<Integer>();
     }
 
     private void applySpecialRules(TablutState move, int target) {
@@ -127,6 +125,9 @@ public class TablutState implements GameState {
     }
 
     public GameImage draw() {
+        if (userClicks == null) {
+            userClicks = new ArrayList<Integer>();
+        }
         GameImage image = new GameImage();
         image.fillTile(0, 0, "tablut.png");
         for (int square = 12; square <= 108; square++) {
@@ -135,15 +136,15 @@ public class TablutState implements GameState {
             int x = 6 * col + 5;
             int y = 6 * row + 5;
             switch (board[square]) {
-                case KI:
-                    image.fillTile(x + 1, y + 1, "whiteking.png");
-                    break;
-                case SW:
-                    image.fillTile(x + 1, y + 1, "whitepiece.png");
-                    break;
-                case MU:
-                    image.fillTile(x + 1, y + 1, "blackpiece.png");
-                    break;
+            case KI:
+                image.fillTile(x + 1, y + 1, "whiteking.png");
+                break;
+            case SW:
+                image.fillTile(x + 1, y + 1, "whitepiece.png");
+                break;
+            case MU:
+                image.fillTile(x + 1, y + 1, "blackpiece.png");
+                break;
             }
             if (userClicks.contains(square)) {
                 image.fillTile(x, y, "selection.png");
@@ -168,11 +169,12 @@ public class TablutState implements GameState {
         int score = 0;
         for (int square = 12; square <= 108; square++) {
             switch (board[square]) {
-                case SW:
-                    score += 2;
-                    break;
-                case MU:
-                    score--;
+            case SW:
+                score += 2;
+                break;
+            case MU:
+                score--;
+                break;
             }
         }
         return score / 32.0;

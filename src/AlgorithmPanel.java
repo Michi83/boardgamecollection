@@ -74,17 +74,18 @@ public class AlgorithmPanel extends JPanel implements ChangeListener {
 
     public void setAlgorithm(int index) {
         switch (index) {
-            case 0:
-                humanButton.setSelected(true);
-                break;
-            case 1:
-                minimaxButton.setSelected(true);
-                break;
-            case 2:
-                mctsButton.setSelected(true);
-                break;
-            case 3:
-                randomButton.setSelected(true);
+        case 0:
+            humanButton.setSelected(true);
+            break;
+        case 1:
+            minimaxButton.setSelected(true);
+            break;
+        case 2:
+            mctsButton.setSelected(true);
+            break;
+        case 3:
+            randomButton.setSelected(true);
+            break;
         }
     }
 }

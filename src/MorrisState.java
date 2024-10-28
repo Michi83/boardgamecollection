@@ -141,7 +141,6 @@ public class MorrisState implements GameState {
         board = new int[24];
         player = WHITE;
         unplacedPieces = 18;
-        userClicks = new ArrayList<Integer>();
         whitePieces = 9;
     }
 
@@ -150,7 +149,6 @@ public class MorrisState implements GameState {
         board = that.board.clone();
         player = -that.player;
         unplacedPieces = that.unplacedPieces;
-        userClicks = new ArrayList<Integer>();
         whitePieces = that.whitePieces;
     }
 
@@ -181,17 +179,21 @@ public class MorrisState implements GameState {
     }
 
     public GameImage draw() {
+        if (userClicks == null) {
+            userClicks = new ArrayList<Integer>();
+        }
         GameImage image = new GameImage();
         image.fillTile(0, 0, "morris.png");
         for (int point = 0; point < 24; point++) {
             int x = COORDS[point][0];
             int y = COORDS[point][1];
             switch (board[point]) {
-                case WHITE:
-                    image.fillTile(x + 1, y + 1, "whitepiece.png");
-                    break;
-                case BLACK:
-                    image.fillTile(x + 1, y + 1, "blackpiece.png");
+            case WHITE:
+                image.fillTile(x + 1, y + 1, "whitepiece.png");
+                break;
+            case BLACK:
+                image.fillTile(x + 1, y + 1, "blackpiece.png");
+                break;
             }
             if (userClicks.contains(point)) {
                 image.fillTile(x, y, "selection.png");

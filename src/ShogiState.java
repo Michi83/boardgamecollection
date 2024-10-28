@@ -74,7 +74,6 @@ public class ShogiState implements GameState {
             LV, LV, LV, LV, LV, LV, LV, LV, LV, LV, LV
         };
         player = -1;
-        userClicks = new ArrayList<Integer>();
         whiteKing = 115;
         whitePieces = new int[14];
     }
@@ -84,7 +83,6 @@ public class ShogiState implements GameState {
         blackPieces = that.blackPieces.clone();
         board = that.board.clone();
         player = -that.player;
-        userClicks = new ArrayList<Integer>();
         whiteKing = that.whiteKing;
         whitePieces = that.whitePieces.clone();
     }
@@ -278,20 +276,20 @@ public class ShogiState implements GameState {
     private boolean canDrop(int piece, int target) {
         int row = target / 11 - 2;
         switch (piece) {
-            case WN:
-                return row > 1;
-            case WL:
-                return row > 0;
-            case WP:
-                return row > 0 && canDropPawn(target);
-            case BN:
-                return row < 7;
-            case BL:
-                return row < 8;
-            case BP:
-                return row < 8 && canDropPawn(target);
-            default:
-                return true;
+        case WN:
+            return row > 1;
+        case WL:
+            return row > 0;
+        case WP:
+            return row > 0 && canDropPawn(target);
+        case BN:
+            return row < 7;
+        case BL:
+            return row < 8;
+        case BP:
+            return row < 8 && canDropPawn(target);
+        default:
+            return true;
         }
     }
 
@@ -312,23 +310,23 @@ public class ShogiState implements GameState {
         int row1 = origin / 11 - 2;
         int row2 = target / 11 - 2;
         switch (board[origin]) {
-            case WS:
-            case WN:
-            case WL:
-            case WB:
-            case WR:
-            case WP:
-                return row1 < 3 || row2 < 3;
-            case BS:
-            case BN:
-            case BL:
-            case BB:
-            case BR:
-            case BP:
-                return row1 > 5 || row2 > 5;
-            default:
-                // kings, golds and already promoted pieces
-                return false;
+        case WS:
+        case WN:
+        case WL:
+        case WB:
+        case WR:
+        case WP:
+            return row1 < 3 || row2 < 3;
+        case BS:
+        case BN:
+        case BL:
+        case BB:
+        case BR:
+        case BP:
+            return row1 > 5 || row2 > 5;
+        default:
+            // kings, golds and already promoted pieces
+            return false;
         }
     }
 
@@ -371,6 +369,9 @@ public class ShogiState implements GameState {
     }
 
     public GameImage draw() {
+        if (userClicks == null) {
+            userClicks = new ArrayList<Integer>();
+        }
         GameImage image = new GameImage();
         image.fillTile(0, 0, "shogi.png");
         for (int square = 23; square <= 119; square++) {
@@ -382,89 +383,90 @@ public class ShogiState implements GameState {
             int x = 6 * col + 5;
             int y = 6 * row + 5;
             switch (board[square]) {
-                case WK:
-                    image.fillTile(x + 1, y + 1, "whiteshogiking.png");
-                    break;
-                case WG:
-                    image.fillTile(x + 1, y + 1, "whiteshogigold.png");
-                    break;
-                case WPS:
-                    image.fillTile(x + 1, y + 1, "whitepromotedsilver.png");
-                    break;
-                case WS:
-                    image.fillTile(x + 1, y + 1, "whiteshogisilver.png");
-                    break;
-                case WPN:
-                    image.fillTile(x + 1, y + 1, "whitepromotedknight.png");
-                    break;
-                case WN:
-                    image.fillTile(x + 1, y + 1, "whiteshogiknight.png");
-                    break;
-                case WPL:
-                    image.fillTile(x + 1, y + 1, "whitepromotedlance.png");
-                    break;
-                case WL:
-                    image.fillTile(x + 1, y + 1, "whiteshogilance.png");
-                    break;
-                case WPB:
-                    image.fillTile(x + 1, y + 1, "whitepromotedbishop.png");
-                    break;
-                case WB:
-                    image.fillTile(x + 1, y + 1, "whiteshogibishop.png");
-                    break;
-                case WPR:
-                    image.fillTile(x + 1, y + 1, "whitepromotedrook.png");
-                    break;
-                case WR:
-                    image.fillTile(x + 1, y + 1, "whiteshogirook.png");
-                    break;
-                case WPP:
-                    image.fillTile(x + 1, y + 1, "whitepromotedpawn.png");
-                    break;
-                case WP:
-                    image.fillTile(x + 1, y + 1, "whiteshogipawn.png");
-                    break;
-                case BK:
-                    image.fillTile(x + 1, y + 1, "blackshogiking.png");
-                    break;
-                case BG:
-                    image.fillTile(x + 1, y + 1, "blackshogigold.png");
-                    break;
-                case BPS:
-                    image.fillTile(x + 1, y + 1, "blackpromotedsilver.png");
-                    break;
-                case BS:
-                    image.fillTile(x + 1, y + 1, "blackshogisilver.png");
-                    break;
-                case BPN:
-                    image.fillTile(x + 1, y + 1, "blackpromotedknight.png");
-                    break;
-                case BN:
-                    image.fillTile(x + 1, y + 1, "blackshogiknight.png");
-                    break;
-                case BPL:
-                    image.fillTile(x + 1, y + 1, "blackpromotedlance.png");
-                    break;
-                case BL:
-                    image.fillTile(x + 1, y + 1, "blackshogilance.png");
-                    break;
-                case BPB:
-                    image.fillTile(x + 1, y + 1, "blackpromotedbishop.png");
-                    break;
-                case BB:
-                    image.fillTile(x + 1, y + 1, "blackshogibishop.png");
-                    break;
-                case BPR:
-                    image.fillTile(x + 1, y + 1, "blackpromotedrook.png");
-                    break;
-                case BR:
-                    image.fillTile(x + 1, y + 1, "blackshogirook.png");
-                    break;
-                case BPP:
-                    image.fillTile(x + 1, y + 1, "blackpromotedpawn.png");
-                    break;
-                case BP:
-                    image.fillTile(x + 1, y + 1, "blackshogipawn.png");
+            case WK:
+                image.fillTile(x + 1, y + 1, "whiteshogiking.png");
+                break;
+            case WG:
+                image.fillTile(x + 1, y + 1, "whiteshogigold.png");
+                break;
+            case WPS:
+                image.fillTile(x + 1, y + 1, "whitepromotedsilver.png");
+                break;
+            case WS:
+                image.fillTile(x + 1, y + 1, "whiteshogisilver.png");
+                break;
+            case WPN:
+                image.fillTile(x + 1, y + 1, "whitepromotedknight.png");
+                break;
+            case WN:
+                image.fillTile(x + 1, y + 1, "whiteshogiknight.png");
+                break;
+            case WPL:
+                image.fillTile(x + 1, y + 1, "whitepromotedlance.png");
+                break;
+            case WL:
+                image.fillTile(x + 1, y + 1, "whiteshogilance.png");
+                break;
+            case WPB:
+                image.fillTile(x + 1, y + 1, "whitepromotedbishop.png");
+                break;
+            case WB:
+                image.fillTile(x + 1, y + 1, "whiteshogibishop.png");
+                break;
+            case WPR:
+                image.fillTile(x + 1, y + 1, "whitepromotedrook.png");
+                break;
+            case WR:
+                image.fillTile(x + 1, y + 1, "whiteshogirook.png");
+                break;
+            case WPP:
+                image.fillTile(x + 1, y + 1, "whitepromotedpawn.png");
+                break;
+            case WP:
+                image.fillTile(x + 1, y + 1, "whiteshogipawn.png");
+                break;
+            case BK:
+                image.fillTile(x + 1, y + 1, "blackshogiking.png");
+                break;
+            case BG:
+                image.fillTile(x + 1, y + 1, "blackshogigold.png");
+                break;
+            case BPS:
+                image.fillTile(x + 1, y + 1, "blackpromotedsilver.png");
+                break;
+            case BS:
+                image.fillTile(x + 1, y + 1, "blackshogisilver.png");
+                break;
+            case BPN:
+                image.fillTile(x + 1, y + 1, "blackpromotedknight.png");
+                break;
+            case BN:
+                image.fillTile(x + 1, y + 1, "blackshogiknight.png");
+                break;
+            case BPL:
+                image.fillTile(x + 1, y + 1, "blackpromotedlance.png");
+                break;
+            case BL:
+                image.fillTile(x + 1, y + 1, "blackshogilance.png");
+                break;
+            case BPB:
+                image.fillTile(x + 1, y + 1, "blackpromotedbishop.png");
+                break;
+            case BB:
+                image.fillTile(x + 1, y + 1, "blackshogibishop.png");
+                break;
+            case BPR:
+                image.fillTile(x + 1, y + 1, "blackpromotedrook.png");
+                break;
+            case BR:
+                image.fillTile(x + 1, y + 1, "blackshogirook.png");
+                break;
+            case BPP:
+                image.fillTile(x + 1, y + 1, "blackpromotedpawn.png");
+                break;
+            case BP:
+                image.fillTile(x + 1, y + 1, "blackshogipawn.png");
+                break;
             }
             if (userClicks.contains(square)) {
                 image.fillTile(x, y, "selection.png");
@@ -575,81 +577,85 @@ public class ShogiState implements GameState {
             int origin = userClicks.get(0);
             int target = userClicks.get(1);
             switch (board[origin]) {
-                case WS:
-                    image.fillTile(60, 26, "whitepromotedsilver.png");
-                    image.fillTile(60, 32, "whiteshogisilver.png");
-                    break;
-                case WN:
-                    image.fillTile(60, 26, "whitepromotedknight.png");
-                    break;
-                case WL:
-                    image.fillTile(60, 26, "whitepromotedlance.png");
-                    break;
-                case WB:
-                    image.fillTile(60, 26, "whitepromotedbishop.png");
-                    image.fillTile(60, 32, "whiteshogibishop.png");
-                    break;
-                case WR:
-                    image.fillTile(60, 26, "whitepromotedrook.png");
-                    image.fillTile(60, 32, "whiteshogirook.png");
-                    break;
-                case WP:
-                    image.fillTile(60, 26, "whitepromotedpawn.png");
-                    break;
-                case BS:
-                    image.fillTile(0, 32, "blackpromotedsilver.png");
-                    image.fillTile(0, 26, "blackshogisilver.png");
-                    break;
-                case BN:
-                    image.fillTile(0, 32, "blackpromotedknight.png");
-                    break;
-                case BL:
-                    image.fillTile(0, 32, "blackpromotedlance.png");
-                    break;
-                case BB:
-                    image.fillTile(0, 32, "blackpromotedbishop.png");
-                    image.fillTile(0, 26, "blackshogibishop.png");
-                    break;
-                case BR:
-                    image.fillTile(0, 32, "blackpromotedrook.png");
-                    image.fillTile(0, 26, "blackshogirook.png");
-                    break;
-                case BP:
-                    image.fillTile(0, 32, "blackpromotedpawn.png");
+            case WS:
+                image.fillTile(60, 26, "whitepromotedsilver.png");
+                image.fillTile(60, 32, "whiteshogisilver.png");
+                break;
+            case WN:
+                image.fillTile(60, 26, "whitepromotedknight.png");
+                break;
+            case WL:
+                image.fillTile(60, 26, "whitepromotedlance.png");
+                break;
+            case WB:
+                image.fillTile(60, 26, "whitepromotedbishop.png");
+                image.fillTile(60, 32, "whiteshogibishop.png");
+                break;
+            case WR:
+                image.fillTile(60, 26, "whitepromotedrook.png");
+                image.fillTile(60, 32, "whiteshogirook.png");
+                break;
+            case WP:
+                image.fillTile(60, 26, "whitepromotedpawn.png");
+                break;
+            case BS:
+                image.fillTile(0, 32, "blackpromotedsilver.png");
+                image.fillTile(0, 26, "blackshogisilver.png");
+                break;
+            case BN:
+                image.fillTile(0, 32, "blackpromotedknight.png");
+                break;
+            case BL:
+                image.fillTile(0, 32, "blackpromotedlance.png");
+                break;
+            case BB:
+                image.fillTile(0, 32, "blackpromotedbishop.png");
+                image.fillTile(0, 26, "blackshogibishop.png");
+                break;
+            case BR:
+                image.fillTile(0, 32, "blackpromotedrook.png");
+                image.fillTile(0, 26, "blackshogirook.png");
+                break;
+            case BP:
+                image.fillTile(0, 32, "blackpromotedpawn.png");
+                break;
             }
             switch (player) {
-                case 1:
-                    image.addRegion(1, 59, 26, 5, 6);
-                    break;
-                case -1:
-                    image.addRegion(1, 0, 32, 5, 6);
+            case 1:
+                image.addRegion(1, 59, 26, 5, 6);
+                break;
+            case -1:
+                image.addRegion(1, 0, 32, 5, 6);
+                break;
             }
             if (!mustPromote(origin, target)) {
                 switch (board[origin]) {
-                    case WN:
-                        image.fillTile(60, 32, "whiteshogiknight.png");
-                        break;
-                    case WL:
-                        image.fillTile(60, 32, "whiteshogilance.png");
-                        break;
-                    case WP:
-                        image.fillTile(60, 32, "whiteshogipawn.png");
-                        break;
-                    case BN:
-                        image.fillTile(0, 26, "blackshogiknight.png");
-                        break;
-                    case BL:
-                        image.fillTile(0, 26, "blackshogilance.png");
-                        break;
-                    case BP:
-                        image.fillTile(0, 26, "blackshogipawn.png");
+                case WN:
+                    image.fillTile(60, 32, "whiteshogiknight.png");
+                    break;
+                case WL:
+                    image.fillTile(60, 32, "whiteshogilance.png");
+                    break;
+                case WP:
+                    image.fillTile(60, 32, "whiteshogipawn.png");
+                    break;
+                case BN:
+                    image.fillTile(0, 26, "blackshogiknight.png");
+                    break;
+                case BL:
+                    image.fillTile(0, 26, "blackshogilance.png");
+                    break;
+                case BP:
+                    image.fillTile(0, 26, "blackshogipawn.png");
+                    break;
                 }
                 switch (player) {
-                    case 1:
-                        image.addRegion(0, 59, 32, 5, 6);
-                        break;
-                    case -1:
-                        image.addRegion(0, 0, 26, 5, 6);
+                case 1:
+                    image.addRegion(0, 59, 32, 5, 6);
+                    break;
+                case -1:
+                    image.addRegion(0, 0, 26, 5, 6);
+                    break;
                 }
             }
         }
@@ -663,68 +669,68 @@ public class ShogiState implements GameState {
         int score = 0;
         for (int square = 23; square <= 119; square++) {
             switch (board[square]) {
-                case WG:
-                case WPS:
-                case WPN:
-                case WPL:
-                case WPP:
-                    score += 4;
-                    break;
-                case WS:
-                    score += 3;
-                    break;
-                case WN:
-                    score += 2;
-                    break;
-                case WL:
-                    score += 2;
-                    break;
-                case WPB:
-                    score += 7;
-                    break;
-                case WB:
-                    score += 5;
-                    break;
-                case WPR:
-                    score += 8;
-                    break;
-                case WR:
-                    score += 6;
-                    break;
-                case WP:
-                    score += 1;
-                    break;
-                case BG:
-                case BPS:
-                case BPN:
-                case BPL:
-                case BPP:
-                    score -= 4;
-                    break;
-                case BS:
-                    score -= 3;
-                    break;
-                case BN:
-                    score -= 2;
-                    break;
-                case BL:
-                    score -= 2;
-                    break;
-                case BPB:
-                    score -= 7;
-                    break;
-                case BB:
-                    score -= 5;
-                    break;
-                case BPR:
-                    score -= 8;
-                    break;
-                case BR:
-                    score -= 6;
-                    break;
-                case BP:
-                    score -= 1;
-                    break;
+            case WG:
+            case WPS:
+            case WPN:
+            case WPL:
+            case WPP:
+                score += 4;
+                break;
+            case WS:
+                score += 3;
+                break;
+            case WN:
+                score += 2;
+                break;
+            case WL:
+                score += 2;
+                break;
+            case WPB:
+                score += 7;
+                break;
+            case WB:
+                score += 5;
+                break;
+            case WPR:
+                score += 8;
+                break;
+            case WR:
+                score += 6;
+                break;
+            case WP:
+                score += 1;
+                break;
+            case BG:
+            case BPS:
+            case BPN:
+            case BPL:
+            case BPP:
+                score -= 4;
+                break;
+            case BS:
+                score -= 3;
+                break;
+            case BN:
+                score -= 2;
+                break;
+            case BL:
+                score -= 2;
+                break;
+            case BPB:
+                score -= 7;
+                break;
+            case BB:
+                score -= 5;
+                break;
+            case BPR:
+                score -= 8;
+                break;
+            case BR:
+                score -= 6;
+                break;
+            case BP:
+                score -= 1;
+                break;
             }
         }
         return score / 256.0;
@@ -840,39 +846,40 @@ public class ShogiState implements GameState {
         List<GameState> moves = new ArrayList<GameState>();
         for (int origin = 23; origin <= 119; origin++) {
             switch (player * board[origin]) {
-                case WK:
-                    generateKingMoves(origin, moves);
-                    break;
-                case WG:
-                case WPS:
-                case WPN:
-                case WPL:
-                case WPP:
-                    generateGoldMoves(origin, moves);
-                    break;
-                case WS:
-                    generateSilverMoves(origin, moves);
-                    break;
-                case WN:
-                    generateKnightMoves(origin, moves);
-                    break;
-                case WL:
-                    generateLanceMoves(origin, moves);
-                    break;
-                case WPB:
-                    generatePromotedBishopMoves(origin, moves);
-                    break;
-                case WB:
-                    generateBishopMoves(origin, moves);
-                    break;
-                case WPR:
-                    generatePromotedRookMoves(origin, moves);
-                    break;
-                case WR:
-                    generateRookMoves(origin, moves);
-                    break;
-                case WP:
-                    generatePawnMoves(origin, moves);
+            case WK:
+                generateKingMoves(origin, moves);
+                break;
+            case WG:
+            case WPS:
+            case WPN:
+            case WPL:
+            case WPP:
+                generateGoldMoves(origin, moves);
+                break;
+            case WS:
+                generateSilverMoves(origin, moves);
+                break;
+            case WN:
+                generateKnightMoves(origin, moves);
+                break;
+            case WL:
+                generateLanceMoves(origin, moves);
+                break;
+            case WPB:
+                generatePromotedBishopMoves(origin, moves);
+                break;
+            case WB:
+                generateBishopMoves(origin, moves);
+                break;
+            case WPR:
+                generatePromotedRookMoves(origin, moves);
+                break;
+            case WR:
+                generateRookMoves(origin, moves);
+                break;
+            case WP:
+                generatePawnMoves(origin, moves);
+                break;
             }
         }
         generateDrops(moves);
@@ -978,37 +985,38 @@ public class ShogiState implements GameState {
     public String getNotation() {
         String notation = "";
         switch (clicks[0]) {
-            case 123:
-            case 19:
-                notation += "G";
-                break;
-            case 124:
-            case 18:
-                notation += "S";
-                break;
-            case 125:
-            case 17:
-                notation += "N";
-                break;
-            case 126:
-            case 16:
-                notation += "L";
-                break;
-            case 127:
-            case 15:
-                notation += "B";
-                break;
-            case 128:
-            case 14:
-                notation += "R";
-                break;
-            case 129:
-            case 13:
-                notation += "P";
-                break;
-            default:
-                notation += (char)(clicks[0] % 11 + 96);
-                notation += 11 - clicks[0] / 11;
+        case 123:
+        case 19:
+            notation += "G";
+            break;
+        case 124:
+        case 18:
+            notation += "S";
+            break;
+        case 125:
+        case 17:
+            notation += "N";
+            break;
+        case 126:
+        case 16:
+            notation += "L";
+            break;
+        case 127:
+        case 15:
+            notation += "B";
+            break;
+        case 128:
+        case 14:
+            notation += "R";
+            break;
+        case 129:
+        case 13:
+            notation += "P";
+            break;
+        default:
+            notation += (char)(clicks[0] % 11 + 96);
+            notation += 11 - clicks[0] / 11;
+            break;
         }
         notation += (char)(clicks[1] % 11 + 96);
         notation += 11 - clicks[1] / 11;
@@ -1033,61 +1041,62 @@ public class ShogiState implements GameState {
         // update players' prisoners
         // drops have special pseudo-origins on the player's "zeroth" rank
         switch (piece) {
-            case WG:
-                move.whitePieces[WG]--;
-                origin = 123;
-                break;
-            case WS:
-                move.whitePieces[WS]--;
-                origin = 124;
-                break;
-            case WN:
-                move.whitePieces[WN]--;
-                origin = 125;
-                break;
-            case WL:
-                move.whitePieces[WL]--;
-                origin = 126;
-                break;
-            case WB:
-                move.whitePieces[WB]--;
-                origin = 127;
-                break;
-            case WR:
-                move.whitePieces[WR]--;
-                origin = 128;
-                break;
-            case WP:
-                move.whitePieces[WP]--;
-                origin = 129;
-                break;
-            case BG:
-                move.blackPieces[WG]--;
-                origin = 19;
-                break;
-            case BS:
-                move.blackPieces[WS]--;
-                origin = 18;
-                break;
-            case BN:
-                move.blackPieces[WN]--;
-                origin = 17;
-                break;
-            case BL:
-                move.blackPieces[WL]--;
-                origin = 16;
-                break;
-            case BB:
-                move.blackPieces[WB]--;
-                origin = 15;
-                break;
-            case BR:
-                move.blackPieces[WR]--;
-                origin = 14;
-                break;
-            case BP:
-                move.blackPieces[WP]--;
-                origin = 13;
+        case WG:
+            move.whitePieces[WG]--;
+            origin = 123;
+            break;
+        case WS:
+            move.whitePieces[WS]--;
+            origin = 124;
+            break;
+        case WN:
+            move.whitePieces[WN]--;
+            origin = 125;
+            break;
+        case WL:
+            move.whitePieces[WL]--;
+            origin = 126;
+            break;
+        case WB:
+            move.whitePieces[WB]--;
+            origin = 127;
+            break;
+        case WR:
+            move.whitePieces[WR]--;
+            origin = 128;
+            break;
+        case WP:
+            move.whitePieces[WP]--;
+            origin = 129;
+            break;
+        case BG:
+            move.blackPieces[WG]--;
+            origin = 19;
+            break;
+        case BS:
+            move.blackPieces[WS]--;
+            origin = 18;
+            break;
+        case BN:
+            move.blackPieces[WN]--;
+            origin = 17;
+            break;
+        case BL:
+            move.blackPieces[WL]--;
+            origin = 16;
+            break;
+        case BB:
+            move.blackPieces[WB]--;
+            origin = 15;
+            break;
+        case BR:
+            move.blackPieces[WR]--;
+            origin = 14;
+            break;
+        case BP:
+            move.blackPieces[WP]--;
+            origin = 13;
+            break;
         }
         move.clicks = new int[] { origin, target };
         return move;
@@ -1099,59 +1108,60 @@ public class ShogiState implements GameState {
         move.board[target] = board[origin];
         // update players' prisoners
         switch (board[target]) {
-            case WG:
-                move.blackPieces[WG]++;
-                break;
-            case WPS:
-            case WS:
-                move.blackPieces[WS]++;
-                break;
-            case WPN:
-            case WN:
-                move.blackPieces[WN]++;
-                break;
-            case WPL:
-            case WL:
-                move.blackPieces[WL]++;
-                break;
-            case WPB:
-            case WB:
-                move.blackPieces[WB]++;
-                break;
-            case WPR:
-            case WR:
-                move.blackPieces[WR]++;
-                break;
-            case WPP:
-            case WP:
-                move.blackPieces[WP]++;
-                break;
-            case BG:
-                move.whitePieces[WG]++;
-                break;
-            case BPS:
-            case BS:
-                move.whitePieces[WS]++;
-                break;
-            case BPN:
-            case BN:
-                move.whitePieces[WN]++;
-                break;
-            case BPL:
-            case BL:
-                move.whitePieces[WL]++;
-                break;
-            case BPB:
-            case BB:
-                move.whitePieces[WB]++;
-                break;
-            case BPR:
-            case BR:
-                move.whitePieces[WR]++;
-                break;
-            case BPP:
-            case BP:
-                move.whitePieces[WP]++;
+        case WG:
+            move.blackPieces[WG]++;
+            break;
+        case WPS:
+        case WS:
+            move.blackPieces[WS]++;
+            break;
+        case WPN:
+        case WN:
+            move.blackPieces[WN]++;
+            break;
+        case WPL:
+        case WL:
+            move.blackPieces[WL]++;
+            break;
+        case WPB:
+        case WB:
+            move.blackPieces[WB]++;
+            break;
+        case WPR:
+        case WR:
+            move.blackPieces[WR]++;
+            break;
+        case WPP:
+        case WP:
+            move.blackPieces[WP]++;
+            break;
+        case BG:
+            move.whitePieces[WG]++;
+            break;
+        case BPS:
+        case BS:
+            move.whitePieces[WS]++;
+            break;
+        case BPN:
+        case BN:
+            move.whitePieces[WN]++;
+            break;
+        case BPL:
+        case BL:
+            move.whitePieces[WL]++;
+            break;
+        case BPB:
+        case BB:
+            move.whitePieces[WB]++;
+            break;
+        case BPR:
+        case BR:
+            move.whitePieces[WR]++;
+            break;
+        case BPP:
+        case BP:
+            move.whitePieces[WP]++;
+            break;
         }
         // update king positions
         if (origin == whiteKing) {
@@ -1175,59 +1185,60 @@ public class ShogiState implements GameState {
         }
         // update players' prisoners
         switch (board[target]) {
-            case WG:
-                move.blackPieces[WG]++;
-                break;
-            case WPS:
-            case WS:
-                move.blackPieces[WS]++;
-                break;
-            case WPN:
-            case WN:
-                move.blackPieces[WN]++;
-                break;
-            case WPL:
-            case WL:
-                move.blackPieces[WL]++;
-                break;
-            case WPB:
-            case WB:
-                move.blackPieces[WB]++;
-                break;
-            case WPR:
-            case WR:
-                move.blackPieces[WR]++;
-                break;
-            case WPP:
-            case WP:
-                move.blackPieces[WP]++;
-                break;
-            case BG:
-                move.whitePieces[WG]++;
-                break;
-            case BPS:
-            case BS:
-                move.whitePieces[WS]++;
-                break;
-            case BPN:
-            case BN:
-                move.whitePieces[WN]++;
-                break;
-            case BPL:
-            case BL:
-                move.whitePieces[WL]++;
-                break;
-            case BPB:
-            case BB:
-                move.whitePieces[WB]++;
-                break;
-            case BPR:
-            case BR:
-                move.whitePieces[WR]++;
-                break;
-            case BPP:
-            case BP:
-                move.whitePieces[WP]++;
+        case WG:
+            move.blackPieces[WG]++;
+            break;
+        case WPS:
+        case WS:
+            move.blackPieces[WS]++;
+            break;
+        case WPN:
+        case WN:
+            move.blackPieces[WN]++;
+            break;
+        case WPL:
+        case WL:
+            move.blackPieces[WL]++;
+            break;
+        case WPB:
+        case WB:
+            move.blackPieces[WB]++;
+            break;
+        case WPR:
+        case WR:
+            move.blackPieces[WR]++;
+            break;
+        case WPP:
+        case WP:
+            move.blackPieces[WP]++;
+            break;
+        case BG:
+            move.whitePieces[WG]++;
+            break;
+        case BPS:
+        case BS:
+            move.whitePieces[WS]++;
+            break;
+        case BPN:
+        case BN:
+            move.whitePieces[WN]++;
+            break;
+        case BPL:
+        case BL:
+            move.whitePieces[WL]++;
+            break;
+        case BPB:
+        case BB:
+            move.whitePieces[WB]++;
+            break;
+        case BPR:
+        case BR:
+            move.whitePieces[WR]++;
+            break;
+        case BPP:
+        case BP:
+            move.whitePieces[WP]++;
+            break;
         }
         move.clicks = new int[] { origin, target, promotion };
         return move;
@@ -1236,19 +1247,19 @@ public class ShogiState implements GameState {
     private boolean mustPromote(int origin, int target) {
         int row = target / 11 - 2;
         switch (board[origin]) {
-            case WN:
-                return row < 2;
-            case WL:
-            case WP:
-                return row == 0;
-            case BN:
-                return row > 6;
-            case BL:
-            case BP:
-                return row == 8;
-            default:
-                // all other pieces are never forced to promote.
-                return false;
+        case WN:
+            return row < 2;
+        case WL:
+        case WP:
+            return row == 0;
+        case BN:
+            return row > 6;
+        case BL:
+        case BP:
+            return row == 8;
+        default:
+            // all other pieces are never forced to promote.
+            return false;
         }
     }
 }

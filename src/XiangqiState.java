@@ -208,48 +208,48 @@ public class XiangqiState implements GameState {
             int x = 6 * col + 5;
             int y = 6 * row + 2;
             switch (board[point]) {
-                case WK:
-                    image.fillTile(x + 1, y + 1, "whiteking.png");
-                    break;
-                case WQ:
-                    image.fillTile(x + 1, y + 1, "whitequeen.png");
-                    break;
-                case WB:
-                    image.fillTile(x + 1, y + 1, "whitebishop.png");
-                    break;
-                case WN:
-                    image.fillTile(x + 1, y + 1, "whiteknight.png");
-                    break;
-                case WR:
-                    image.fillTile(x + 1, y + 1, "whiterook.png");
-                    break;
-                case WC:
-                    image.fillTile(x + 1, y + 1, "whitecannon.png");
-                    break;
-                case WP:
-                    image.fillTile(x + 1, y + 1, "whitepawn.png");
-                    break;
-                case BK:
-                    image.fillTile(x + 1, y + 1, "blackking.png");
-                    break;
-                case BQ:
-                    image.fillTile(x + 1, y + 1, "blackqueen.png");
-                    break;
-                case BB:
-                    image.fillTile(x + 1, y + 1, "blackbishop.png");
-                    break;
-                case BN:
-                    image.fillTile(x + 1, y + 1, "blackknight.png");
-                    break;
-                case BR:
-                    image.fillTile(x + 1, y + 1, "blackrook.png");
-                    break;
-                case BC:
-                    image.fillTile(x + 1, y + 1, "blackcannon.png");
-                    break;
-                case BP:
-                    image.fillTile(x + 1, y + 1, "blackpawn.png");
-                    break;
+            case WK:
+                image.fillTile(x + 1, y + 1, "whiteking.png");
+                break;
+            case WQ:
+                image.fillTile(x + 1, y + 1, "whitequeen.png");
+                break;
+            case WB:
+                image.fillTile(x + 1, y + 1, "whitebishop.png");
+                break;
+            case WN:
+                image.fillTile(x + 1, y + 1, "whiteknight.png");
+                break;
+            case WR:
+                image.fillTile(x + 1, y + 1, "whiterook.png");
+                break;
+            case WC:
+                image.fillTile(x + 1, y + 1, "whitecannon.png");
+                break;
+            case WP:
+                image.fillTile(x + 1, y + 1, "whitepawn.png");
+                break;
+            case BK:
+                image.fillTile(x + 1, y + 1, "blackking.png");
+                break;
+            case BQ:
+                image.fillTile(x + 1, y + 1, "blackqueen.png");
+                break;
+            case BB:
+                image.fillTile(x + 1, y + 1, "blackbishop.png");
+                break;
+            case BN:
+                image.fillTile(x + 1, y + 1, "blackknight.png");
+                break;
+            case BR:
+                image.fillTile(x + 1, y + 1, "blackrook.png");
+                break;
+            case BC:
+                image.fillTile(x + 1, y + 1, "blackcannon.png");
+                break;
+            case BP:
+                image.fillTile(x + 1, y + 1, "blackpawn.png");
+                break;
             }
             if (userClicks.contains(point)) {
                 image.fillTile(x, y, "selection.png");
@@ -266,42 +266,42 @@ public class XiangqiState implements GameState {
         double score = 0;
         for (int point = 12; point <= 119; point++) {
             switch (board[point]) {
-                case WQ:
-                    score += 2;
-                    break;
-                case WB:
-                    score += 2;
-                    break;
-                case WN:
-                    score += 4;
-                    break;
-                case WR:
-                    score += 9;
-                    break;
-                case WC:
-                    score += 4.5;
-                    break;
-                case WP:
-                    score += point < 66 ? 2 : 1;
-                    break;
-                case BQ:
-                    score -= 2;
-                    break;
-                case BB:
-                    score -= 2;
-                    break;
-                case BN:
-                    score -= 4;
-                    break;
-                case BR:
-                    score -= 9;
-                    break;
-                case BC:
-                    score -= 4.5;
-                    break;
-                case BP:
-                    score -= point >= 66 ? 2 : 1;
-                    break;
+            case WQ:
+                score += 2;
+                break;
+            case WB:
+                score += 2;
+                break;
+            case WN:
+                score += 4;
+                break;
+            case WR:
+                score += 9;
+                break;
+            case WC:
+                score += 4.5;
+                break;
+            case WP:
+                score += point < 66 ? 2 : 1;
+                break;
+            case BQ:
+                score -= 2;
+                break;
+            case BB:
+                score -= 2;
+                break;
+            case BN:
+                score -= 4;
+                break;
+            case BR:
+                score -= 9;
+                break;
+            case BC:
+                score -= 4.5;
+                break;
+            case BP:
+                score -= point >= 66 ? 2 : 1;
+                break;
             }
         }
         return score / 64;
@@ -367,27 +367,27 @@ public class XiangqiState implements GameState {
         List<GameState> moves = new ArrayList<GameState>();
         for (int origin = 12; origin <= 119; origin++) {
             switch (player * board[origin]) {
-                case WK:
-                    generateKingMoves(origin, moves);
-                    break;
-                case WQ:
-                    generateQueenMoves(origin, moves);
-                    break;
-                case WB:
-                    generateBishopMoves(origin, moves);
-                    break;
-                case WN:
-                    generateKnightMoves(origin, moves);
-                    break;
-                case WR:
-                    generateRookMoves(origin, moves);
-                    break;
-                case WC:
-                    generateCannonMoves(origin, moves);
-                    break;
-                case WP:
-                    generatePawnMoves(origin, moves);
-                    break;
+            case WK:
+                generateKingMoves(origin, moves);
+                break;
+            case WQ:
+                generateQueenMoves(origin, moves);
+                break;
+            case WB:
+                generateBishopMoves(origin, moves);
+                break;
+            case WN:
+                generateKnightMoves(origin, moves);
+                break;
+            case WR:
+                generateRookMoves(origin, moves);
+                break;
+            case WC:
+                generateCannonMoves(origin, moves);
+                break;
+            case WP:
+                generatePawnMoves(origin, moves);
+                break;
             }
         }
         return moves;

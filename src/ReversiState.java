@@ -55,11 +55,12 @@ public class ReversiState implements GameState {
             int x = 6 * col + 8;
             int y = 6 * row + 8;
             switch (board[square]) {
-                case WH:
-                    image.fillTile(x + 1, y + 1, "whitepiece.png");
-                    break;
-                case BL:
-                    image.fillTile(x + 1, y + 1, "blackpiece.png");
+            case WH:
+                image.fillTile(x + 1, y + 1, "whitepiece.png");
+                break;
+            case BL:
+                image.fillTile(x + 1, y + 1, "blackpiece.png");
+                break;
             }
             image.addRegion(square, x, y, 6, 6);
         }

@@ -62,11 +62,12 @@ public class Go9State implements GameState {
             int x = 4 * col + 14;
             int y = 4 * row + 14;
             switch (board[point]) {
-                case WHITE:
-                    image.fillTile(x, y, "whitepiece.png");
-                    break;
-                case BLACK:
-                    image.fillTile(x, y, "blackpiece.png");
+            case WHITE:
+                image.fillTile(x, y, "whitepiece.png");
+                break;
+            case BLACK:
+                image.fillTile(x, y, "blackpiece.png");
+                break;
             }
             image.addRegion(point, x, y, 4, 4);
         }

@@ -1,6 +1,8 @@
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.net.URI;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -8,60 +10,44 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GamesPanel extends JPanel implements ActionListener {
-    // to do: put this in a config file
-    private static final String[] GAMES = new String[] {
-        "Checkers/Draughts",
-        "Chess",
-        "Go 9x9",
-        "Gomoku",
-        "Nine Men's Morris",
-        "Oware",
-        "Reversi",
-        "Shogi",
-        "Tablut",
-        "Xiangqi"
-    };
-
-    private static final String[] RULES = new String[] {
-        "https://wcdf.net/rules.htm",
-        "https://handbook.fide.com/chapter/E012023",
-        "https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html",
-        "https://en.wikipedia.org/wiki/Gomoku",
-        "https://library.slmath.org/books/Book29/files/gasser.pdf",
-        "http://www.oware.org/abapa.asp",
-        "https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english",
-        "https://fesashogi.eu/pdf/FESA%20rules.pdf",
-        "https://en.wikipedia.org/wiki/Tafl_games#Tablut",
-        "https://www.xiangqi.com/how-to-play-xiangqi"
-    };
-
-    private static final String[] CLASSES = new String[] {
-        "CheckersState",
-        "ChessState",
-        "Go9State",
-        "GomokuState",
-        "MorrisState",
-        "OwareState",
-        "ReversiState",
-        "ShogiState",
-        "TablutState",
-        "XiangqiState"
-    };
-
+    private List<String> games;
+    private List<String> classes;
+    private List<String> rules;
     private JList<String> gamesList;
 
     public GamesPanel() {
         super();
+
+        // load config file
+        games = new ArrayList<String>();
+        classes = new ArrayList<String>();
+        rules = new ArrayList<String>();
+        try {
+            BufferedReader reader = new BufferedReader(
+                new FileReader("config.csv"));
+            String line = reader.readLine();
+            while (line != null) {
+                String[] cells = line.split(",");
+                games.add(cells[0]);
+                classes.add(cells[1]);
+                rules.add(cells[2]);
+                line = reader.readLine();
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+        // set up contents
         setBorder(new TitledBorder("Games"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        gamesList = new JList<String>(GAMES);
+        gamesList = new JList<String>(games.toArray(new String[0]));
         gamesList.setSelectedIndex(0);
         JScrollPane scrollPane = new JScrollPane(gamesList);
         add(scrollPane);
-
         JButton rulesButton = new JButton("Rules");
         rulesButton.addActionListener(this);
         add(rulesButton);
@@ -70,7 +56,7 @@ public class GamesPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         try {
             int index = gamesList.getSelectedIndex();
-            Desktop.getDesktop().browse(new URI(RULES[index]));
+            Desktop.getDesktop().browse(new URI(rules.get(index)));
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -78,14 +64,14 @@ public class GamesPanel extends JPanel implements ActionListener {
 
     public String getGameName() {
         int index = gamesList.getSelectedIndex();
-        return GAMES[index];
+        return games.get(index);
     }
 
     public GameState getState() {
         GameState state = null;
         try {
             int index = gamesList.getSelectedIndex();
-            Class<?> cls = Class.forName(CLASSES[index]);
+            Class<?> cls = Class.forName(classes.get(index));
             state = (GameState)cls.getConstructor().newInstance();
         } catch (Exception exception) {
             exception.printStackTrace();

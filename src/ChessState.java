@@ -58,7 +58,6 @@ public class ChessState implements GameState {
         castling = new boolean[] { true, true, true, true };
         enPassant = -1;
         player = 1;
-        userClicks = new ArrayList<Integer>();
         whiteKing = 95;
     }
 
@@ -68,7 +67,6 @@ public class ChessState implements GameState {
         castling = that.castling.clone();
         enPassant = -1;
         player = -that.player;
-        userClicks = new ArrayList<Integer>();
         whiteKing = that.whiteKing;
     }
 
@@ -211,6 +209,9 @@ public class ChessState implements GameState {
     }
 
     public GameImage draw() {
+        if (userClicks == null) {
+            userClicks = new ArrayList<Integer>();
+        }
         GameImage image = new GameImage();
         image.fillTile(0, 0, "chess.png");
         for (int square = 21; square <= 98; square++) {
@@ -219,41 +220,42 @@ public class ChessState implements GameState {
             int x = 6 * col + 8;
             int y = 6 * row + 8;
             switch (board[square]) {
-                case WK:
-                    image.fillTile(x + 1, y + 1, "whiteking.png");
-                    break;
-                case WQ:
-                    image.fillTile(x + 1, y + 1, "whitequeen.png");
-                    break;
-                case WB:
-                    image.fillTile(x + 1, y + 1, "whitebishop.png");
-                    break;
-                case WN:
-                    image.fillTile(x + 1, y + 1, "whiteknight.png");
-                    break;
-                case WR:
-                    image.fillTile(x + 1, y + 1, "whiterook.png");
-                    break;
-                case WP:
-                    image.fillTile(x + 1, y + 1, "whitepawn.png");
-                    break;
-                case BK:
-                    image.fillTile(x + 1, y + 1, "blackking.png");
-                    break;
-                case BQ:
-                    image.fillTile(x + 1, y + 1, "blackqueen.png");
-                    break;
-                case BB:
-                    image.fillTile(x + 1, y + 1, "blackbishop.png");
-                    break;
-                case BN:
-                    image.fillTile(x + 1, y + 1, "blackknight.png");
-                    break;
-                case BR:
-                    image.fillTile(x + 1, y + 1, "blackrook.png");
-                    break;
-                case BP:
-                    image.fillTile(x + 1, y + 1, "blackpawn.png");
+            case WK:
+                image.fillTile(x + 1, y + 1, "whiteking.png");
+                break;
+            case WQ:
+                image.fillTile(x + 1, y + 1, "whitequeen.png");
+                break;
+            case WB:
+                image.fillTile(x + 1, y + 1, "whitebishop.png");
+                break;
+            case WN:
+                image.fillTile(x + 1, y + 1, "whiteknight.png");
+                break;
+            case WR:
+                image.fillTile(x + 1, y + 1, "whiterook.png");
+                break;
+            case WP:
+                image.fillTile(x + 1, y + 1, "whitepawn.png");
+                break;
+            case BK:
+                image.fillTile(x + 1, y + 1, "blackking.png");
+                break;
+            case BQ:
+                image.fillTile(x + 1, y + 1, "blackqueen.png");
+                break;
+            case BB:
+                image.fillTile(x + 1, y + 1, "blackbishop.png");
+                break;
+            case BN:
+                image.fillTile(x + 1, y + 1, "blackknight.png");
+                break;
+            case BR:
+                image.fillTile(x + 1, y + 1, "blackrook.png");
+                break;
+            case BP:
+                image.fillTile(x + 1, y + 1, "blackpawn.png");
+                break;
             }
             if (userClicks.contains(square)) {
                 image.fillTile(x, y, "selection.png");
@@ -296,36 +298,36 @@ public class ChessState implements GameState {
         int score = 0;
         for (int square = 21; square <= 98; square++) {
             switch (board[square]) {
-                case WQ:
-                    score += 9;
-                    break;
-                case WB:
-                    score += 3;
-                    break;
-                case WN:
-                    score += 3;
-                    break;
-                case WR:
-                    score += 5;
-                    break;
-                case WP:
-                    score++;
-                    break;
-                case BQ:
-                    score -= 9;
-                    break;
-                case BB:
-                    score -= 3;
-                    break;
-                case BN:
-                    score -= 3;
-                    break;
-                case BR:
-                    score -= 5;
-                    break;
-                case BP:
-                    score--;
-                    break;
+            case WQ:
+                score += 9;
+                break;
+            case WB:
+                score += 3;
+                break;
+            case WN:
+                score += 3;
+                break;
+            case WR:
+                score += 5;
+                break;
+            case WP:
+                score++;
+                break;
+            case BQ:
+                score -= 9;
+                break;
+            case BB:
+                score -= 3;
+                break;
+            case BN:
+                score -= 3;
+                break;
+            case BR:
+                score -= 5;
+                break;
+            case BP:
+                score--;
+                break;
             }
         }
         return score / 256.0;
@@ -407,23 +409,24 @@ public class ChessState implements GameState {
         List<GameState> moves = new ArrayList<GameState>();
         for (int origin = 21; origin <= 98; origin++) {
             switch (player * board[origin]) {
-                case WK:
-                    generateKingMoves(origin, moves);
-                    break;
-                case WQ:
-                    generateQueenMoves(origin, moves);
-                    break;
-                case WB:
-                    generateBishopMoves(origin, moves);
-                    break;
-                case WN:
-                    generateKnightMoves(origin, moves);
-                    break;
-                case WR:
-                    generateRookMoves(origin, moves);
-                    break;
-                case WP:
-                    generatePawnMoves(origin, moves);
+            case WK:
+                generateKingMoves(origin, moves);
+                break;
+            case WQ:
+                generateQueenMoves(origin, moves);
+                break;
+            case WB:
+                generateBishopMoves(origin, moves);
+                break;
+            case WN:
+                generateKnightMoves(origin, moves);
+                break;
+            case WR:
+                generateRookMoves(origin, moves);
+                break;
+            case WP:
+                generatePawnMoves(origin, moves);
+                break;
             }
         }
         return moves;
@@ -516,21 +519,22 @@ public class ChessState implements GameState {
         // promotion
         if (clicks.length == 3) {
             switch (clicks[2]) {
-                case WQ:
-                case BQ:
-                    notation += "q";
-                    break;
-                case WB:
-                case BB:
-                    notation += "b";
-                    break;
-                case WN:
-                case BN:
-                    notation += "n";
-                    break;
-                case WR:
-                case BR:
-                    notation += "r";
+            case WQ:
+            case BQ:
+                notation += "q";
+                break;
+            case WB:
+            case BB:
+                notation += "b";
+                break;
+            case WN:
+            case BN:
+                notation += "n";
+                break;
+            case WR:
+            case BR:
+                notation += "r";
+                break;
             }
         }
         return notation;

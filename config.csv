@@ -1,0 +1,10 @@
+Checkers/Draughts,CheckersState,https://wcdf.net/rules.htm
+Chess,ChessState,https://handbook.fide.com/chapter/E012023
+Go 9x9,Go9State,https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
+Gomoku,GomokuState,https://en.wikipedia.org/wiki/Gomoku
+Nine Men's Morris,MorrisState,https://library.slmath.org/books/Book29/files/gasser.pdf
+Oware,OwareState,http://www.oware.org/abapa.asp
+Reversi,ReversiState,https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english
+Shogi,ShogiState,https://fesashogi.eu/pdf/FESA%20rules.pdf
+Tablut,TablutState,https://en.wikipedia.org/wiki/Tafl_games#Tablut
+Xiangqi,XiangqiState,https://www.xiangqi.com/how-to-play-xiangqi

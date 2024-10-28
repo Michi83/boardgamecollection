@@ -40,11 +40,12 @@ public class GomokuState implements GameState {
             int x = 4 * col + 2;
             int y = 4 * row + 2;
             switch (board[point]) {
-                case WHITE:
-                    image.fillTile(x, y, "whitepiece.png");
-                    break;
-                case BLACK:
-                    image.fillTile(x, y, "blackpiece.png");
+            case WHITE:
+                image.fillTile(x, y, "whitepiece.png");
+                break;
+            case BLACK:
+                image.fillTile(x, y, "blackpiece.png");
+                break;
             }
             image.addRegion(point, x, y, 4, 4);
         }
@@ -61,11 +62,12 @@ public class GomokuState implements GameState {
                 int dy = Math.abs(7 - row);
                 int value = 8 - Math.max(dx, dy);
                 switch (board[point]) {
-                    case WHITE:
-                        score += value;
-                        break;
-                    case BLACK:
-                        score -= value;
+                case WHITE:
+                    score += value;
+                    break;
+                case BLACK:
+                    score -= value;
+                    break;
                 }
             }
             score /= 512;

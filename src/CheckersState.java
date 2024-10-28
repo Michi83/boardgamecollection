@@ -30,13 +30,11 @@ public class CheckersState implements GameState {
             LV, LV, LV, LV, LV, LV, LV, LV, LV, LV
         };
         player = -1;
-        userClicks = new ArrayList<Integer>();
     }
 
     private CheckersState(CheckersState that) {
         board = that.board.clone();
         player = that.player;
-        userClicks = new ArrayList<Integer>();
     }
 
     private boolean capturable(int square) {
@@ -70,6 +68,9 @@ public class CheckersState implements GameState {
     }
 
     public GameImage draw() {
+        if (userClicks == null) {
+            userClicks = new ArrayList<Integer>();
+        }
         GameImage image = new GameImage();
         image.fillTile(0, 0, "chess.png");
         for (int square = 12; square <= 87; square++) {
@@ -78,17 +79,18 @@ public class CheckersState implements GameState {
             int x = 6 * col + 8;
             int y = 6 * row + 8;
             switch (board[square]) {
-                case WK:
-                    image.fillTile(x + 1, y + 1, "whiteking.png");
-                    break;
-                case WM:
-                    image.fillTile(x + 1, y + 1, "whitepiece.png");
-                    break;
-                case BK:
-                    image.fillTile(x + 1, y + 1, "blackking.png");
-                    break;
-                case BM:
-                    image.fillTile(x + 1, y + 1, "blackpiece.png");
+            case WK:
+                image.fillTile(x + 1, y + 1, "whiteking.png");
+                break;
+            case WM:
+                image.fillTile(x + 1, y + 1, "whitepiece.png");
+                break;
+            case BK:
+                image.fillTile(x + 1, y + 1, "blackking.png");
+                break;
+            case BM:
+                image.fillTile(x + 1, y + 1, "blackpiece.png");
+                break;
             }
             if (userClicks.contains(square)) {
                 image.fillTile(x, y, "selection.png");
@@ -105,17 +107,18 @@ public class CheckersState implements GameState {
         int score = 0;
         for (int square = 12; square <= 87; square++) {
             switch (board[square]) {
-                case WK:
-                    score += 2;
-                    break;
-                case WM:
-                    score++;
-                    break;
-                case BK:
-                    score -= 2;
-                    break;
-                case BM:
-                    score--;
+            case WK:
+                score += 2;
+                break;
+            case WM:
+                score++;
+                break;
+            case BK:
+                score -= 2;
+                break;
+            case BM:
+                score--;
+                break;
             }
         }
         return score / 32.0;
@@ -125,11 +128,12 @@ public class CheckersState implements GameState {
         List<GameState> moves = new ArrayList<GameState>();
         for (int origin = 12; origin <= 87; origin++) {
             switch (player * board[origin]) {
-                case WK:
-                    generateKingCaptures(origin, moves);
-                    break;
-                case WM:
-                    generateManCaptures(origin, moves);
+            case WK:
+                generateKingCaptures(origin, moves);
+                break;
+            case WM:
+                generateManCaptures(origin, moves);
+                break;
             }
         }
         return moves;
@@ -212,11 +216,12 @@ public class CheckersState implements GameState {
         List<GameState> moves = new ArrayList<GameState>();
         for (int origin = 12; origin <= 87; origin++) {
             switch (player * board[origin]) {
-                case WK:
-                    generateKingNonCaptures(origin, moves);
-                    break;
-                case WM:
-                    generateManNonCaptures(origin, moves);
+            case WK:
+                generateKingNonCaptures(origin, moves);
+                break;
+            case WM:
+                generateManNonCaptures(origin, moves);
+                break;
             }
         }
         return moves;
