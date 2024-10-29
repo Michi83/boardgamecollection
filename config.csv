@@ -2,6 +2,7 @@ Checkers/Draughts,CheckersState,https://wcdf.net/rules.htm
 Chess,ChessState,https://handbook.fide.com/chapter/E012023
 Go 9x9,Go9State,https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 Gomoku,GomokuState,https://en.wikipedia.org/wiki/Gomoku
+International Checkers/Draughts,InternationalCheckersState,https://www.fmjd.org/docs/Annex_1.pdf
 Nine Men's Morris,MorrisState,https://library.slmath.org/books/Book29/files/gasser.pdf
 Oware,OwareState,http://www.oware.org/abapa.asp
 Reversi,ReversiState,https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english

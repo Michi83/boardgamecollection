@@ -23,6 +23,7 @@ inkscape img/svg/blackshogisilver.svg --export-type=png --export-filename=img/pn
 inkscape img/svg/blacksmallking.svg --export-type=png --export-filename=img/png/blacksmallking.png
 inkscape img/svg/blacksmallpiece.svg --export-type=png --export-filename=img/png/blacksmallpiece.png
 inkscape img/svg/chess.svg --export-type=png --export-filename=img/png/chess.png
+inkscape img/svg/chess10x10.svg --export-type=png --export-filename=img/png/chess10x10.png
 inkscape img/svg/go9.svg --export-type=png --export-filename=img/png/go9.png
 inkscape img/svg/gomoku.svg --export-type=png --export-filename=img/png/gomoku.png
 inkscape img/svg/mancala.svg --export-type=png --export-filename=img/png/mancala.png
@@ -61,6 +62,7 @@ javac -d bin -sourcepath src src/CheckersState.java
 javac -d bin -sourcepath src src/ChessState.java
 javac -d bin -sourcepath src src/Go9State.java
 javac -d bin -sourcepath src src/GomokuState.java
+javac -d bin -sourcepath src src/InternationalCheckersState.java
 javac -d bin -sourcepath src src/MainWindow.java
 javac -d bin -sourcepath src src/MorrisState.java
 javac -d bin -sourcepath src src/OwareState.java
