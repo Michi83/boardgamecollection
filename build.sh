@@ -64,6 +64,7 @@ inkscape img/svg/whitesmallghostpiece.svg --export-type=png --export-filename=im
 inkscape img/svg/whitesmallking.svg --export-type=png --export-filename=img/png/whitesmallking.png
 inkscape img/svg/whitesmallpiece.svg --export-type=png --export-filename=img/png/whitesmallpiece.png
 inkscape img/svg/xiangqi.svg --export-type=png --export-filename=img/png/xiangqi.png
+mkdir bin
 javac -d bin -sourcepath src src/CheckersState.java
 javac -d bin -sourcepath src src/ChessState.java
 javac -d bin -sourcepath src src/Go9State.java
@@ -79,3 +80,4 @@ javac -d bin -sourcepath src src/ShogiState.java
 javac -d bin -sourcepath src src/TablutState.java
 javac -d bin -sourcepath src src/XiangqiState.java
 jar -c -e MainWindow -f "Board Game Collection.jar" -C bin .
+rm -rf bin
