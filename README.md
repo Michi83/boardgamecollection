@@ -1,8 +1,10 @@
+# Board Game Collection
+
 A collection of classic board games that can be played against a computer opponent.
 
 Mostly intended for casual players, who want to try out different games. Don't expect the computer to be particularly good at any one game.
 
-![Chess initial position](img/screenshots/chess.png) ![Checkers initial position](img/screenshots/checkers.png) ![Nine Men's Morris initial position](img/screenshots/morris.png)
+<img alt="Chess initial position" height="256" src="img/screenshots/chess.png" width="256"> <img alt="Checkers initial position" height="256" src="img/screenshots/checkers.png" width="256"> <img alt="Nine Men's Morris initial position" height="256" src="img/screenshots/morris.png" width="256">
 
 ## How to play
 
