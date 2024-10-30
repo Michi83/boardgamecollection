@@ -78,3 +78,4 @@ javac -d bin -sourcepath src src/ReversiState.java
 javac -d bin -sourcepath src src/ShogiState.java
 javac -d bin -sourcepath src src/TablutState.java
 javac -d bin -sourcepath src src/XiangqiState.java
+jar -c -e MainWindow -f "Board Game Collection.jar" -C bin .

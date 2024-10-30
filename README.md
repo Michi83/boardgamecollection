@@ -14,6 +14,8 @@ Mostly intended for casual players, who want to try out different games. Don't e
 
 - Checkers/Draughts
 - Chess
+- Go 19×19
+- Go 13×13
 - Go 9×9
 - Gomoku
 - International Checkers/Draughts
