@@ -1,5 +1,6 @@
 inkscape img/svg/blackbishop.svg --export-type=png --export-filename=img/png/blackbishop.png
 inkscape img/svg/blackcannon.svg --export-type=png --export-filename=img/png/blackcannon.png
+inkscape img/svg/blackghostpiece.svg --export-type=png --export-filename=img/png/blackghostpiece.png
 inkscape img/svg/blackking.svg --export-type=png --export-filename=img/png/blackking.png
 inkscape img/svg/blackknight.svg --export-type=png --export-filename=img/png/blackknight.png
 inkscape img/svg/blackpawn.svg --export-type=png --export-filename=img/png/blackpawn.png
@@ -20,11 +21,14 @@ inkscape img/svg/blackshogilance.svg --export-type=png --export-filename=img/png
 inkscape img/svg/blackshogipawn.svg --export-type=png --export-filename=img/png/blackshogipawn.png
 inkscape img/svg/blackshogirook.svg --export-type=png --export-filename=img/png/blackshogirook.png
 inkscape img/svg/blackshogisilver.svg --export-type=png --export-filename=img/png/blackshogisilver.png
+inkscape img/svg/blacksmallghostpiece.svg --export-type=png --export-filename=img/png/blacksmallghostpiece.png
 inkscape img/svg/blacksmallking.svg --export-type=png --export-filename=img/png/blacksmallking.png
 inkscape img/svg/blacksmallpiece.svg --export-type=png --export-filename=img/png/blacksmallpiece.png
 inkscape img/svg/chess.svg --export-type=png --export-filename=img/png/chess.png
 inkscape img/svg/chess10x10.svg --export-type=png --export-filename=img/png/chess10x10.png
 inkscape img/svg/go9.svg --export-type=png --export-filename=img/png/go9.png
+inkscape img/svg/go13.svg --export-type=png --export-filename=img/png/go13.png
+inkscape img/svg/go19.svg --export-type=png --export-filename=img/png/go19.png
 inkscape img/svg/gomoku.svg --export-type=png --export-filename=img/png/gomoku.png
 inkscape img/svg/mancala.svg --export-type=png --export-filename=img/png/mancala.png
 inkscape img/svg/morris.svg --export-type=png --export-filename=img/png/morris.png
@@ -35,6 +39,7 @@ inkscape img/svg/shogi.svg --export-type=png --export-filename=img/png/shogi.png
 inkscape img/svg/tablut.svg --export-type=png --export-filename=img/png/tablut.png
 inkscape img/svg/whitebishop.svg --export-type=png --export-filename=img/png/whitebishop.png
 inkscape img/svg/whitecannon.svg --export-type=png --export-filename=img/png/whitecannon.png
+inkscape img/svg/whiteghostpiece.svg --export-type=png --export-filename=img/png/whiteghostpiece.png
 inkscape img/svg/whiteking.svg --export-type=png --export-filename=img/png/whiteking.png
 inkscape img/svg/whiteknight.svg --export-type=png --export-filename=img/png/whiteknight.png
 inkscape img/svg/whitepawn.svg --export-type=png --export-filename=img/png/whitepawn.png
@@ -55,12 +60,15 @@ inkscape img/svg/whiteshogilance.svg --export-type=png --export-filename=img/png
 inkscape img/svg/whiteshogipawn.svg --export-type=png --export-filename=img/png/whiteshogipawn.png
 inkscape img/svg/whiteshogirook.svg --export-type=png --export-filename=img/png/whiteshogirook.png
 inkscape img/svg/whiteshogisilver.svg --export-type=png --export-filename=img/png/whiteshogisilver.png
+inkscape img/svg/whitesmallghostpiece.svg --export-type=png --export-filename=img/png/whitesmallghostpiece.png
 inkscape img/svg/whitesmallking.svg --export-type=png --export-filename=img/png/whitesmallking.png
 inkscape img/svg/whitesmallpiece.svg --export-type=png --export-filename=img/png/whitesmallpiece.png
 inkscape img/svg/xiangqi.svg --export-type=png --export-filename=img/png/xiangqi.png
 javac -d bin -sourcepath src src/CheckersState.java
 javac -d bin -sourcepath src src/ChessState.java
 javac -d bin -sourcepath src src/Go9State.java
+javac -d bin -sourcepath src src/Go13State.java
+javac -d bin -sourcepath src src/Go19State.java
 javac -d bin -sourcepath src src/GomokuState.java
 javac -d bin -sourcepath src src/InternationalCheckersState.java
 javac -d bin -sourcepath src src/MainWindow.java

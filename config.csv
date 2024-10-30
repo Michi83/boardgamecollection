@@ -1,6 +1,8 @@
 Checkers/Draughts,CheckersState,https://wcdf.net/rules.htm
 Chess,ChessState,https://handbook.fide.com/chapter/E012023
-Go 9x9,Go9State,https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
+Go 19×19,Go19State,https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
+Go 13×13,Go13State,https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
+Go 9×9,Go9State,https://www.cs.cmu.edu/~wjh/go/rules/Chinese.html
 Gomoku,GomokuState,https://en.wikipedia.org/wiki/Gomoku
 International Checkers/Draughts,InternationalCheckersState,https://www.fmjd.org/docs/Annex_1.pdf
 Nine Men's Morris,MorrisState,https://library.slmath.org/books/Book29/files/gasser.pdf

@@ -3,12 +3,12 @@ import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
 
-public class Go9State implements GameState {
+public class Go13State implements GameState {
     private static final int WHITE = 1;
     private static final int EMPTY = 0;
     private static final int BLACK = -1;
     private static final int LAVA = -2;
-    private static final int[] OFFSETS = new int[] { -11, -1, 1, 11 };
+    private static final int[] OFFSETS = new int[] { -15, -1, 1, 15 };
 
     private int[] board;
     private int clicks;
@@ -16,11 +16,11 @@ public class Go9State implements GameState {
     private int passes;
     private int player;
 
-    public Go9State() {
-        board = new int[121];
-        for (int point = 0; point < 121; point++) {
-            if (point / 11 == 0 || point / 11 == 10 || point % 11 == 0
-                    || point % 11 == 10) {
+    public Go13State() {
+        board = new int[225];
+        for (int point = 0; point < 225; point++) {
+            if (point / 15 == 0 || point / 15 == 14 || point % 15 == 0
+                    || point % 15 == 14) {
                 board[point] = LAVA;
             }
         }
@@ -29,7 +29,7 @@ public class Go9State implements GameState {
         player = BLACK;
     }
 
-    private Go9State(Go9State that) {
+    private Go13State(Go13State that) {
         board = that.board.clone();
         ko = -1;
         passes = 0;
@@ -39,7 +39,7 @@ public class Go9State implements GameState {
     public GameState click(int id) {
         List<GameState> moves = generateMoves();
         for (GameState move : moves) {
-            if (((Go9State)move).clicks == id) {
+            if (((Go13State)move).clicks == id) {
                 return move;
             }
         }
@@ -50,12 +50,12 @@ public class Go9State implements GameState {
 
     public GameImage draw() {
         GameImage image = new GameImage();
-        image.fillTile(0, 0, "go9.png");
-        for (int point = 12; point <= 108; point++) {
-            int row = point / 11 - 1;
-            int col = point % 11 - 1;
-            int x = 4 * col + 14;
-            int y = 4 * row + 14;
+        image.fillTile(0, 0, "go13.png");
+        for (int point = 16; point <= 208; point++) {
+            int row = point / 15 - 1;
+            int col = point % 15 - 1;
+            int x = 4 * col + 6;
+            int y = 4 * row + 6;
             switch (board[point]) {
             case WHITE:
                 image.fillTile(x, y, "whitepiece.png");
@@ -70,11 +70,11 @@ public class Go9State implements GameState {
         if (generateMoves().size() == 0) {
             boolean[] whiteArea = getArea(WHITE);
             boolean[] blackArea = getArea(BLACK);
-            for (int point = 12; point <= 108; point++) {
-                int row = point / 11 - 1;
-                int col = point % 11 - 1;
-                int x = 4 * col + 14;
-                int y = 4 * row + 14;
+            for (int point = 16; point <= 208; point++) {
+                int row = point / 15 - 1;
+                int col = point % 15 - 1;
+                int x = 4 * col + 6;
+                int y = 4 * row + 6;
                 if (board[point] == EMPTY) {
                     if (whiteArea[point] && !blackArea[point]) {
                         image.fillTile(x, y, "whiteghostpiece.png");
@@ -92,7 +92,7 @@ public class Go9State implements GameState {
             boolean[] whiteArea = getArea(WHITE);
             boolean[] blackArea = getArea(BLACK);
             int score = 0;
-            for (int point = 12; point <= 108; point++) {
+            for (int point = 16; point <= 208; point++) {
                 if (whiteArea[point] && !blackArea[point]) {
                     score++;
                 } else if (blackArea[point] && !whiteArea[point]) {
@@ -108,14 +108,14 @@ public class Go9State implements GameState {
             }
         } else {
             double score = 0;
-            for (int point = 12; point <= 108; point++) {
+            for (int point = 16; point <= 208; point++) {
                 if (board[point] == WHITE) {
                     score++;
                 } else if (board[point] == BLACK) {
                     score--;
                 }
             }
-            return score / 128;
+            return score / 256;
         }
     }
 
@@ -124,9 +124,9 @@ public class Go9State implements GameState {
         if (passes >= 2) {
             return moves;
         }
-        for (int point = 12; point <= 108; point++) {
+        for (int point = 16; point <= 208; point++) {
             if (board[point] == EMPTY) {
-                Go9State move = new Go9State(this);
+                Go13State move = new Go13State(this);
                 move.board[point] = player;
                 int count = move.removeCapturedStones(-player);
                 if (count == 1 && point == ko) {
@@ -141,7 +141,7 @@ public class Go9State implements GameState {
             }
         }
         // passing move
-        Go9State move = new Go9State(this);
+        Go13State move = new Go13State(this);
         move.clicks = -1;
         move.passes = passes + 1;
         moves.add(move);
@@ -149,9 +149,9 @@ public class Go9State implements GameState {
     }
 
     public boolean[] getArea(int player) {
-        boolean[] area = new boolean[121];
+        boolean[] area = new boolean[225];
         Queue<Integer> fillQueue = new ArrayDeque<Integer>();
-        for (int point = 12; point <= 108; point++) {
+        for (int point = 16; point <= 208; point++) {
             if (board[point] == player) {
                 area[point] = true;
                 fillQueue.add(point);
@@ -175,8 +175,8 @@ public class Go9State implements GameState {
             return "pass";
         }
         String notation = "";
-        notation += (char)(clicks % 11 + 96); // file
-        notation += 10 - clicks / 11; // rank
+        notation += (char)(clicks % 15 + 96); // file
+        notation += 14 - clicks / 15; // rank
         return notation;
     }
 
@@ -186,9 +186,9 @@ public class Go9State implements GameState {
 
     private int removeCapturedStones(int player) {
         // 1) Mark empty points as safe and add them to a queue.
-        boolean[] safe = new boolean[121];
+        boolean[] safe = new boolean[225];
         Queue<Integer> fillQueue = new ArrayDeque<Integer>();
-        for (int point = 12; point <= 108; point++) {
+        for (int point = 16; point <= 208; point++) {
             if (board[point] == EMPTY) {
                 safe[point] = true;
                 fillQueue.add(point);
@@ -209,7 +209,7 @@ public class Go9State implements GameState {
         }
         // 3) Remove unsafe stones.
         int count = 0;
-        for (int point = 12; point <= 108; point++) {
+        for (int point = 16; point <= 208; point++) {
             if (board[point] == player && !safe[point]) {
                 board[point] = EMPTY;
                 count++;

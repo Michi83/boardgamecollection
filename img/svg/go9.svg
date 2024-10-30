@@ -1,13 +1,6 @@
 <svg height="1024" width="1024" xmlns="http://www.w3.org/2000/svg">
     <rect fill="#008000" height="1024" width="1024" x="0" y="0" />
     <rect fill="none" height="512" stroke="#FFFFFF" stroke-width="4" width="512" x="256" y="256" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="320" x2="320" y1="256" y2="768" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="384" x2="384" y1="256" y2="768" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="448" x2="448" y1="256" y2="768" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="256" y2="768" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="576" x2="576" y1="256" y2="768" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="640" x2="640" y1="256" y2="768" />
-    <line stroke="#FFFFFF" stroke-width="4" x1="704" x2="704" y1="256" y2="768" />
     <line stroke="#FFFFFF" stroke-width="4" x1="256" x2="768" y1="320" y2="320" />
     <line stroke="#FFFFFF" stroke-width="4" x1="256" x2="768" y1="384" y2="384" />
     <line stroke="#FFFFFF" stroke-width="4" x1="256" x2="768" y1="448" y2="448" />
@@ -15,6 +8,13 @@
     <line stroke="#FFFFFF" stroke-width="4" x1="256" x2="768" y1="576" y2="576" />
     <line stroke="#FFFFFF" stroke-width="4" x1="256" x2="768" y1="640" y2="640" />
     <line stroke="#FFFFFF" stroke-width="4" x1="256" x2="768" y1="704" y2="704" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="320" x2="320" y1="256" y2="768" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="384" x2="384" y1="256" y2="768" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="448" x2="448" y1="256" y2="768" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="256" y2="768" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="576" x2="576" y1="256" y2="768" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="640" x2="640" y1="256" y2="768" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="704" x2="704" y1="256" y2="768" />
     <circle cx="384" cy="384" fill="#FFFFFF" r="8" />
     <circle cx="640" cy="384" fill="#FFFFFF" r="8" />
     <circle cx="512" cy="512" fill="#FFFFFF" r="8" />

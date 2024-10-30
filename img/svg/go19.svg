@@ -1,0 +1,47 @@
+<svg height="1024" width="1024" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="#008000" height="1024" width="1024" x="0" y="0" />
+    <rect fill="none" height="576" stroke="#FFFFFF" stroke-width="4" width="576" x="224" y="224" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="256" y2="256" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="288" y2="288" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="320" y2="320" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="352" y2="352" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="384" y2="384" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="416" y2="416" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="448" y2="448" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="480" y2="480" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="512" y2="512" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="544" y2="544" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="576" y2="576" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="608" y2="608" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="640" y2="640" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="672" y2="672" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="704" y2="704" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="736" y2="736" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="224" x2="800" y1="768" y2="768" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="256" x2="256" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="288" x2="288" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="320" x2="320" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="352" x2="352" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="384" x2="384" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="416" x2="416" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="448" x2="448" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="480" x2="480" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="512" x2="512" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="544" x2="544" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="576" x2="576" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="608" x2="608" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="640" x2="640" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="672" x2="672" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="704" x2="704" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="736" x2="736" y1="224" y2="800" />
+    <line stroke="#FFFFFF" stroke-width="4" x1="768" x2="768" y1="224" y2="800" />
+    <circle cx="320" cy="320" fill="#FFFFFF" r="8" />
+    <circle cx="512" cy="320" fill="#FFFFFF" r="8" />
+    <circle cx="704" cy="320" fill="#FFFFFF" r="8" />
+    <circle cx="320" cy="512" fill="#FFFFFF" r="8" />
+    <circle cx="512" cy="512" fill="#FFFFFF" r="8" />
+    <circle cx="704" cy="512" fill="#FFFFFF" r="8" />
+    <circle cx="320" cy="704" fill="#FFFFFF" r="8" />
+    <circle cx="512" cy="704" fill="#FFFFFF" r="8" />
+    <circle cx="704" cy="704" fill="#FFFFFF" r="8" />
+</svg>
