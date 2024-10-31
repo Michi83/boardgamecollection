@@ -76,6 +76,7 @@ javac -d bin -sourcepath src src/MainWindow.java
 javac -d bin -sourcepath src src/MorrisState.java
 javac -d bin -sourcepath src src/OwareState.java
 javac -d bin -sourcepath src src/ReversiState.java
+javac -d bin -sourcepath src src/RussianCheckersState.java
 javac -d bin -sourcepath src src/ShogiState.java
 javac -d bin -sourcepath src src/TablutState.java
 javac -d bin -sourcepath src src/XiangqiState.java
