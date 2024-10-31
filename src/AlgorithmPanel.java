@@ -25,10 +25,10 @@ public class AlgorithmPanel extends JPanel implements ChangeListener {
         humanButton = new JRadioButton("Human");
         add(humanButton);
 
-        minimaxButton = new JRadioButton("Computer (Minimax)");
+        minimaxButton = new JRadioButton("Computer (classic)");
         add(minimaxButton);
 
-        mctsButton = new JRadioButton("Computer (MCTS)");
+        mctsButton = new JRadioButton("Computer (experimental)");
         add(mctsButton);
 
         randomButton = new JRadioButton("Random moves");
