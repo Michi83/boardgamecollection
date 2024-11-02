@@ -27,4 +27,5 @@ Mostly intended for casual players, who want to try out different games. Don't e
 - Russian Checkers/Draughts
 - Shogi
 - Tablut
+- Turkish Checkers/Draughts
 - Xiangqi

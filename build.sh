@@ -37,6 +37,7 @@ inkscape img/svg/reversi.svg --export-type=png --export-filename=img/png/reversi
 inkscape img/svg/selection.svg --export-type=png --export-filename=img/png/selection.png
 inkscape img/svg/shogi.svg --export-type=png --export-filename=img/png/shogi.png
 inkscape img/svg/tablut.svg --export-type=png --export-filename=img/png/tablut.png
+inkscape img/svg/turkishcheckers.svg --export-type=png --export-filename=img/png/turkishcheckers.png
 inkscape img/svg/whitebishop.svg --export-type=png --export-filename=img/png/whitebishop.png
 inkscape img/svg/whitecannon.svg --export-type=png --export-filename=img/png/whitecannon.png
 inkscape img/svg/whiteghostpiece.svg --export-type=png --export-filename=img/png/whiteghostpiece.png
@@ -79,6 +80,7 @@ javac -d bin -sourcepath src src/ReversiState.java
 javac -d bin -sourcepath src src/RussianCheckersState.java
 javac -d bin -sourcepath src src/ShogiState.java
 javac -d bin -sourcepath src src/TablutState.java
+javac -d bin -sourcepath src src/TurkishCheckersState.java
 javac -d bin -sourcepath src src/XiangqiState.java
 jar -c -e MainWindow -f "Board Game Collection.jar" -C bin .
 rm -rf bin

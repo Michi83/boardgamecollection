@@ -1,102 +1,54 @@
-// Overview of implemented checkers variants.
-// What size is the board?
-// - English: 8x8, 12 pieces per side.
-// - International: 10x10, 20 pieces per side.
-// - Russian: 8x8, 12 pieces per side.
-// - Turkish: 8x8, 16 pieces per side.
-// Who moves first?
-// - English: Black.
-// - International: White.
-// - Russian: White.
-// - Turkish: White.
-// How do pieces move in general?
-// - English: Diagonally.
-// - International: Diagonally.
-// - Russian: Diagonally.
-// - Turkish: Straight.
-// Can men capture backwards?
-// - English: No.
-// - International: Yes.
-// - Russian: Yes.
-// - Turkish: No.
-// When are captured pieces removed in a multi-capture sequence?
-// - English: At the end of the sequence.
-// - International: At the end of the sequence.
-// - Russian: At the end of the sequence.
-// - Turkish: After every jump.
-// What if there's more than one capture opportunity or more than one way to
-// continue a multi-capture sequence?
-// - English: Player may choose.
-// - International: Player must capture the greatest possible number of pieces.
-// - Russian: Player may choose.
-// - Turkish: Player must capture the greatest possible number of pieces.
-// What happens, when a man captures, lands on the last row, and can capture
-// again?
-// - English: Never happens, but see next question.
-// - International: Man doesn't get promoted and continues to capture.
-// - Russian: Man gets promoted and continues to capture as a king.
-// - Turkish: Man doesn't get promoted and continues to capture. But since all
-//   remaining captures will be sideways, the man will get promoted in the end.
-// What happens, when a man captures, lands on the last row, gets promoted, and
-// can immediately capture as a king?
-// - English: Move ends after promotion.
-// - International: Move ends after promotion.
-// - Russian: Move continues, king captures.
-// - Turkish: Move ends after promotion.
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckersState implements GameState {
+public class TurkishCheckersState implements GameState {
     private static final int WK = 2; // white king
     private static final int WM = 1; // white man
     private static final int EM = 0; // empty
     private static final int BM = -1; // black man
     private static final int BK = -2; // black king
     private static final int LV = -3; // lava
-    private static final int[] KING_OFFSETS = new int[] { -11, -9, 9, 11 };
-    private static final int[] MAN_OFFSETS = new int[] { -11, -9 };
+    private static final int[] KING_OFFSETS = new int[] { -10, -1, 1, 10 };
+    private static final int[] MAN_OFFSETS = new int[] { -10, -1, 1 };
 
     private int[] board;
     private List<Integer> clicks;
     private int player;
     private List<Integer> userClicks;
 
-    public CheckersState() {
+    public TurkishCheckersState() {
         board = new int[] {
             LV, LV, LV, LV, LV, LV, LV, LV, LV, LV,
-            LV, EM, BM, EM, BM, EM, BM, EM, BM, LV,
-            LV, BM, EM, BM, EM, BM, EM, BM, EM, LV,
-            LV, EM, BM, EM, BM, EM, BM, EM, BM, LV,
+            LV, EM, EM, EM, EM, EM, EM, EM, EM, LV,
+            LV, BM, BM, BM, BM, BM, BM, BM, BM, LV,
+            LV, BM, BM, BM, BM, BM, BM, BM, BM, LV,
             LV, EM, EM, EM, EM, EM, EM, EM, EM, LV,
             LV, EM, EM, EM, EM, EM, EM, EM, EM, LV,
-            LV, WM, EM, WM, EM, WM, EM, WM, EM, LV,
-            LV, EM, WM, EM, WM, EM, WM, EM, WM, LV,
-            LV, WM, EM, WM, EM, WM, EM, WM, EM, LV,
-            LV, LV, LV, LV, LV, LV, LV, LV, LV, LV
+            LV, WM, WM, WM, WM, WM, WM, WM, WM, LV,
+            LV, WM, WM, WM, WM, WM, WM, WM, WM, LV,
+            LV, EM, EM, EM, EM, EM, EM, EM, EM, LV,
+            LV, LV, LV, LV, LV, LV, LV, LV, LV, LV,
         };
-        player = -1;
+        player = 1;
     }
 
-    private CheckersState(CheckersState that) {
+    private TurkishCheckersState(TurkishCheckersState that) {
         board = that.board.clone();
         player = that.player;
     }
 
     private boolean capturable(int square) {
-        return board[square] != LV && player * board[square] < 0;
+        return board[square] != LV && player * board[square] < EM;
     }
 
     public GameState click(int id) {
         userClicks.add(id);
         List<GameState> moves = generateMoves();
         for (GameState move : moves) {
-            CheckersState checkersMove = (CheckersState)move;
+            TurkishCheckersState checkersMove = (TurkishCheckersState)move;
             if (userClicks.size() <= checkersMove.clicks.size()) {
                 boolean match = true;
                 for (int i = 0; i < userClicks.size(); i++) {
-                    // Yes, we have to cast from Integer to int, otherwise the
-                    // != operator may not work properly. This is the result of
-                    // an hour of bug hunting.
                     if ((int)userClicks.get(i)
                             != (int)checkersMove.clicks.get(i)) {
                         match = false;
@@ -105,9 +57,9 @@ public class CheckersState implements GameState {
                 }
                 if (match) {
                     if (userClicks.size() == checkersMove.clicks.size()) {
-                        return checkersMove; // full match
+                        return move;
                     } else {
-                        return this; // partial match
+                        return this;
                     }
                 }
             }
@@ -116,13 +68,23 @@ public class CheckersState implements GameState {
         return this;
     }
 
+    private int countRemainingPieces() {
+        int count = 0;
+        for (int square = 11; square <= 88; square++) {
+            if (capturable(square)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public GameImage draw() {
         if (userClicks == null) {
             userClicks = new ArrayList<Integer>();
         }
         GameImage image = new GameImage();
-        image.fillTile(0, 0, "chess.png");
-        for (int square = 12; square <= 87; square++) {
+        image.fillTile(0, 0, "turkishcheckers.png");
+        for (int square = 11; square <= 88; square++) {
             int row = square / 10 - 1;
             int col = square % 10 - 1;
             int x = 6 * col + 8;
@@ -175,7 +137,7 @@ public class CheckersState implements GameState {
 
     private List<GameState> generateCaptures() {
         List<GameState> moves = new ArrayList<GameState>();
-        for (int origin = 12; origin <= 87; origin++) {
+        for (int origin = 11; origin <= 88; origin++) {
             switch (player * board[origin]) {
             case WK:
                 generateKingCaptures(origin, moves);
@@ -185,21 +147,51 @@ public class CheckersState implements GameState {
                 break;
             }
         }
-        return moves;
+        int topScore = Integer.MAX_VALUE;
+        List<GameState> topMoves = new ArrayList<GameState>();
+        for (GameState move : moves) {
+            int score = ((TurkishCheckersState)move).countRemainingPieces();
+            if (score < topScore) {
+                topScore = score;
+                topMoves.clear();
+                topMoves.add(move);
+            } else if (score == topScore) {
+                topMoves.add(move);
+            }
+        }
+        return topMoves;
     }
 
     private void generateKingCaptures(int origin, List<GameState> moves) {
+        generateKingCaptures(origin, moves, 0);
+    }
+
+    private void generateKingCaptures(int origin, List<GameState> moves,
+            int forbiddenOffset) {
         for (int offset : KING_OFFSETS) {
+            // A king must not turn 180 degrees in an multi-capture sequence.
+            // In most variants this is ruled out automatically by the rule
+            // that captured pieces remain on the board until the sequence is
+            // over and must not be jumped again. But in Turkish checkers
+            // pieces are removed after every jump.
+            if (offset == forbiddenOffset) {
+                continue;
+            }
             int capture = origin + offset;
-            int target = capture + offset;
-            if (capturable(capture) && board[target] == EM) {
-                CheckersState move = makeMove(origin, target, capture);
-                // multi-captures
-                int countBefore = moves.size();
-                move.generateKingCaptures(target, moves);
-                if (moves.size() == countBefore) {
-                    // no multi-captures found
-                    moves.add(move);
+            while (board[capture] == EM) {
+                capture += offset;
+            }
+            if (capturable(capture)) {
+                int target = capture + offset;
+                while (board[target] == EM) {
+                    TurkishCheckersState move = makeMove(origin, target,
+                        capture);
+                    int countBefore = moves.size();
+                    move.generateKingCaptures(target, moves, -offset);
+                    if (moves.size() == countBefore) {
+                        moves.add(move);
+                    }
+                    target += offset;
                 }
             }
         }
@@ -208,9 +200,10 @@ public class CheckersState implements GameState {
     private void generateKingNonCaptures(int origin, List<GameState> moves) {
         for (int offset : KING_OFFSETS) {
             int target = origin + offset;
-            if (board[target] == EM) {
-                CheckersState move = makeMove(origin, target);
+            while (board[target] == EM) {
+                TurkishCheckersState move = makeMove(origin, target);
                 moves.add(move);
+                target += offset;
             }
         }
     }
@@ -220,17 +213,13 @@ public class CheckersState implements GameState {
             int capture = origin + player * offset;
             int target = capture + player * offset;
             if (capturable(capture) && board[target] == EM) {
-                CheckersState move = makeMove(origin, target, capture);
-                if (promotes(target)) {
-                    move.board[target] = player * WK;
-                    moves.add(move);
-                    continue; // no multi-captures after promotion
-                }
-                // multi-captures
+                TurkishCheckersState move = makeMove(origin, target, capture);
                 int countBefore = moves.size();
                 move.generateManCaptures(target, moves);
                 if (moves.size() == countBefore) {
-                    // no multi-captures found
+                    if (promotes(target)) {
+                        move.board[target] = player * WK;
+                    }
                     moves.add(move);
                 }
             }
@@ -241,7 +230,7 @@ public class CheckersState implements GameState {
         for (int offset : MAN_OFFSETS) {
             int target = origin + player * offset;
             if (board[target] == EM) {
-                CheckersState move = makeMove(origin, target);
+                TurkishCheckersState move = makeMove(origin, target);
                 if (promotes(target)) {
                     move.board[target] = player * WK;
                 }
@@ -256,14 +245,14 @@ public class CheckersState implements GameState {
             moves = generateNonCaptures();
         }
         for (GameState move : moves) {
-            ((CheckersState)move).player *= -1;
+            ((TurkishCheckersState)move).player *= -1;
         }
         return moves;
     }
 
     private List<GameState> generateNonCaptures() {
         List<GameState> moves = new ArrayList<GameState>();
-        for (int origin = 12; origin <= 87; origin++) {
+        for (int origin = 11; origin <= 88; origin++) {
             switch (player * board[origin]) {
             case WK:
                 generateKingNonCaptures(origin, moves);
@@ -289,8 +278,8 @@ public class CheckersState implements GameState {
         return player;
     }
 
-    private CheckersState makeMove(int origin, int target) {
-        CheckersState move = new CheckersState(this);
+    private TurkishCheckersState makeMove(int origin, int target) {
+        TurkishCheckersState move = new TurkishCheckersState(this);
         move.board[origin] = EM;
         move.board[target] = board[origin];
         move.clicks = new ArrayList<Integer>();
@@ -299,18 +288,14 @@ public class CheckersState implements GameState {
         return move;
     }
 
-    private CheckersState makeMove(int origin, int target, int capture) {
-        CheckersState move = new CheckersState(this);
+    private TurkishCheckersState makeMove(int origin, int target,
+            int capture) {
+        TurkishCheckersState move = new TurkishCheckersState(this);
         move.board[origin] = EM;
         move.board[target] = board[origin];
         move.board[capture] = EM;
         move.clicks = new ArrayList<Integer>();
-        // For single captures the clicks list contains the origin and the
-        // target, for multi-captures also all the targets in between. Here is
-        // a little trick to distinguish the two cases: If this move's origin
-        // is the last move's target, they are part of the same multi-capture
-        // sequence.
-        if (origin == clicks.get(clicks.size() - 1)) {
+        if (clicks.get(clicks.size() - 1) == origin) {
             move.clicks.addAll(clicks);
         } else {
             move.clicks.add(origin);
